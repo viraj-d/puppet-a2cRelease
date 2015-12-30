@@ -1,0 +1,55 @@
+﻿@using A2C.Resources
+@model A2C.Model.Ping.PingModel
+@{
+    ViewBag.Title = Resource.PingPollAOTitle;
+    var isExamOfficer = (A2C.Session.SessionCache.RoleId == (int)A2C.Global.A2CRole.ExamOfficer) ? true : false;
+}
+
+<div id="content">
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { name = "form0", id = "form0", novalidate = "novalidate", @class = "smart-form" }))
+    {
+        <fieldset>
+            <div class="row">
+                <section class="col col-4">
+                    @Html.LabelFor(x => x.SelectedCentreId, new { @class = "label Compulsorylabel" })
+                    @Html.DropDownListFor(x => x.SelectedCentreId, new SelectList(Model.CentreList, "Value", "Text"), new { @class = "select2 select2-offscreen" })
+                    @Html.ValidationMessageFor(u => u.SelectedCentreId)
+                </section>
+
+            </div>
+            <div >
+                <section >
+                    <div id="OrganisationList_grid"></div>
+                </section>
+
+            </div>
+        </fieldset>
+    }
+</div>
+@section Buttons{
+    <a id="BtnSave" class="btn btn-icon" rel="tooltip" onclick="Ping();" href="javascript:void(0);" data-placement="bottom" data-original-title="Ping" title="@Resource.TestPingPing">
+        <i class="icon-prepend fa fa-fw fa-exchange"></i>
+    </a>
+}
+@section ButtonsA{
+    @if (!isExamOfficer)
+    {
+        <a id="BtnPollNow" class="btn btn-icon" rel="tooltip" onclick="PollNow();" href="javascript:void(0);" data-placement="bottom" data-original-title="PollNow" title="@Resource.PollNow">
+            <i class="icon-prepend fa fa-external-link"></i>
+        </a>
+    }
+}
+@section styleBlock {
+    @Styles.Render("~/Content/SmartAdmin/KendoUI/kendoMaster")
+}
+@section scriptsTag {
+    @Scripts.Render("~/Scripts/Kendo", "~/Scripts/App/Ping")
+    <script type="text/javascript">
+        AOName = '@Resource.TestPingScreenAONameLable';
+        AOId = '@Resource.TestPingScreenAOIdLable';
+        Feedback = '@Resource.TestPingScreenAOFeedbackLable';
+        AOSelectMessage = '@Resource.UserSelect';
+        TimeStamp = '@Resource.TimeStamp';
+    </script>
+}
+

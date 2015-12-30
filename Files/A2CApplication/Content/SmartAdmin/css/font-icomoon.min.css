@@ -1,0 +1,312 @@
+@font-face {
+	font-family: 'icomoon';
+	src:url('../fonts/icomoon.eot?as2bk7');
+	src:url('../fonts/icomoon.eot?#iefixas2bk7') format('embedded-opentype'),
+		url('../fonts/icomoon.woff?as2bk7') format('woff'),
+		url('../fonts/icomoon.ttf?as2bk7') format('truetype'),
+		url('../fonts/icomoon.svg?as2bk7#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+.moon {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.taskbar-fw
+{
+    width:1.28571429em;
+    text-align:center;
+}
+
+.icon-A2C_Academichousegroup:before {
+	content: "\e600";
+}
+
+.icon-A2C_Addcolumns:before {
+	content: "\e601";
+}
+
+.icon-A2C_Addinvigilator:before {
+	content: "\e602";
+}
+
+.icon-A2C_Addmorerecepients:before {
+	content: "\e603";
+}
+
+.icon-A2C_AddRoomunavailability:before {
+	content: "\e604";
+}
+
+.icon-A2C_Addroom:before {
+	content: "\e605";
+}
+
+.icon-A2C_Addstaffabsence:before {
+	content: "\e606";
+}
+
+.icon-A2C_Assignall:before {
+	content: "\e607";
+}
+
+.icon-A2C_Assigncandidates:before {
+	content: "\e608";
+}
+
+.icon-A2C_Assignselected:before {
+	content: "\e609";
+}
+
+.icon-A2C_Attendance:before {
+	content: "\e60a";
+}
+
+.icon-A2C_AutoCoverroom:before {
+	content: "\e60b";
+}
+
+.icon-A2C_Autocoverteacher:before {
+	content: "\e60c";
+}
+
+.icon-A2C_BCC:before {
+	content: "\e60d";
+}
+
+.icon-A2C_Calculate:before {
+	content: "\e60e";
+}
+
+.icon-A2C_cc:before {
+	content: "\e60f";
+}
+
+.icon-A2C_Clearfilter:before {
+	content: "\e610";
+}
+
+.icon-A2C_Combined:before {
+	content: "\e611";
+}
+
+.icon-A2C_CopyAdd:before {
+	content: "\e612";
+}
+
+.icon-A2C_Cover:before {
+	content: "\e613";
+}
+
+.icon-A2C_Definecolourcode:before {
+	content: "\e614";
+}
+
+.icon-A2C_Defineformula:before {
+	content: "\e615";
+}
+
+.icon-A2C_Detentionletter:before {
+	content: "\e616";
+}
+
+.icon-A2C_Editreport:before {
+	content: "\e617";
+}
+
+.icon-A2C_Entergrade:before {
+	content: "\e618";
+}
+
+.icon-A2C_Eportall:before {
+	content: "\e619";
+}
+
+.icon-A2C_Eventdetails:before {
+	content: "\e61a";
+}
+
+.icon-A2C_Firedrilllessonbylesson:before {
+	content: "\e61b";
+}
+
+.icon-A2C_Firedrillrollcall:before {
+	content: "\e61c";
+}
+
+.icon-A2C_IconforOthercomponentonseatingscreen:before {
+	content: "\e61d";
+}
+
+.icon-A2C_Key-legendpopup:before {
+	content: "\e61e";
+}
+
+.icon-A2C_Lessonbylesson:before {
+	content: "\e61f";
+}
+
+.icon-A2C_List:before {
+	content: "\e620";
+}
+
+.icon-A2C_ManageEventsexaminations:before {
+	content: "\e621";
+}
+
+.icon-A2C_ManageFilter:before {
+	content: "\e622";
+}
+
+.icon-A2C_Manageprofile:before {
+	content: "\e623";
+}
+
+.icon-A2C_Managerooms:before {
+	content: "\e624";
+}
+
+.icon-A2C_Managetabs:before {
+	content: "\e625";
+}
+
+.icon-A2C_Managetemplate:before {
+	content: "\e626";
+}
+
+.icon-A2C_MarkCoverNotRequiredCover:before {
+	content: "\e627";
+}
+
+.icon-A2C_MoreMoredetails:before {
+	content: "\e628";
+}
+
+.icon-A2C_people:before {
+	content: "\e629";
+}
+
+.icon-A2C_Photo:before {
+	content: "\e62a";
+}
+
+.icon-A2C_Printcandidatelist:before {
+	content: "\e62b";
+}
+
+.icon-A2C_Printseatingplan:before {
+	content: "\e62c";
+}
+
+.icon-A2C_QUicklinktoRegistrationgroupabsencelist:before {
+	content: "\e62d";
+}
+
+.icon-A2C_Quicklinktoroomunavailabilitylist:before {
+	content: "\e62e";
+}
+
+.icon-A2C_Quicklinktoteacinggroupabsencelist:before {
+	content: "\e62f";
+}
+
+.icon-A2C_Registrationgroup:before {
+	content: "\e630";
+}
+
+.icon-A2C_Removeseating:before {
+	content: "\e631";
+}
+
+.icon-A2C_Requestchange:before {
+	content: "\e632";
+}
+
+.icon-A2C_RestrictedseatingwithnotesRed:before {
+	content: "\e633";
+}
+
+.icon-A2C_Restrictedseatingwithoutnotesyellow:before {
+	content: "\e634";
+}
+
+.icon-A2C_Rollcall:before {
+	content: "\e635";
+}
+
+.icon-A2C_Roomconfiguration:before {
+	content: "\e636";
+}
+
+.icon-A2C_Savecolumnselection:before {
+	content: "\e637";
+}
+
+.icon-A2C_savegroupbyselection:before {
+	content: "\e638";
+}
+
+.icon-A2C_Seating:before {
+	content: "\e639";
+}
+
+.icon-A2C_Selectfilter:before {
+	content: "\e63a";
+}
+
+.icon-A2C_Settingswidget:before {
+	content: "\e63b";
+}
+
+.icon-A2C_SMs:before {
+	content: "\e63c";
+}
+
+.icon-A2C_Swaprooms:before {
+	content: "\e63d";
+}
+
+.icon-A2C_Teachinggruop:before {
+	content: "\e63e";
+}
+
+.icon-A2C_To:before {
+	content: "\e63f";
+}
+
+.icon-A2C_Unassignall:before {
+	content: "\e640";
+}
+
+.icon-A2C_Unassignselected:before {
+	content: "\e641";
+}
+
+.icon-A2C_UndoCoverNotRequiredCover:before {
+	content: "\e642";
+}
+
+.icon-A2C_Uploaddoc:before {
+	content: "\e643";
+}
+
+.icon-A2C_Viewgrade:before {
+	content: "\e644";
+}
+
+.icon-A2C_Viewreports:before {
+	content: "\e645";
+}
+

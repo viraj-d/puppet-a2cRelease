@@ -1,0 +1,73 @@
+﻿@using A2C.Resources
+<div id="content">
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { name = "form0", id = "form0", novalidate = "novalidate", @class = "smart-form" }))
+    {
+        <fieldset>
+            <div>
+                <section>
+                    <div id="grid"></div>
+                </section>
+            </div>
+            <div id="mainTabContent" style="display:none">
+                <ul id="attachmentTabUl" class="nav nav-tabs bordered">
+                    <li class="">
+                        <a id="envelopeTab" aria-expanded="true" rel="True" data-toggle="tab" onclick="javascript : SetEnvelope(true)">
+                            <span class="hidden-mobile hidden-tablet">@Resource.ViewMessageEnvelope</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a id="attachmentTab" aria-expanded="true" rel="True" data-toggle="tab" onclick="javascript : SetEnvelope(false)">
+                            <span class="hidden-mobile hidden-tablet">@Resource.ViewMessageAttachment </span>
+                        </a>
+                    </li>
+                </ul>
+                <div id="childTabContent" class="tab-content">
+                    <div id="envelopeContent">
+                        <pre id="preEnvelopeContent" class="smart-style-3 preViewMessage">    
+                        </pre>
+                    </div>
+                    <div id="attachmentContent">
+                        <pre id="preAttachmentContent" class="smart-style-3 preViewMessage">    
+                         </pre>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+    }
+</div>
+@section Buttons{
+    <a id="BtnView" class="btn btn-icon" rel="tooltip" onclick="ViewRequest();" href="javascript:void(0);" data-placement="bottom" data-original-title="View" title="@Resource.ViewMessageIconTitle">
+        <i class="icon-prepend fa fa-fw fa-bars"></i>
+    </a>   
+    @if (!ViewBag.IsExamOfficer) { 
+    <a id="BtnResend" class="btn btn-icon" rel="tooltip" onclick="ResendRequest();" href="javascript:void(0);" data-placement="bottom" data-original-title="View" title="@Resource.ResendMessageIconTitle">
+        <i class="icon-prepend fa fa-fw fa-repeat"></i>
+    </a>  
+    } 
+}
+@section styleBlock {
+    @Styles.Render("~/Content/SmartAdmin/KendoUI/kendoMaster")
+    <style></style>
+}
+@section scriptsTag {
+    @Scripts.Render("~/Scripts/Kendo", "~/Scripts/App/ViewMessage")
+    <script type="text/javascript">
+        var ViewMessageAO = '@Resource.ViewMessageAO';
+        var ViewMessageCentre = '@Resource.ViewMessageCentre';
+        var ViewMessageFileName = '@Resource.ViewMessageFileName';
+        var ViewMessageGUID = '@Resource.ViewMessageGUID';
+        var ViewMessageSequence = '@Resource.ViewMessageSequence';
+        var ViewMessageTransactionDate = '@Resource.ViewMessageTransactionDate';
+        var ViewMessageTransactionName = '@Resource.ViewMessageTransactionName';
+        var SelectNoRecordFound = '@Resource.SelectSchoolNoRecordFound';
+        var ViewMessageViewMultipleValidation = '@Resource.ViewMessageViewMultipleValidation';
+
+        var FailEdiMessage = '@Resource.FailEdiMessage';
+        var SuccessEdiMessage = '@Resource.SuccessEdiMessage';
+        var SuccessXmlMessage = '@Resource.SuccessXmlMessage';
+        var FailXmlMessage = '@Resource.FailXmlMessage';
+
+    </script>
+}
+

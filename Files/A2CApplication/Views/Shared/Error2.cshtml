@@ -1,0 +1,51 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="A2C Application">
+    <meta name="author" content="Advanced Learning">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="msapplication-config" content="none" />
+    <meta name="robots" content="noindex, nofollow, noarchive" />
+    <title>A2C Core Application</title>
+    <link href="~/Content/Bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/SmartAdmin/css/smartadmin-skins.min.css" rel="stylesheet" />
+    <link href="~/Content/SmartAdmin/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/SmartAdmin/css/font-icomoon.min.css" rel="stylesheet" />
+    <link href="~/Content/SmartAdmin/css/smartadmin-production.min.css" rel="stylesheet" />
+    <link href="~/Content/SmartAdmin/css/smartadmin-production-plugins.min.css" rel="stylesheet" />
+    <link href="~/Content/App/Site.css" rel="stylesheet" />
+    <link rel="icon" href="@Url.Content("~/Content/img/favicon.ico")" />
+</head>
+
+<body class="whitebackground smart-style-3 fixed-header fixed-ribbon fixed-navigation minified">
+    <header id="header"></header>
+    <div id="content">
+        <div class="row">
+            <div class="pull-left scrTitle">
+                @ViewBag.Title
+            </div>
+        </div>
+        <div class="row">
+            <div class="center-canvas" id="main" role="main">
+                <div id="msg-error">
+                    <div class="alert alert-danger fade in">
+                        <span class="close" data-dismiss="alert">x</span>
+                        <a href="#">@ViewBag.Message</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="commonScripts">
+        <script src="~/Scripts/JQuery/jquery-2.1.1.min.js"></script>
+        <script src="~/Scripts/JQuery/jquery-ui-1.10.3.min.js"></script>
+        <script src="~/Scripts/Bootstrap/bootstrap.min.js"></script>
+        <script src="~/Scripts/SmartAdmin/SmartNotification.min.js"></script>
+    </div>
+</body>
+</html>

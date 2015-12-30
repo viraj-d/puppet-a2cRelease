@@ -1,0 +1,58 @@
+﻿@using A2C.Resources
+@model A2C.Model.SubmitRequest.SubmitRequestModel
+@{
+    ViewBag.Title = Resource.Transactions;
+}
+
+<div id="content">
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { name = "form0", id = "form0", novalidate = "novalidate", @class = "smart-form" }))
+    {
+        <fieldset>
+            <div class="row">
+                <section class="col col-4">
+                    @Html.LabelFor(x => x.SelectedCentreId, new { @class = "label Compulsorylabel" })                    
+                    @Html.DropDownListFor(x => x.SelectedCentreId, new SelectList(Model.CentreList, "Value", "Text"), new { @class = "select2 select2-offscreen" })
+                    @Html.ValidationMessageFor(u => u.SelectedCentreId)
+                </section>
+                <section class="col col-4">
+                    @Html.LabelFor(x => x.SelectedAwardingOrganisationId, new { @class = "label Compulsorylabel" })
+                    @Html.DropDownListFor(x => x.SelectedAwardingOrganisationId, new SelectList(Model.AwardingOrganisationList, "Value", "Text"), new {  @class = "select2 select2-offscreen" })
+                    @Html.ValidationMessageFor(u => u.SelectedAwardingOrganisationId)
+                </section>
+            </div>
+            <div >
+                <section >
+                    <div id="grid"></div>
+                </section>
+            </div>
+        </fieldset>
+    }
+</div>
+@section Buttons{
+    <a id="BtnSave" class="btn btn-icon" rel="tooltip" onclick="SaveRequest();" href="javascript:void(0);" data-placement="bottom" data-original-title="Ping" title="@Resource.SubmitRequestConfirmRPCRequest">
+        <i class="icon-prepend fa fa-fw fa-exchange"></i>
+    </a>
+}
+@section styleBlock {
+    @Styles.Render("~/Content/SmartAdmin/KendoUI/kendoMaster")
+
+<style>
+      
+</style>
+}
+@section scriptsTag {
+    @Scripts.Render("~/Scripts/Kendo", "~/Scripts/App/SubmitRequest")    
+    <script type="text/javascript">
+        var submitA2CRequestSelectAwardingOrganisation = '@Resource.Select';
+        var CentreNumber = '@Resource.SubmitA2CRequestCentreNumber';
+        var Name = '@Resource.SubmitA2CRequestName';
+        var AONumber = '@Resource.SubmitA2CRequestAONumber';
+        var IdentifierType = '@Resource.SubmitA2CRequestIdentifierType';
+        var IdentifierValue = '@Resource.SubmitA2CRequestIdentifierValue';
+        var Feedback = '@Resource.SubmitA2CRequestFeedback';
+        var LastModifiedDate = '@Resource.SubmitA2CRequestLastModifiedDate';
+        var TransactionType = '@Resource.SubmitA2CRequestTransactionType';
+        var SubmitRequestConfirmRPC = '@Resource.SubmitRequestConfirmRPC';
+    </script>
+}
+

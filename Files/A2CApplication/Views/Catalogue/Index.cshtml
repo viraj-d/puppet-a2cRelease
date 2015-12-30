@@ -1,0 +1,246 @@
+﻿@using A2C.Resources
+@model A2C.Model.ProductCatalogueModel
+
+<div id="content">
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { name = "form0", id = "form0", novalidate = "novalidate", @class = "smart-form" }))
+    {
+        <fieldset>
+            <div class="row">
+                <section class="col col-3">
+                    @Html.LabelFor(c => c.SelectedCentreId, new { @class = "label Compulsorylabel" })
+                    @Html.DropDownListFor(x => x.SelectedCentreId, new SelectList(Model.CentreList, "Value", "Text"), new { id = "Centre", @class = "select2 select2-offscreen" })
+                    @Html.ValidationMessageFor(u => u.SelectedCentreId)
+                </section>
+                <section class="col col-3">
+                    @Html.LabelFor(c => c.SelectedAwardingOrganisationId, new { @class = "label Compulsorylabel" })
+                    @Html.DropDownListFor(x => x.SelectedAwardingOrganisationId, new SelectList(Model.AwardingOrganisationOrBoardList, "Value", "Text"), new { id = "AwardingOrganisaionOrBoard", @class = "select2 select2-offscreen" })
+                    @Html.ValidationMessageFor(u => u.SelectedAwardingOrganisationId)
+                </section>
+                <section class="col col-3">
+                    @Html.Label(" ")
+                    <label class="input A2CIconButtonTopMargin">
+                        @Html.TextBox("searchText", "", new { placeholder = "Enter QE ID, Short Title or Qualification Reference Number" })
+
+                    </label>
+
+                </section>
+                <section class="col col-3">
+                    @Html.Label(" ")
+                    <section>
+                        <a id="BtnSubmitAOCenterSelectionn" class="btn btn-icon A2CIconButton A2CIconButtonTopMargin" rel="tooltip" onclick="RefreshProductCatalogue('All');" href="javascript:void(0);" data-placement="bottom" data-original-title="@Resource.Search" title="@Resource.Search">
+                            <i class="fa fa-search"></i>
+                            <a id="searchin" data-toggle="dropdown" data-toggle="dropdown" class="btn btn-small-icon A2CIconButton A2CIconButtonTopMargin" rel="tooltip" href="javascript:void(0);" data-placement="bottom">
+                                <i class="fa fa-caret-down"></i>
+                            </a>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a onclick="RefreshProductCatalogue('AoqeId');" href="javascript:void(0);">@Resource.QeId</a></li>
+                            <li><a onclick="RefreshProductCatalogue('QEShortTitle');" href="javascript:void(0);">@Resource.QEShortTitle</a></li>
+                            <li><a onclick="RefreshProductCatalogue('QualificationReferenceNumber');" href="javascript:void(0);">@Resource.QualificationReferenceNumber</a></li>
+                        </ul>
+                    </section>
+                </section>
+            </div>
+
+            <div id="productCatalogueTabView">
+                <div class="row">
+                    <section class="col">
+                        <label id="lblSelectedAOCenter"></label>
+                        <label id="lblPCSearchText" style="font-weight:bold"></label>
+                    </section>
+                </div>
+                <ul id="mainTab" class="nav nav-tabs bordered">
+                    <li class="">
+                        <a id="schemesTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dschemesTab">
+                            @*<i class="fa fa-crop text-success"></i>*@
+                            <span class="hidden-mobile hidden-tablet">@Resource.Schemes</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a id="awardsTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dawardsTab">
+                            @*<i class="fa fa-crop text-success"></i>*@
+                            <span class="hidden-mobile hidden-tablet">@Resource.Awards</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a id="learningUnitsTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dlearningUnitsTab">
+                            @*<i class="fa fa-crop text-success"></i>*@
+                            <span class="hidden-mobile hidden-tablet">@Resource.LearningUnits</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a id="assessablesTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dassessablesTab">
+                            @*<i class="fa fa-crop text-success"></i>*@
+                            <span class="hidden-mobile hidden-tablet">@Resource.Assessables</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a id="pathwayTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dpathwayTab">
+                            @*<i class="fa fa-crop text-success"></i>*@
+                            <span class="hidden-mobile hidden-tablet">@Resource.Pathways</span>
+                        </a>
+                    </li>
+                </ul>
+                <div id="mainTabContent" class="tab-content padding-10">
+                    <div id="dschemesTab" class="tab-pane fade active in"></div>
+                    <div id="dawardsTab" class="tab-pane fade"></div>
+                    <div id="dlearningUnitsTab" class="tab-pane fade"></div>
+                    <div id="dassessablesTab" class="tab-pane fade"></div>
+                    <div id="dpathwayTab" class="tab-pane fade"></div>
+                </div>
+            </div>
+
+        </fieldset>
+
+    }
+</div>
+
+@section scriptsBlock {
+    <script type="text/javascript">
+        var aoCentreId;
+        var selectText = '@Resource.Select', allText = '@Resource.All';
+        var awardRT = '@Resource.Award', schemeRT = '@Resource.Scheme', learningUnitRT = '@Resource.LearningUnit',
+            assessableRT = '@Resource.Assessable', qaulificationElementForPathwayRT = '@Resource.Pathway';
+
+        var selectedproductCatalogueforAOCenter = '@Resource.ProductCatalogueAOCenter', productCatalogueSearchCriteriaRT = '@Resource.ProductCatalogueSearchCriteria',
+                qeidRT = '@Resource.QeId';
+
+        var RowNumberRT = QualificationTypeRT = '@Resource.QualificationType', AoqeIdRT = '@Resource.AoqeId', QEDescriptionRT = '@Resource.QEDescription', QualificationElementTitleRT = '@Resource.QualificationElementTitle',
+                            QEShortTitleRT = '@Resource.QEShortTitle', QEEffectiveVersionDateRT = '@Resource.QEEffectiveVersionDate', QEAdminCodeRT = '@Resource.QEAdminCode',
+                            QEEffectiveVersionEndDateRT = '@Resource.QEEffectiveVersionEndDate', PrivateLearnerTypeRT = '@Resource.PrivateLearnerType',
+                            QEModerationTypeRT = '@Resource.QEModerationType', IsFirstLanguageRequiredRT = '@Resource.IsFirstLanguageRequired',
+                            IsRecordDeletedRT = '@Resource.IsRecordDeleted', QualificationReferenceNumberRT = '@Resource.QualificationReferenceNumber',
+                            LearningAimCodeRT = '@Resource.LearningAimCode'
+
+
+        var RelationshipRuleTypeRT = '@Resource.RelationshipRuleType', RelationshipTypeRT = '@Resource.RelationshipType', QualificationElementIdRT = '@Resource.QualificationElementId',
+            QEPartyIdCreatorRT = '@Resource.QEPartyIdCreator', QEPreferenceRT = '@Resource.QEPreference', QEPartyRRReferenceTypeRT = '@Resource.QEPartyRRReferenceType', QELearnerIdMandatoryRT = '@Resource.QELearnerIdMandatory'
+
+        var GradeRT = '@Resource.Grade', OutcomeRT = '@Resource.Outcome', SequenceRT = '@Resource.Sequence', PerformancePointsRT = '@Resource.PerformancePoints', Level1ThresholdRT = '@Resource.Level1Threshold',
+                    Level2ThresholdRT = '@Resource.Level2Threshold', Level3ThresholdRT = '@Resource.Level3Threshold', EffectiveDateRT = '@Resource.EffectiveDate',
+                    EffectiveEndDateRT = '@Resource.EffectiveEndDate', OwnerRT = '@Resource.Owner'
+
+        /**************QE Grade Boundary keys*******************/
+        var GradeTitle = '@Resource.GradeTitle';
+        var LowerLimitTitle = '@Resource.LowerLimitTitle';
+        /******************QE Grade Boundary keys end***********/
+
+        /***************Availibility keys*******************/
+        var QEAvalibilityQeaEffectiveStartDateTime = '@Resource.QEAvalibilityQeaEffectiveStartDateTime';
+        var QEAvalibilityQeaEffectiveEndDateTime = '@Resource.QEAvalibilityQeaEffectiveEndDateTime';
+        var QEAvailibilitySeriesLabel = '@Resource.QEAvailibilitySeriesLabel';
+        var QEAvalibilitySlaOnDemandResultClndrDays = '@Resource.QEAvalibilitySlaOnDemandResultClndrDays';
+        var QEAvailibilityOnDemandEntryCalendarDays = '@Resource.QEAvailibilityOnDemandEntryCalendarDays';
+
+        var QEAvalibilityQeaEffectiveStartDateTimeTitle = '@Resource.QEAvalibilityQeaEffectiveStartDateTimeTitle';
+        var QEAvalibilityQeaEffectiveEndDateTimeTitle = '@Resource.QEAvalibilityQeaEffectiveEndDateTimeTitle';
+        var QEAvailibilitySeriesLabelTitle = '@Resource.QEAvailibilitySeriesLabelTitle';
+        var QEAvalibilitySlaOnDemandResultClndrDaysTitle = '@Resource.QEAvalibilitySlaOnDemandResultClndrDaysTitle';
+        var QEAvailibilityOnDemandEntryCalendarDaysTitle = '@Resource.QEAvailibilityOnDemandEntryCalendarDaysTitle';
+        /******************Availibility end******************/
+
+
+        /***************Key evnets*******************/
+        var QeaEffectiveStartDateTime = '@Resource.QeaEffectiveStartDateTime';
+        var KeyEventStartDateTime = '@Resource.KeyEventStartDateTime';
+        var KeyEventEndDateTime = '@Resource.KeyEventEndDateTime';
+        var KeyEventAdditionalText = '@Resource.KeyEventAdditionalText';
+        var TimePeriodType = '@Resource.TimePeriodType';
+        var KeyEventName = '@Resource.KeyEventName';
+
+        /***************Key evnets end************/
+
+        /***************Maximum Marks*******************/
+        var MaximumMarksTitle = '@Resource.MaximumMarks';
+        var OutcomeValueType = '@Resource.OutcomeValueType';
+        /***************Maximum Marks end************/
+
+        /***************Key evnets fee*******************/
+        var FeeQeaEffectiveStartDateTime = '@Resource.FeeQeaEffectiveStartDateTime';
+        var FeeKeyEventName = '@Resource.KeyEventName';
+        var QEFeeCategoryType = '@Resource.QEFeeCategoryType';
+        var FeePeriodTitle = '@Resource.FeePeriodTitle';
+        var FeePeriodStartDateTimeToolTip = '@Resource.FeePeriodStartDateTimeToolTip';
+        var FeePeriodEndDateTimeToolTip = '@Resource.FeePeriodEndDateTimeToolTip';
+        var FeeAmount = '@Resource.FeeAmount';
+        var FeeAdditionalText = '@Resource.FeeAdditionalText';
+        var FeePeriodStartDateTime = '@Resource.FeePeriodStartDateTime';
+        var FeePeriodEndDateTime = '@Resource.FeePeriodEndDateTime';
+        var FeeQeaEffectiveStartDateTimeToolTip = '@Resource.FeeQeaEffectiveStartDateTimeToolTip';
+
+        /***************Key evnets fee end************/
+
+        /***************Assessment Material keys*******************/
+        var QEAMMaterialIdTitle = '@Resource.QEAMMaterialIdTitle';
+        var QEAMNameTitle = '@Resource.QEAMNameTitle';
+        var QEAMSourceTitle = '@Resource.QEAMSourceTitle';
+        var QEAMDescriptionTitle = '@Resource.QEAMDescriptionTitle';
+        var QEAMSourceTypeTitle = '@Resource.QEAMSourceTypeTitle';
+        var QEAMMediumTypeTitle = '@Resource.QEAMMediumTypeTitle';
+        var QEAMNumberPerLearnerTitle = '@Resource.QEAMNumberPerLearnerTitle';
+        var QEAMNumberPerCentreTitle = '@Resource.QEAMNumberPerCentreTitle';
+        var QEAMReleaseDateTitle = '@Resource.QEAMReleaseDateTitle';
+        /******************Assessment Material keys end******************/
+
+
+        $(function () { $('#collapseOne').collapse('hide') });
+        $(function () { $('#collapseTwo').collapse('hide') });
+
+        //Load tab data on tab selection
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+
+            if (isFirstTimeAutoLoad == false) {
+                isFirstTimeAutoLoad = true;
+            }
+            else {
+                var target = $(e.target).attr("href") // activated tab
+                switch (target) {
+                    case "#dschemesTab":
+                        LoadProductCatalogueSchemeTab();
+                        break;
+                    case "#dawardsTab":
+                        LoadProductCatalogueAwardTab();
+                        break;
+                    case "#dlearningUnitsTab":
+                        LoadProductCatalogueLearningUnitTab();
+                        break;
+                    case "#dassessablesTab":
+                        LoadProductCatalogueAssessableTab();
+                        break;
+                    case "#dpathwayTab":
+                        LoadProductCataloguePathwayTab();
+                        break;
+                }
+            }
+        });
+
+        $('#mainTab a').click(function (e) {
+            e.preventDefault();
+            $(this).tab('show');
+        });
+    </script>
+}
+
+@section styleBlock {
+    @Styles.Render("~/Content/SmartAdmin/KendoUI/kendoMaster")
+
+    <style>
+        .fa.k-sprite,
+        .fa.k-sprite::before {
+            font-size: 12px;
+            line-height: 12px;
+            vertical-align: middle;
+        }
+    </style>
+
+}
+
+@section scriptsTag {
+    @Scripts.Render("~/Scripts/Kendo", "~/Scripts/App/ProductCatalogue")
+}
+
+@section Buttons{
+    @*<a id="BtnSubmitAOCenterSelectionn" class="btn btn-icon" rel="tooltip" onclick="RefreshProductCatalogue();" href="javascript:void(0);" data-placement="bottom" data-original-title="@Resource.Submit" title="@Resource.Submit">
+            <i class="icon-prepend fa fa-fw fa-check"></i>
+        </a>*@
+}

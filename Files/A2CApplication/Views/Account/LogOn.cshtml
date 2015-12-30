@@ -1,0 +1,76 @@
+﻿@using A2C.Resources
+@model A2C.Model.User
+@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<div class="center-canvas" id="main" role="main">
+    <form name="form0" id="form0" novalidate="novalidate" class="smart-form lockscreen" onsubmit="return false;">
+        <div class="row">
+            <div class="text-align-center">
+                <h1 class="logo text-align-center">
+                    <img src="~/Content/img/logo.png" alt="A2C Login" />
+                </h1>
+            </div>
+            <fieldset>
+                <section>
+                    @Html.LabelFor(u => u.UserName, new { @class = "label Compulsorylabel" })
+                    <label class='input'>
+                        @Html.TextBoxFor(u => u.UserName, new Dictionary<string, object> {{ "maxlength", "256" } })
+                        <b class="tooltip tooltip-bottom-right">@Resource.EnterUserName</b>
+                        @Html.ValidationMessageFor(u => u.UserName)
+                    </label>
+                </section>
+                <section>
+                    @Html.LabelFor(u => u.Password, new { @class = "label Compulsorylabel" })
+                    <label class='input'>
+                        @Html.PasswordFor(u => u.Password, new Dictionary<string, object> { { "maxlength", "128" } })
+                        <b class="tooltip tooltip-bottom-right">@Resource.EnterPassword</b>
+                        @Html.ValidationMessageFor(u => u.Password)
+                    </label>
+                </section>
+                @if (ViewBag.IsDisplay)
+                {
+                   <section>
+                        <div class="note">
+                            <a href="#" id="lnkFgtPwd" onclick="javascript:ForgotPassword(); return false;">@Resource.ForgotPassword</a>
+                        </div>
+                    </section>
+                }
+                <footer class="text-align-center">
+                    <button type="submit" id="loginbtn" class="btn btn-primary" onclick="return LogOn();">
+                        @Resource.SignOn
+                    </button>
+                </footer>
+
+            </fieldset>
+            <div id="footertext" class="text-align-center">
+                <span>@Resource.LoginFooterText</span>
+            </div>            
+        </div>
+    </form>
+</div>
+
+@section styleBlock {
+    <style>
+        .lockscreen {
+            top: 45% !important;
+        }
+    </style>
+}
+@section scriptsBlock{
+    <script>
+
+    var messageToShow ='@ViewBag.Message';
+
+    function ForgotPassword() {
+        location.href = "/Account/ForgotPassword/" + $("#UserName").val();
+    }
+    $(document).ready(function () {
+        $("#UserName").focus();
+        try {
+            window.history.pushState(window.location.href, 'Title', '/Account/LogOn');
+        } catch (error) { }
+    });
+    </script>
+}

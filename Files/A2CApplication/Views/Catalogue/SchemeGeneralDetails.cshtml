@@ -1,0 +1,158 @@
+﻿@using A2C.Resources
+@model A2C.Model.Scheme
+@Scripts.Render("~/Scripts/js/common")
+@{
+    <div class="panel panel-info">
+        <div class="panel-heading">@Resource.GenericDetails</div>
+        <div class="panel-body">
+            <fieldset>
+                <div class="row">
+                    <section class="col col-4">
+                        <label class="label">@Resource.QEShortTitle</label>
+                        <label class="input">
+                            @Html.TextBoxFor(s => s.QEShortTitle, new { @readonly = "readonly" })
+                        </label>
+                    </section>
+                    <section class="col col-4">
+                        <label class="label">@Resource.QualificationReferenceNumber</label>
+                        <label class="input">
+                            @Html.TextBoxFor(s => s.QualificationReferenceNumber, new { @readonly = "readonly" })
+                        </label>
+                    </section>
+                    <section class="col col-4">
+                        <label class="label">@Resource.LearningAimCode</label>
+                        <label class="input">
+                            @Html.TextBoxFor(s => s.LearningAimCode, new { @readonly = "readonly" })
+                        </label>
+                    </section>
+                </div>
+                <section >
+                    <label class="label">@Resource.QualificationElementTitle</label>
+                    <label class="input">
+                        @Html.TextBoxFor(s => s.QETitle, new { @readonly = "readonly" })
+                    </label>
+                </section>
+                <section>
+                    <label class="label">@Resource.QEDescription</label>
+                    <label class="textarea textarea-resizable">
+                        <textarea id="QEDescription" class="limited custom-scroll" rows="3" name="QEDescription" readonly="readonly" cols="8">@Model.QEDescription</textarea>
+                    </label>
+                </section>
+                <div class="row">
+                    <section class="col col-4">
+                        <label class="label">@Resource.QEEffectiveVersionDate</label>
+                        <label class="input">
+                            @Html.TextBoxFor(s => s.QEEffectiveStartDate, new { @readonly = "readonly" })
+                        </label>
+                    </section>
+                    <section class="col col-4">
+                        <label class="label">@Resource.QEEffectiveVersionEndDate</label>
+                        <label class="input">
+                            @Html.TextBoxFor(s => s.QEEffectiveEndDate, new { @readonly = "readonly" })
+                        </label>
+                    </section>
+                    <section class="col col-4">
+                        <label class="label">@Resource.QEAdminCode</label>
+                        <label class="input">
+                            @Html.TextBoxFor(s => s.QEAdminCode, new { @readonly = "readonly" })
+                        </label>
+                    </section>
+                </div>
+                <div class="row">
+                    <section class="col col-4">
+                        <label class="label">@Resource.PrivateLearnerType</label>
+                        <label class="input">
+                            @Html.TextBoxFor(s => s.PrivateLearnerType, new { @readonly = "readonly" })
+                        </label>
+                    </section>
+                    <section class="col col-4">
+                        <label class="label">@Resource.QEModerationType</label>
+                        <label class="input">
+                            @Html.TextBoxFor(s => s.QEModerationType, new { @readonly = "readonly" })
+                        </label>
+                    </section>
+                    <section class="col col-4">
+                        <label id="lblFirstLanguageRequired" class="checkbox-inline A2CIconButtonTopMargin">
+                            <input id="chkFirstLanguageRequired" checked="@Model.FirstLanguageRequired" class="checkbox style-2" disabled="disabled" type="checkbox" onchange="" name="chkFirstLanguageRequired">
+                            <span style="padding-top:25px">@Resource.IsFirstLanguageRequired</span>
+                        </label>
+                    </section>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+    <div>
+        <label class="label"> </label>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">@Resource.SpecificDetails</div>
+        <div class="panel-body">
+            <div class="row">
+                <section class="col col-4">
+                    <label class="label">@Resource.QualificationType</label>
+                    <label class="input">
+                        @Html.TextBoxFor(s => s.QualificationType, new { @readonly = "readonly" })
+                    </label>
+                </section>
+                <section class="col col-4">
+                    <label class="label">@Resource.FirstTeachingDate</label>
+                    <label class="input">
+                        @Html.TextBoxFor(s => s.QEFirstTeachingDate,new { @readonly = "readonly" })
+                    </label>
+                </section>
+                <section class="col col-4">
+                    <label class="label">@Resource.LastTeachingDate</label>
+                    <label class="input">
+                        @Html.TextBoxFor(s => s.QELastTeachingDate,new { @readonly = "readonly" })
+                    </label>
+                </section>
+            </div>
+            <section>
+                <label class="label">@Resource.QEAvailabilityText</label>
+                <label class="textarea textarea-resizable">
+                    <textarea id="QEAvailabilityText" class="limited custom-scroll" rows="3" name="QEAvailabilityText" readonly="readonly" cols="8">@Model.QEAvailabilityText</textarea>
+                </label>
+            </section>
+            <section>
+                <label class="label">@Resource.QECentreAuthenticationAgreementText</label>
+                <label class="textarea textarea-resizable">
+                    <textarea id="QECentreAuthenticationAgreementText" class="limited custom-scroll" rows="3" name="QECentreAuthenticationAgreementText" readonly="readonly" cols="8">@Model.QECentreAuthenticationAgreementText</textarea>
+                </label>
+            </section>
+            <div class="row">
+                <section class="col col-4">
+                    <label class="label">@Resource.AssessmentMinLearnerAge</label>
+                    <label class="input">
+                        @Html.TextBoxFor(s => s.AssessmentMinLearnerAge, new { @readonly = "readonly" })
+                    </label>
+                </section>
+                <section class="col col-4">
+                    <label class="label">@Resource.AssessmentMaxLearnerAge</label>
+                    <label class="input">
+                        @Html.TextBoxFor(s => s.AssessmentMaxLearnerAge, new { @readonly = "readonly" })
+                    </label>
+                </section>
+            </div>
+            <div class="row">
+                <section class="col col-4">
+                    <label id="lblDateOfBirthRequired" class="checkbox-inline A2CIconButtonTopMargin">
+                        <input id="chkDateOfBirthRequired" checked="@Model.DateOfBirthRequired" class="checkbox style-2" type="checkbox" onchange="" name="chkDateOfBirthRequired" disabled="disabled">
+                        <span>@Resource.DateOfBirthRequired</span>
+                    </label>
+                </section>
+                <section class="col col-4">
+                    <label id="lblLegalSexRequired" class="checkbox-inline A2CIconButtonTopMargin">
+                        <input id="chkLegalSexRequired" checked="@Model.LegalSexRequired" class="checkbox style-2" type="checkbox" onchange="" name="chkLegalSexRequired" disabled="disabled">
+                        <span>@Resource.LegalSexRequired</span>
+                    </label>
+                </section>
+                <section class="col col-4">
+                    <label id="lblSeriesBased" class="checkbox-inline A2CIconButtonTopMargin">
+                        <input id="chkSeriesBased" checked="@Model.SeriesBased" class="checkbox style-2" type="checkbox" onchange="" name="chkSeriesBased" disabled="disabled">
+                        <span>@Resource.SeriesBased</span>
+                    </label>
+                </section>
+            </div>
+        </div>
+    </div>
+}

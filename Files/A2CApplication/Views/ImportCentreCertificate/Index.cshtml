@@ -1,0 +1,63 @@
+﻿@using A2C.Resources
+@model A2C.Model.CentreCertificate.CentreCertificateModel
+@{
+    ViewBag.Title = @Resource.ImportCertificates;
+}
+<div id="content">
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { name = "form0", id = "form0", novalidate = "novalidate", @class = "smart-form" }))
+    {
+        <fieldset>
+            <div class="row">
+                <section class="col col-4">
+                    @Html.LabelFor(model => model.FileName, new { @class = "label Compulsorylabel" })
+                    <label for="file" class="input input-file">
+                        <div class="button">
+                            <input id="FileName" name="FileName" type="file" title=""  class=" "
+                                   data-val="true" data-val-required="@Resource.RequiredField" onchange="updateFileText(this)">Browse
+                        </div>                      
+                        <input type="text" placeholder="" readonly="" id="fileText">
+                        <b class="tooltip tooltip-bottom-right">@Resource.ImportCertificateEnterCertificate</b>
+                    </label>
+                    
+                    @Html.ValidationMessageFor(m => m.FileName)
+                </section>
+            </div>
+            <div class="row">
+                <section class="col col-2">
+                    @Html.LabelFor(model => model.Password, new { @class = "label Compulsorylabel" })
+                    <label class='input'>
+                        @Html.Password("Password")
+                        <b class="tooltip tooltip-bottom-right">@Resource.ImportCertificateEnterPassword</b>
+                    </label>
+                    @Html.ValidationMessageFor(m => m.Password)
+                </section>
+            </div>         
+            <div >
+                <section >
+                    <div id="grid"></div>
+                </section>
+            </div>
+        </fieldset>
+    }
+</div>
+@section Buttons{
+    <a id="BtnSave" class="btn btn-icon" rel="tooltip" onclick="Save();" href="javascript:void(0);" data-placement="bottom" data-original-title="Ping" title='@Resource.Save'>
+    <i class="icon-prepend fa fa-fw fa-floppy-o"></i>
+</a>
+}
+@section scriptsTag {
+    <script type="text/javascript">
+        AONumber = '@Resource.ImportCentreCertificateAOID';
+        Name = '@Resource.ImportCentreCertificateAOshortname';
+        CentreNumber = '@Resource.ImportCentreCertificatecentreID';
+        Status = '@Resource.ImportCentreCertificatestatus';
+        CertificateExpiredDate = '@Resource.ImportCentreCertificateExpiryDate';
+        LastModifiedDate = '@Resource.ImportCentreCertificatelastmodifiedtimestamp';
+        Message = '@Resource.ImportCentreCertificateMessage';
+        ImportCentreCertificateNotSupport = '@Resource.ImportCentreCertificateNotSupport';
+    </script>
+    @Scripts.Render("~/Scripts/Kendo", "~/Scripts/App/CentreCertificate")
+}
+@section styleBlock {
+    @Styles.Render("~/Content/SmartAdmin/KendoUI/kendoMaster")
+}

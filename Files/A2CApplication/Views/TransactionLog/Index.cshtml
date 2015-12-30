@@ -1,0 +1,42 @@
+﻿@using A2C.Resources
+
+@{
+    ViewBag.Title = Resource.ViewTransactionLogs;
+}
+
+<div id="content">
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { name = "form0", id = "form0", novalidate = "novalidate", @class = "smart-form" }))
+    {
+        <fieldset>            
+            <div >
+                <section >
+                    <div id="transactionLogGrid"></div>
+                </section>
+            </div>
+        </fieldset>
+    }
+</div>
+
+@section styleBlock {
+    @Styles.Render("~/Content/SmartAdmin/KendoUI/kendoMaster")
+    <style></style>
+}
+
+@section scriptsTag {
+    @Scripts.Render("~/Scripts/Kendo", "~/Scripts/App/TransactionLog")
+
+    <script type="text/javascript">
+    var CentreTitle = '@Resource.TransactionLogCentre';
+    var AwardingOrganizationTitle = '@Resource.TransactionLogAO';
+    var DateTitle = '@Resource.TransactionLogDate';
+    var TransactionLogFileNameTitle = '@Resource.TransactionLogFileName';
+    var TransactionLogSequenceTitle = '@Resource.TransactionLogSequence';
+    var TransactionLogGUIDTitle = '@Resource.TransactionLogGUID';
+    var TransactionLogTransactionNameTitle = '@Resource.TransactionLogTransactionName';
+        var TransactionLogTransactionDateTitle = '@Resource.TransactionLogTransactionDate';
+        var TestPingScreenAOFeedbackLable = '@Resource.TestPingScreenAOFeedbackLable';
+        var FeedbackPopupTitleRT = '@Resource.FeedbackPopupTitle';
+        
+    </script>
+}
+

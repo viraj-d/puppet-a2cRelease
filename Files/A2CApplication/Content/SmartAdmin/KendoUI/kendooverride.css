@@ -1,0 +1,129 @@
+﻿.k-grid {
+    border-radius: 0 0 0 0;
+}
+
+.k-grid-content .k-state-selected {
+    background: #c1c1c1;
+    color: #333;
+}
+
+.k-grid-toolbar .k-toolbar-link {
+    min-width: 2em;
+    float: left;
+    margin: 0 .08333em;
+    height: 2em;
+    line-height: 2em;
+    cursor: pointer;
+    text-align: center;
+    border-width: 0;
+    color: black;
+}
+
+.k-grid-toolbar .k-toolbar-link:hover {
+    color: black;
+    border-color: #ccc;
+    background: #ebebeb;
+}
+
+.k-grid-toolbar .k-toolbar-advancefilter, .k-toolbar-manageadvancefilter {
+    float: right;
+    margin-left: 5px;
+}
+
+.k-grid-toolbar .k-toolbar-clearfilter {
+    float: right;
+    margin-left: 5px;
+}
+
+.k-grid-toolbar .k-toolbar-defaultfilter {
+    float: right;
+    margin-left: 5px;
+}
+
+.k-tablecell-right {
+    text-align: right;
+}
+
+.k-tablecell-center {
+    text-align: center;
+}
+
+.k-tooltip {
+    z-index: 99999;
+    padding: 3px 8px;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    background: #3276b1 !important;
+    border-radius: 2px !important;
+    font-family: Arial,Helvetica,sans-serif;
+    font-weight: 700;
+    margin-left: 17px !important; 
+    margin-right: 17px !important;
+}
+
+.k-grid-content-locked .k-state-selected {
+    background: #c1c1c1;
+    color: #333;
+}
+
+.smartgridhead {
+    display: block;
+    float: left;
+}
+/*Wrap all text for kendo grid*/
+.k-grid td {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    line-height:1.1em !important;   /* Row height changed to incorporate 19 records */
+    height:1.1em!important /*PRO 2698 Empty Coloumns should retain their hieght*/
+}
+
+.k-grid-allowwrap {
+    white-space: normal !important;
+    text-overflow: clip !important;
+}
+/* Grid background color for applied filter */
+.k-state-active.custom-color {
+    background-color: darkgray !important;
+}
+/* Grid last column & header with right border */
+.k-grid td:last-child {
+    border-right-style: solid;
+    border-right-width: 1px;
+}
+
+.k-grid-header th:last-child.k-header, .k-filter-row th:last-child {
+    border-right-style: solid;
+    border-right-width: 0.5px;
+}
+/* Kendo header padding similar to kendo td */
+.k-grid-header th.k-header > .k-link {
+    padding: .4em .6em;
+}
+/* Addional classes for .2 and .4em padding */
+k-grid02Padding {
+    padding: .2em;
+}
+
+k-grid04Padding {
+    padding: .4em;
+}
+
+.k-grid .filtername { padding-right: 5px; padding-top: 7px; font-weight:bold; }
+
+/*Keyur: To make the right arrow in the event invisible*/
+.k-event-actions .k-i-arrow-w {
+background-image: none !important;
+}
+
+/*.k-grid tr:last-child td  {
+    border-bottom: 1px solid #ccc;    
+}*/
+
+/** Override Date picker textbox bottom border - In Chrome bottom border was cut down**/
+.k-webkit  .k-picker-wrap:before
+{
+    padding-bottom:0.7em !important;
+}
+

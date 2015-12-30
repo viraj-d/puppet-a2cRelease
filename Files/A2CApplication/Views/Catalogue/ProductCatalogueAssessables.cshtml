@@ -1,0 +1,209 @@
+﻿@using A2C.Resources
+@model A2C.Model.ProductCatalogueAssessableModel
+<script src="~/Scripts/js/common"></script>
+@{
+    <div class="panel-group smart-accordion-default" id="accordionAssessables">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a aria-expanded="true" href="#collapseAssessables" data-toggle="collapse" data-parent="#accordion">
+                        <i class="fa fa-lg fa-angle-down pull-right"></i> <i class="fa fa-lg fa-angle-up pull-right"></i>
+                        <label id="lblSelectedAssessable">@(@Resource.Select + " " + @Resource.Assessable)</label>
+                    </a>
+                </h4>
+            </div>
+            <div class="panel-collapse collapse in" id="collapseAssessables" aria-expanded="true">
+                <div class="panel-body no-padding">
+                    <div class="row">
+                        <section class="col col-3">
+                            @Html.LabelFor(c => c.SelectedSeries, new { @class = "label" })
+                            @Html.DropDownListFor(x => x.SelectedSeries, new SelectList(Model.SeriesList, "Value", "Text"), new { id = "seriesLableAssessable", @class = "select2 select2-offscreen" })
+                        </section>
+                        <section class="col col-9">
+                            @Html.Label(" ")
+                            <div>
+                                <a id="BtnAssessableSubmit" class="btn btn-icon A2CIconButton A2CIconButtonTopMargin" rel="tooltip" onclick="GetAssessables();" href="javascript:void(0);" data-placement="bottom" data-original-title="@Resource.Search" title="@Resource.Search">
+                                    <i class="fa fa-search"></i>
+                                </a>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="row">
+                        <section class="col col-12" style="width:100%">
+                            <div id="assessableGrid"></div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="pcDetailLevel2TabViewAssessable" hidden="hidden">
+        @Html.Label(" ")
+        <ul id="assessableDetailLevel2ChildTab" class="nav nav-tabs bordered">
+            <li class="">
+                <a id="qualificationDetailsTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dQualificationDetailsLevel2TabAssessable">
+                    <span class="hidden-mobile hidden-tablet">@Resource.QualificationDetails</span>
+                </a>
+            </li>
+            <li class="">
+                <a id="availabilityTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dAvailabilityLevel2TabAssessable">
+                    <span class="hidden-mobile hidden-tablet">@Resource.Availability </span>
+                </a>
+            </li>
+        </ul>
+        <div id="assessableDetailLevel2ChildTabContent" class="tab-content padding-10">
+            <div id="dQualificationDetailsLevel2TabAssessable" class="tab-pane fade active in">
+                <div id="pcDetailAssessableTabView" hidden="hidden">
+                    <ul id="assessableChildTab" class="nav nav-tabs bordered">
+                        <li class="">
+                            <a id="generalTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dGeneralTabAssessable">
+                                <span class="hidden-mobile hidden-tablet">@Resource.General</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a id="preferencesTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dPreferencesTabAssessable">
+                                <span class="hidden-mobile hidden-tablet">@Resource.Preferences</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a id="learnerIdentifiersTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dLearnerIdentifiersTabAssessable">
+                                <span class="hidden-mobile hidden-tablet">@Resource.LearnerIdentifiers</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a id="gradeRangeTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dGradeRangeTabAssessable">
+                                <span class="hidden-mobile hidden-tablet">@Resource.GradeRange</span>
+                            </a>
+                        </li>
+                        @*<li class="">
+                                <a id="ageRangeTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dAgeRangeTabAssessable">
+                                    <span class="hidden-mobile hidden-tablet">@Resource.AgeRange</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a id="frameworkTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dFrameworkTabAssessable">
+                                    <span class="hidden-mobile hidden-tablet">@Resource.Framework</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a id="objectiveStatmentTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dObjectiveStatmentTabAssessable">
+                                    <span class="hidden-mobile hidden-tablet">@Resource.ObjectiveStatement</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a id="sectorSubjectAreaTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dSectorSubjectAreaTabAssessable">
+                                    <span class="hidden-mobile hidden-tablet">@Resource.SectorSubjectArea</span>
+                                </a>
+                            </li>*@
+                        <li class="">
+                            <a id="relationshipHierarchyTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dRelationshipHierarchyTabAssessable">
+                                <span class="hidden-mobile hidden-tablet">@Resource.RelationshipHierarchy</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a id="relationshipsTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dRelationshipsTabAssessable">
+                                <span class="hidden-mobile hidden-tablet">@Resource.Relationships</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div id="childTabContent" class="tab-content padding-10">
+                        <div id="dGeneralTabAssessable" class="tab-pane fade">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Panel Heading</div>
+                                <div class="panel-body">Panel Content</div>
+                            </div>
+                        </div>
+                        <div id="dPreferencesTabAssessable" class="tab-pane fade">
+                            <div id="qePreferenceGridAssessable"></div>
+                        </div>
+                        <div id="dLearnerIdentifiersTabAssessable" class="tab-pane fade">
+                            <div id="qeLearnerIdentifierGridAssessable"></div>
+                        </div>
+                        <div id="dGradeRangeTabAssessable" class="tab-pane fade">
+                            <div id="qeGradeRangeGridAssessable"></div>
+                        </div>
+                        @*<div id="dAgeRangeTabAssessable" class="tab-pane fade"></div>
+                            <div id="dFrameworkTabAssessable" class="tab-pane fade"></div>
+                            <div id="dObjectiveStatmentTabAssessable" class="tab-pane fade"></div>
+                            <div id="dSectorSubjectAreaTabAssessable" class="tab-pane fade"></div>*@
+                        <div id="dRelationshipHierarchyTabAssessable" class="tab-pane fade">
+                            <div id="qeRelationshipHierarchyTreeAssessable"></div>
+                        </div>
+                        <div id="dRelationshipsTabAssessable" class="tab-pane fade active in">
+                            <div id="qeRelationshipGridAssessable"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="dAvailabilityLevel2TabAssessable" class="tab-pane fade">
+                <div id="qeAvailibilityGridAssessable"></div>
+                @Html.Label(" ")
+                <div id="pcAvailabilityDetailAssessableTabView" hidden="hidden">
+                    <ul id="assessableAvailabilityChildTab" class="nav nav-tabs bordered">
+                        <li class="">
+                            <a id="keyEventAvailabilityTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dKeyEventTabAssessable">
+                                <span class="hidden-mobile hidden-tablet">@Resource.KeyEventAvailability</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a id="keyEventFeeAvailabilityTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dKeyEventFeeTabAssessable">
+                                <span class="hidden-mobile hidden-tablet">@Resource.KeyEventFees</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a id="gradeBoundaryTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dGradeBoundaryTabAssessable">
+                                <span class="hidden-mobile hidden-tablet">@Resource.GradeBoundary</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a id="maximumMarksTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dMaximumMarksTabAssessable">
+                                <span class="hidden-mobile hidden-tablet">@Resource.MaximumMarks</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a id="assessmentMaterialTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dAssessmentMaterialTabAssessable">
+                                <span class="hidden-mobile hidden-tablet">@Resource.AssessmentMaterial</span>
+                            </a>
+                        </li>
+                        @*<li class="" hidden="hidden">
+                    <a id="availabilityTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dAvailabilityTabAssessable">
+                        <span class="hidden-mobile hidden-tablet">@Resource.Availability</span>
+                    </a>
+                </li>*@
+                    </ul>
+                    <div id="childTabContentAvailability" class="tab-content padding-10">
+                        <div id="dKeyEventTabAssessable" class="tab-pane fade">
+                            <div id="qeKeyEventTabAssessable"></div>
+                        </div>
+                        <div id="dKeyEventFeeTabAssessable" class="tab-pane fade">
+                            <div id="qeKeyEventFeeTabAssessable"></div>
+                        </div>
+                        <div id="dGradeBoundaryTabAssessable" class="tab-pane fade">
+                            <div id="qeGradeBoundaryTabAssessable"></div>
+                        </div>
+                        <div id="dMaximumMarksTabAssessable" class="tab-pane fade">
+                            <div id="qeMaximumMarksTabAssessable"></div>
+                        </div>
+                        <div id="dAssessmentMaterialTabAssessable" class="tab-pane fade">
+                            <div id="qeAssessmentMaterialGridAssessable"></div>
+                        </div>                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script>
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        PCDetailTabClickEvent("Assessable", e);
+    });
+
+    var AssessmentMethodTypeRT = '@Resource.AssessmentMethodType', OnDemandRT = '@Resource.OnDemand', QETimetabledRT = '@Resource.QETimetabled',
+              ExtraTimeRequiredRT = '@Resource.ExtraTimeRequired', AssessmentActualDateTimeRequiredRT = '@Resource.AssessmentActualDateTimeRequired',
+              AttendanceDataRequiredRT = '@Resource.AttendanceDataRequired', CambridgeAssessmentTimeZoneNumberRT = '@Resource.CambridgeAssessmentTimeZoneNumber',
+              CarryForwardPermissibleRT = '@Resource.CarryForwardPermissible', MaximumExtraTimeMinutesRT = '@Resource.MaximumExtraTimeMinutes',
+              TestDayPhotographRequiredRT = '@Resource.TestDayPhotographRequired', TierLevelTypeRT = '@Resource.TierLevelType',
+              TierLevelCommonReferenceRT = '@Resource.TierLevelCommonReference', TimeAllowedMinutesRT = '@Resource.TimeAllowedMinutes',
+              PartyRoleTypeAssessorRT = '@Resource.PartyRoleTypeAssessor', PartyRoleTypeAdditionalDeciderRT = '@Resource.PartyRoleTypeAdditionalDecider',
+              AssessmentMediumTypeRT = '@Resource.AssessmentMediumType'
+</script>

@@ -1,0 +1,37 @@
+﻿@using A2C.Resources
+<div id="content" style="display:none;">
+    <div class="tab-content padding-10" id="tabContent">
+        <div class="tab-pane fade in active" id="t1">
+            <section id="widget-grid" class="">
+                <div class="row">
+                    <article id="topwiz" class="col-sm-12"></article>
+                </div>
+                    </section>
+                </div>
+</div>
+</div>
+@section styleBlock {
+    @Styles.Render("~/Content/SmartAdmin/KendoUI/kendoMaster", "~/Content/SmartAdmin/css/Widget")
+}
+
+@section scriptsTag {
+    @Scripts.Render("~/Scripts/Kendo", "~/Scripts/SmartAdmin/js/Widget")
+}
+
+@section scriptsBlock{
+<script type="text/javascript">
+    var CentreTitle = '@Resource.TransactionLogCentre';
+    var AwardingOrganizationTitle = '@Resource.TransactionLogAO';
+    var DateTitle = '@Resource.TransactionLogDate';
+    var TransactionLogFileNameTitle = '@Resource.TransactionLogFileName';
+    var TransactionLogTransactionDateTitle = '@Resource.TransactionLogTransactionDate';
+    var FeedbackPopupTitleRT = '@Resource.DetailOrFeedback', PreviewResultFileRT = '@Resource.PreviewResultFile'
+    , PreviewEntryFileRT = '@Resource.PreviewEntryFile'
+    , PreviewAmendmentFileRT = '@Resource.PreviewAmendmentFile'
+    , PreviewForecastFileRT = '@Resource.PreviewForecastFile'
+    , PreviewCourseworkFileRT = '@Resource.PreviewCourseworkFile';
+
+        var userTabs = { "Data": [{ "tnm": "Default", "tid": 0, "act": "active", "dflt": "True", "isusrtab": "false" }] };
+        var widgetInfo = @Html.Raw(ViewBag.widgetInfo);
+</script>
+}

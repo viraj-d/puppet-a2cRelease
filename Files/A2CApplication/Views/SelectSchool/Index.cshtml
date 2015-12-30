@@ -1,0 +1,40 @@
+﻿@using A2C.Resources
+@{
+    ViewBag.Title = Resource.SelectSchool;
+}
+
+<div id="content">
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { name = "form0", id = "form0", novalidate = "novalidate", @class = "smart-form" }))
+    {
+        <fieldset>           
+            <div >
+                <section >
+                    <div id="grid"></div>
+                </section>
+            </div>
+        </fieldset>
+    }
+</div>
+@section Buttons{
+    <a id="BtnSave" class="btn btn-icon" rel="tooltip" onclick="Save();" href="javascript:void(0);" data-placement="bottom" title="@Resource.SelectSchool">
+        <i class="icon-prepend fa fa-check"></i>
+    </a>
+}
+@section styleBlock {
+    @Styles.Render("~/Content/SmartAdmin/KendoUI/kendoMaster")
+
+<style>
+      
+</style>
+}
+@section scriptsTag {
+    @Scripts.Render("~/Scripts/Kendo", "~/Scripts/App/School")    
+    <script type="text/javascript">
+        var SchoolEstablishmentId = '@Resource.EstablishmentId';
+        var SchoolEstablishmentName = '@Resource.EstablishmentName';
+        var SchoolLAId = '@Resource.LAId';
+        var SchoolLAName = '@Resource.LAName';
+        var SelectSchoolNoRecordFound = '@Resource.SelectSchoolNoRecordFound';
+    </script>
+}
+

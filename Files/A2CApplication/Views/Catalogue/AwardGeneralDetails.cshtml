@@ -1,0 +1,293 @@
+﻿@using A2C.Resources
+@model A2C.Model.Award
+@Scripts.Render("~/Scripts/js/common")
+@{
+    <div class="panel panel-info">
+        <div class="panel-heading">@Resource.GenericDetails</div>
+        <div class="panel-body">
+            <fieldset>
+                <div class="row">
+                    <section class="col col-4">
+                        <label class="label">@Resource.QEShortTitle</label>
+                        <label class="input">
+                            @Html.TextBoxFor(s => s.QEShortTitle, new { @readonly = "readonly" })
+                        </label>
+                    </section>
+                    <section class="col col-4">
+                        <label class="label">@Resource.QualificationReferenceNumber</label>
+                        <label class="input">
+                            @Html.TextBoxFor(s => s.QualificationReferenceNumber, new { @readonly = "readonly" })
+                        </label>
+                    </section>
+                    <section class="col col-4">
+                        <label class="label">@Resource.LearningAimCode</label>
+                        <label class="input">
+                            @Html.TextBoxFor(s => s.LearningAimCode, new { @readonly = "readonly" })
+                        </label>
+                    </section>
+                </div>
+                <section>
+                    <label class="label">@Resource.QualificationElementTitle</label>
+                    <label class="input">
+                        @Html.TextBoxFor(s => s.QualificationElementTitle, new { @readonly = "readonly" })
+                    </label>
+                </section>
+                <section>
+                    <label class="label">@Resource.QEDescription</label>
+                    <label class="textarea textarea-resizable">
+                        <textarea id="QEDescription" class="limited custom-scroll" rows="3" name="QEDescription" readonly="readonly" cols="8">@Model.QEDescription</textarea>
+                    </label>
+                </section>
+                <div class="row">
+                    <section class="col col-4">
+                        <label class="label">@Resource.QEEffectiveVersionDate</label>
+                        <label class="input">
+                            @Html.TextBoxFor(s => s.QEEffectiveStartDate, new { @readonly = "readonly" })
+                        </label>
+                    </section>
+                    <section class="col col-4">
+                        <label class="label">@Resource.QEEffectiveVersionEndDate</label>
+                        <label class="input">
+                            @Html.TextBoxFor(s => s.QEEffectiveEndDate, new { @readonly = "readonly" })
+                        </label>
+                    </section>
+                    <section class="col col-4">
+                        <label class="label">@Resource.QEAdminCode</label>
+                        <label class="input">
+                            @Html.TextBoxFor(s => s.QEAdminCode, new { @readonly = "readonly" })
+                        </label>
+                    </section>
+                </div>
+                <div class="row">
+                    <section class="col col-4">
+                        <label class="label">@Resource.PrivateLearnerType</label>
+                        <label class="input">
+                            @Html.TextBoxFor(s => s.PrivateLearnerType, new { @readonly = "readonly" })
+                        </label>
+                    </section>
+                    <section class="col col-4">
+                        <label class="label">@Resource.QEModerationType</label>
+                        <label class="input">
+                            @Html.TextBoxFor(s => s.QEModerationType, new { @readonly = "readonly" })
+                        </label>
+                    </section>
+                    <section class="col col-4">
+                        <label id="lblFirstLanguageRequired" class="checkbox-inline A2CIconButtonTopMargin">
+                            <input id="chkFirstLanguageRequired" checked="@Model.IsFirstLanguageRequired" class="checkbox style-2" disabled="disabled" type="checkbox" onchange="" name="chkFirstLanguageRequired">
+                            <span style="padding-top:25px">@Resource.IsFirstLanguageRequired</span>
+                        </label>
+                    </section>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+    <div>
+        <label class="label"> </label>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">@Resource.SpecificDetails</div>
+        <div class="panel-body">
+            <div class="row">
+                <section class="col col-4">
+                    <label class="label">@Resource.AwardLevelType</label>
+                    <label class="input">
+                        @Html.TextBoxFor(s => s.AwardLevelType, new { @readonly = "readonly" })
+                    </label>
+                </section>
+                <section class="col col-4">
+                    <label class="label">@Resource.AwardType</label>
+                    <label class="input">
+                        @Html.TextBoxFor(s => s.AwardType, new { @readonly = "readonly" })
+                    </label>
+                </section>
+                <section class="col col-4">
+                    <label class="label">@Resource.QEClassification</label>
+                    <label class="input">
+                        @Html.TextBoxFor(s => s.QEClassification, new { @readonly = "readonly" })
+                    </label>
+                </section>
+            </div>
+            <div class="row">
+                <section class="col col-4">
+                    <label class="label">@Resource.CourseLengthType</label>
+                    <label class="input">
+                        @Html.TextBoxFor(s => s.CourseLengthType, new { @readonly = "readonly" })
+                    </label>
+                </section>
+                <section class="col col-4">
+                    <label class="label">@Resource.QEEvidenceRequirementType</label>
+                    <label class="input">
+                        @Html.TextBoxFor(s => s.QEEvidenceRequirementType, new { @readonly = "readonly" })
+                    </label>
+                </section>
+                <section class="col col-4">
+                    <label class="label">@Resource.QEDeliveryModelType</label>
+                    <label class="input">
+                        @Html.TextBoxFor(s => s.QEDeliveryModelType, new { @readonly = "readonly" })
+                    </label>
+                </section>
+            </div>
+            <div class="row">
+                <section class="col col-4">
+                    <label class="label">@Resource.CertificationStartDate</label>
+                    <label class="input">
+                        @Html.TextBoxFor(s => s.QECertificationStartDate, new { @readonly = "readonly" })
+                    </label>
+                </section>
+                <section class="col col-4">
+                    <label class="label">@Resource.CertificationEndDate</label>
+                    <label class="input">
+                        @Html.TextBoxFor(s => s.QECertificationEndDate, new { @readonly = "readonly" })
+                    </label>
+                </section>
+                <section class="col col-4">
+                    <label class="label">@Resource.RegistrationExpiryMonth</label>
+                    <label class="input">
+                        @Html.TextBoxFor(s => s.RegistrationExpiryMonth, new { @readonly = "readonly" })
+                    </label>
+                </section>
+            </div>
+            <div class="row">
+                <section class="col col-4">
+                    <label class="label">@Resource.AccreditationStartDate</label>
+                    <label class="input">
+                        @Html.TextBoxFor(s => s.QEAccreditationStartDate, new { @readonly = "readonly" })
+                    </label>
+                </section>
+                <section class="col col-4">
+                    <label class="label">@Resource.AccreditationEndReviewDate</label>
+                    <label class="input">
+                        @Html.TextBoxFor(s => s.QEAccreditationEndDate, new { @readonly = "readonly" })
+                    </label>
+                </section>
+                <section class="col col-4">
+                    <label class="label">@Resource.AOAccredVersionNumber</label>
+                    <label class="input">
+                        @Html.TextBoxFor(s => s.AOAccredVersionNumber, new { @readonly = "readonly" })
+                    </label>
+                </section>
+            </div>
+            <div class="row">
+                <section class="col col-4">
+                    <label class="label">@Resource.OperationalStartDate</label>
+                    <label class="input">
+                        @Html.TextBoxFor(s => s.QEOperationalStartDate, new { @readonly = "readonly" })
+                    </label>
+                </section>
+                <section class="col col-4">
+                    <label class="label">@Resource.OperationalEndDate</label>
+                    <label class="input">
+                        @Html.TextBoxFor(s => s.QEOperationalEndDate, new { @readonly = "readonly" })
+                    </label>
+                </section>
+                <section class="col col-4">
+                    <label class="label">@Resource.PartyIdAccreditor</label>
+                    <label class="input">
+                        @Html.TextBoxFor(s => s.PartyIdAccreditor, new { @readonly = "readonly" })
+                    </label>
+                </section>
+            </div>
+            <div class="row">
+                <section class="col col-4">
+                    <label class="label">@Resource.GuidedLearningHoursMax</label>
+                    <label class="input">
+                        @Html.TextBoxFor(s => s.GuidedLearningHoursMax, new { @readonly = "readonly" })
+                    </label>
+                </section>
+                <section class="col col-4">
+                    <label class="label">@Resource.GuidedLearningHoursMin</label>
+                    <label class="input">
+                        @Html.TextBoxFor(s => s.GuidedLearningHoursMin, new { @readonly = "readonly" })
+                    </label>
+                </section>
+                <section class="col col-4">
+                    <label class="label">@Resource.AssessmentLanguageType</label>
+                    <label class="input">
+                        @Html.TextBoxFor(s => s.AssessmentLanguageType, new { @readonly = "readonly" })
+                    </label>
+                </section>
+            </div>
+            <div class="row">
+                <section class="col col-4">
+                    <label class="label">@Resource.StudyGuideAvailableType</label>
+                    <label class="input">
+                        @Html.TextBoxFor(s => s.StudyGuideAvailableType, new { @readonly = "readonly" })
+                    </label>
+                </section>
+                <section class="col col-4">
+                    <label class="label">@Resource.StudyGuideReference</label>
+                    <label class="input">
+                        @Html.TextBoxFor(s => s.StudyGuideReference, new { @readonly = "readonly" })
+                    </label>
+                </section>
+                <section class="col col-4">
+                    <label class="label">@Resource.StudyGuideReferenceType</label>
+                    <label class="input">
+                        @Html.TextBoxFor(s => s.StudyGuideReferenceType, new { @readonly = "readonly" })
+                    </label>
+                </section>
+            </div>
+            <section>
+                <label class="label">@Resource.StudyGuideDetails</label>
+                <label class="textarea textarea-resizable">
+                    <textarea id="QEStudyGuideDetails" class="limited custom-scroll" rows="3" name="QEStudyGuideDetails" readonly="readonly" cols="8">@Model.StudyGuideDetails</textarea>
+                </label>
+            </section>
+            <section>
+                <label class="label">@Resource.ResitRuleText</label>
+                <label class="textarea textarea-resizable">
+                    <textarea id="QEResitRuleText" class="limited custom-scroll" rows="3" name="QEResitRuleText" readonly="readonly" cols="8">@Model.ResitRuleText</textarea>
+                </label>
+            </section>
+            <div class="row">
+                <section class="col col-4">
+                    <label class="label">@Resource.PartyRoleTypeAssessor</label>
+                    <label class="input">
+                        @Html.TextBoxFor(s => s.PartyRoleTypeAssessor, new { @readonly = "readonly" })
+                    </label>
+                </section>
+                <section class="col col-4">
+                    <label class="label">@Resource.PartyIdSectorLead</label>
+                    <label class="input">
+                        @Html.TextBoxFor(s => s.PartyIdSectorLead, new { @readonly = "readonly" })
+                    </label>
+                </section>
+            </div>
+            <div class="row">
+                <section class="col col-4">
+                    <label id="lblIsCertificateOfUnitCreditIssued" class="checkbox-inline A2CIconButtonTopMargin">
+                        <input id="chkIsCertificateOfUnitCreditIssued" checked="@Model.IsCertificateOfUnitCreditIssued" class="checkbox style-2" type="checkbox" onchange="" name="chkIsCertificateOfUnitCreditIssued" disabled="disabled">
+                        <span>@Resource.IsCertificateOfUnitCreditIssued</span>
+                    </label>
+                </section>
+                <section class="col col-4">
+                    <label id="lblIsContributingUnitsListed" class="checkbox-inline A2CIconButtonTopMargin">
+                        <input id="chkIsContributingUnitsListed" checked="@Model.IsContributingUnitsListed" class="checkbox style-2" type="checkbox" onchange="" name="chkIsContributingUnitsListed" disabled="disabled">
+                        <span>@Resource.IsContributingUnitsListed</span>
+                    </label>
+                </section>
+                <section class="col col-4">
+                    <label id="lblIsStatementOfCreditIssued" class="checkbox-inline A2CIconButtonTopMargin">
+                        <input id="chkIsStatementOfCreditIssued" checked="@Model.IsStatementOfCreditIssued" class="checkbox style-2" type="checkbox" onchange="" name="chkIsStatementOfCreditIssued" disabled="disabled">
+                        <span>@Resource.IsStatementOfCreditIssued</span>
+                    </label>
+                </section>
+            </div>
+            <div class="row">
+                <section class="col col-4">
+                    <label id="lblIsQEEvidenceRequirementProvided" class="checkbox-inline A2CIconButtonTopMargin">
+                        <input id="chkIsQEEvidenceRequirementProvided" checked="@Model.IsQEEvidenceRequirementProvided" class="checkbox style-2" type="checkbox" onchange="" name="chkIsQEEvidenceRequirementProvided" disabled="disabled">
+                        <span>@Resource.IsQEEvidenceRequirementProvided</span>
+                    </label>
+                </section>
+                <section class="col col-4">
+                    <label id="lblIsEndorsedTitleRequired" class="checkbox-inline A2CIconButtonTopMargin">
+                        <input id="chkIsEndorsedTitleRequired" checked="@Model.IsEndorsedTitleRequired" class="checkbox style-2" type="checkbox" onchange="" name="chkIsEndorsedTitleRequired" disabled="disabled">
+                        <span>@Resource.IsEndorsedTitleRequired</span>
+                    </label>
+                </section>
+
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,76 @@
+﻿@model A2C.Model.EdiPopupModel
+@using A2C.Resources
+
+@{
+    Layout = null;
+}
+
+<div id="ediPopupContent" style="padding-top:5px !important">
+    <fieldset>
+        <section>
+           
+                <div class="col col-4" style="float:left">
+                    <label class="input">@Resource.FilePreview @Model.FileName</label>
+                </div>
+                <div class="col col-2" style="text-align:right;">
+
+                    <a id="BtnDownloadEdi" class="btn btn-small-icon A2CIconButton" rel="tooltip" onclick="DownloadEdiFile('@Model.FileName','@Model.A2CTransactionResponseEnvelopeEdiId', '@Model.A2CTransactionRequestId');" href="javascript:void(0);" data-placement="bottom" data-original-title="@Resource.DownloadEdiFile" title="@Resource.DownloadEdiFile">
+                        <i class="fa fa-download"></i>
+                    </a>
+
+                </div>
+           
+                <section>
+                    <div id="ediDataGrid"></div>
+                </section>
+        </section>
+    </fieldset>
+</div>
+<style type="text/css">
+    .modal-body {
+        padding: 15px !important;
+    }
+    
+    .k-grid  .k-grid-header  .k-header  .k-link {
+        height: auto !important;
+    }
+    .k-header {
+        vertical-align: top !important;
+    }
+    .k-grid  .k-grid-header  .k-header {
+    white-space: normal;
+    /*word-break: break-word;*/
+}
+</style>
+<script>
+    var DataTypeRT = '@Resource.DataType', RecordTypeRT = '@Resource.RecordType', CentreNumberRT = '@Resource.CentreNumber', CandidateNumberRT = '@Resource.CandidateNumber',
+                        UniqueCandidateIdentifierRT = '@Resource.UniqueCandidateIdentifier', CandidateNameRT = '@Resource.CandidateName',
+                        UniqueLearnerNumberRT = '@Resource.UniqueLearnerNumber', EntryCodeRT = '@Resource.EntryCode', ResultsCodeRT = '@Resource.ResultsCode',
+                        ResultTypeRT = '@Resource.ResultType', GradesRT = '@Resource.Grades', ResultTypeRT = '@Resource.ResultType',
+                        CandidateStatusRT = '@Resource.CandidateStatus', SexRT = '@Resource.Sex', DateofBirthRT = '@Resource.DateofBirth',
+                        CandidateIdentifierRT = '@Resource.CandidateIdentifier', PupilNumberRT = '@Resource.PupilNumber', UniqueLearnerNumberRT = '@Resource.UniqueLearnerNumber',
+                        QualifierFlagRT = '@Resource.QualifierFlag', OptionalCentreNumberRT = '@Resource.OptionalCentreNumber', OptionalCandidateNumberRT = '@Resource.OptionalCandidateNumber',
+                        DocumentationGroupRT = '@Resource.DocumentationGroup', SecondGradeRT = '@Resource.SecondGrade', ComponentCodeRT = '@Resource.ComponentCode',
+                        MarkGradeStatusRT = '@Resource.MarkGradeStatus', MarkGradeRT = '@Resource.MarkGrade', PreviousCentreNumberRT = '@Resource.PreviousCentreNumber',
+                        PreviousCandidateNumberRT = '@Resource.PreviousCandidateNumber', PreviousSeriesRT = '@Resource.PreviousSeries',
+                        OptionEntryCode1RT = '@Resource.OptionEntryCode1', OptionEntryIndicator1RT = '@Resource.OptionEntryIndicator1',
+                        OptionEntryCode2RT = '@Resource.OptionEntryCode2', OptionEntryIndicator2RT = '@Resource.OptionEntryIndicator2',
+                        OptionEntryCode3RT = '@Resource.OptionEntryCode3', OptionEntryIndicator3RT = '@Resource.OptionEntryIndicator3',
+                        OptionEntryCode4RT = '@Resource.OptionEntryCode4', OptionEntryIndicator4RT = '@Resource.OptionEntryIndicator4',
+                        OptionEntryCode5RT = '@Resource.OptionEntryCode5', OptionEntryIndicator5RT = '@Resource.OptionEntryIndicator5',
+                        OptionEntryCode6RT = '@Resource.OptionEntryCode6', OptionEntryIndicator6RT = '@Resource.OptionEntryIndicator6',
+                        OptionEntryCode7RT = '@Resource.OptionEntryCode7', OptionEntryIndicator7RT = '@Resource.OptionEntryIndicator7',
+                        OptionEntryCode8RT = '@Resource.OptionEntryCode8', OptionEntryIndicator8RT = '@Resource.OptionEntryIndicator8',
+                        OptionEntryCode9RT = '@Resource.OptionEntryCode9', OptionEntryIndicator9RT = '@Resource.OptionEntryIndicator9',
+                        OptionEntryCode10RT = '@Resource.OptionEntryCode10', OptionEntryIndicator10RT = '@Resource.OptionEntryIndicator10',
+                        OptionEntryCode11RT = '@Resource.OptionEntryCode11', OptionEntryIndicator11RT = '@Resource.OptionEntryIndicator11',
+                        OptionEntryCode12RT = '@Resource.OptionEntryCode12', OptionEntryIndicator12RT = '@Resource.OptionEntryIndicator12',
+                        FirstGradeRT = '@Resource.FirstGrade', SecondGradeRT = '@Resource.SecondGrade',
+                        InvalidEdiFormatRT = '@Resource.InvalidEdiFormat', CheckBusinessErrorLogRT = '@Resource.CheckBusinessErrorLog';
+
+    $(document).ready(function () {
+        PreviewEDIFile('@Model.TransactionName', '@Model.A2CTransactionResponseEnvelopeEdiId', '@Model.A2CTransactionRequestId');
+    });
+
+
+</script>

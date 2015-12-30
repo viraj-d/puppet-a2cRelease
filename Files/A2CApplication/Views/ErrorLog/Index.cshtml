@@ -1,0 +1,41 @@
+﻿@using A2C.Resources
+
+@model A2C.Model.ErrorLog
+
+@{
+    ViewBag.Title = Resource.ViewBusinessErrorLogs;
+}
+
+<div id="content">
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { name = "form0", id = "form0", novalidate = "novalidate", @class = "smart-form" }))
+    {
+        <fieldset>            
+            <div >
+                <section >
+                    <div id="errorLogGrid"></div>
+                </section>
+            </div>
+        </fieldset>
+    }
+</div>
+
+@section styleBlock {
+    @Styles.Render("~/Content/SmartAdmin/KendoUI/kendoMaster")
+    <style></style>
+}
+
+@section scriptsTag {
+    @Scripts.Render("~/Scripts/Kendo", "~/Scripts/App/ErrorLog")
+
+    <script type="text/javascript">        
+        var CentreTitle = '@Resource.ErrorLogCentreID';        
+        var AwardingOrganizationTitle = '@Resource.ErrorLogAOID';
+        var DateTitle = '@Resource.ErrorLogDate';
+        var ScreenTitle = '@Resource.ErrorLogScreen';
+        var DescriptionTitle = '@Resource.ErrorLogDescription';
+        
+        $(this.document).ready(function () {
+            LoadErrorLogList();
+        });
+    </script>
+}

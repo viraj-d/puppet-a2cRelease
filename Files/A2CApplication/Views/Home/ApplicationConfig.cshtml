@@ -1,0 +1,166 @@
+﻿@using A2C.Resources
+@model A2C.Model.SystemConfigurations
+
+<div id="content">
+    <div>
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { name = "form0", id = "form0", novalidate = "novalidate", @class = "smart-form" }))
+        {
+            <fieldset>
+                <div class="panel-group smart-accordion-default" id="accordionscheme">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                <a aria-expanded="true" href="#collapsescheme" data-toggle="collapse" data-parent="#accordion">
+                                    <i class="fa fa-lg fa-angle-down pull-right"></i> <i class="fa fa-lg fa-angle-up pull-right"></i>
+                                    <label id="lblSelectedScheme">@(@Resource.EmailIntegration)</label>
+                                </a>
+                            </h3>
+                        </div>
+                        <div class="panel-collapse collapse in" id="collapsescheme" aria-expanded="true">
+                            <div class="panel-body no-padding">
+
+                                <div class="row">
+                                    <section class="col col-6">
+                                        @Html.HiddenFor(u => u.EmailProvider.SMTPEmailProviderId)
+
+                                        @Html.LabelFor(u => u.EmailProvider.Email, new { @class = "label Compulsorylabel" })
+                                        <label class="input">
+                                            @Html.TextBoxFor(u => u.EmailProvider.Email, new { maxlength = "255" })
+                                            <b class="tooltip tooltip-bottom-right">@Resource.EmailAddressTooltip</b>
+                                            @Html.ValidationMessageFor(u => u.EmailProvider.Email)
+                                        </label>
+                                    </section>
+                                    <section class="col col-6"></section>
+                                </div>
+
+                                <div class="row">
+                                    <section class="col col-6">
+                                        @Html.LabelFor(u => u.EmailProvider.Host, new { @class = "label Compulsorylabel" })
+                                        <label class="input">
+                                            @Html.TextBoxFor(u => u.EmailProvider.Host, new { maxlength = "255" })
+                                            <b class="tooltip tooltip-bottom-right">@Resource.HostTooltip</b>
+                                            @Html.ValidationMessageFor(u => u.EmailProvider.Host)
+                                        </label>
+                                    </section>
+                                    <section class="col col-6">
+                                        @Html.LabelFor(u => u.EmailProvider.Port, new { @class = "label Compulsorylabel" })
+                                        <label class="input">
+                                            @Html.TextBoxFor(u => u.EmailProvider.Port, new { maxlength = "4", @type = "number" })
+                                            <b class="tooltip tooltip-bottom-right">@Resource.PortTooltip</b>
+                                            @Html.ValidationMessageFor(u => u.EmailProvider.Port)
+                                        </label>
+                                    </section>
+                                </div>
+
+                                <div class="row">
+                                    <section class="col col-6">
+                                        @Html.LabelFor(u => u.EmailProvider.UserId, new { @class = "label Compulsorylabel" })
+                                        <label class="input">
+                                            @Html.TextBoxFor(u => u.EmailProvider.UserId, new { maxlength = "255" })
+                                            <b class="tooltip tooltip-bottom-right">@Resource.UserIDTooltip</b>
+                                            @Html.ValidationMessageFor(u => u.EmailProvider.UserId)
+                                        </label>
+                                    </section>
+                                    <section class="col col-6">
+                                        @Html.LabelFor(u => u.EmailProvider.Password, new { @class = "label" })
+                                        <label class="input">
+                                            @Html.PasswordFor(u => u.EmailProvider.Password, new { value = Model.EmailProvider.Password, maxlength = "255" })
+                                            <b class="tooltip tooltip-bottom-right">@Resource.SchoolUserPasswordTooltip</b>
+                                            @Html.ValidationMessageFor(u => u.EmailProvider.Password)
+                                        </label>
+                                    </section>
+                                </div>
+
+                                <div class="row">
+                                    <section class="col col-6">
+                                        @Html.LabelFor(u => u.EmailProvider.AuthenticationRequired, new { @class = "label" })
+                                        <label class="checkbox-inline">
+                                            <input id="chkAuthenticationRequired" checked="@Model.EmailProvider.AuthenticationRequired" class="checkbox style-2" type="checkbox" onchange="" name="chkAuthenticationRequired">
+                                            <span>&nbsp;</span>
+                                        </label>
+
+                                    </section>
+                                    <section class="col col-6">
+                                        <div style="text-align:right">
+                                            <a id="btnSaveApplicationURL" class="btn btn-icon A2CIconButton A2CIconButtonTopMargin" rel="tooltip" onclick="javascript: SaveSuperUserConfiguration();" href="javascript:void(0);" data-placement="bottom" data-original-title="@Resource.Save" title="@Resource.Save">
+                                                <i class="fa fa-floppy-o"></i>
+                                            </a>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </fieldset>
+        }
+
+    </div>
+    <div class="row">@Html.Label(" ")</div>
+    <div>
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { name = "formApplicationURL", id = "formApplicationURL", novalidate = "novalidate", @class = "smart-form" }))
+        {
+            <fieldset>
+                <div class="panel-group smart-accordion-default" id="accordionsApplicationURL">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                <a aria-expanded="true" href="#collapseApplicationURL" data-toggle="collapse" data-parent="#accordionApplicationURL">
+                                    <i class="fa fa-lg fa-angle-down pull-right"></i> <i class="fa fa-lg fa-angle-up pull-right"></i>
+                                    <label id="lblApplicationURL">@(@Resource.ApplicationUrl)</label>
+                                </a>
+                            </h3>
+                        </div>
+                        <div class="panel-collapse collapse in" id="collapseApplicationURL" aria-expanded="true">
+                            <div class="panel-body no-padding">
+                                <div class="row">
+                                    <section class="col col-6">
+                                        @Html.HiddenFor(u => u.SystemConfigurationId)
+
+                                        @Html.LabelFor(u => u.A2CApplicationUrl, new { @class = "label Compulsorylabel" })
+                                        <label class="input">
+                                            @Html.TextBoxFor(u => u.A2CApplicationUrl, new { maxlength = "255" })
+                                            <b class="tooltip tooltip-bottom-right">@Resource.ApplicationUrlToolTip</b>
+                                            @Html.ValidationMessageFor(u => u.A2CApplicationUrl)
+                                        </label>
+                                    </section>
+                                    <section class="col col-6">
+                                        <div style="text-align:right">
+                                            <a id="btnSaveApplicationURL" class="btn btn-icon A2CIconButton A2CIconButtonTopMargin" rel="tooltip" onclick="SaveApplicationURL();" href="javascript:void(0);" data-placement="bottom" data-original-title="@Resource.Save" title="@Resource.Save">
+                                                <i class="fa fa-floppy-o"></i>
+                                            </a>
+                                        </div>
+                                    </section>
+                                </div>
+                                <div class="row">
+                                    <section class="col col-12">
+                                     @Resource.ApplicationUrlNote
+                                    </section>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </fieldset>
+        }
+    </div>
+</div>
+
+@section scriptsTag {
+    @Scripts.Render("~/Scripts/App/Configuration.js")
+}
+
+@section scriptsBlock{
+    <script type="text/javascript">
+        var configurationSaveSuccessMessage = '@Resource.ConfigurationSaveSuccess';
+    </script>
+}
+
+@*@section Buttons{
+    <a id="BtnSave" class="btn btn-icon" rel="tooltip" onclick="javascript: SaveSuperUserConfiguration();" href="javascript:void(0);" data-placement="bottom" data-original-title="Save" title="@Resource.Save">
+        <i class="icon-prepend fa fa-floppy-o"></i>
+    </a>
+}*@

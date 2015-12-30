@@ -1,0 +1,60 @@
+﻿@using A2C.Resources
+<div id="content">
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { name = "form0", id = "form0", novalidate = "novalidate", @class = "smart-form" }))
+    {
+        <fieldset>
+            <div class="row">
+                <section class="col col-12">
+                    <div id="userGrid"></div>
+                </section>
+            </div>
+        </fieldset>
+    }
+</div>
+@section styleBlock {
+    @Styles.Render("~/Content/SmartAdmin/KendoUI/kendoMaster")
+}
+@section scriptsTag {
+    @Scripts.Render("~/Scripts/Kendo", "~/Scripts/App/SchoolUser")
+}
+
+@section scriptsBlock{
+    <script type="text/javascript">
+        var Username = '@Resource.SchoolUserName', Forename = '@Resource.SchoolForename', Surname = '@Resource.SchoolSurname', Role = '@Resource.SchoolRole', Status = '@Resource.SchoolStatus'
+            , UserSelect = '@Resource.UserSelect', UserDeleteConfirmation = '@Resource.UserDeleteConfirmation', DeleteUserSuccess = '@Resource.DeleteUserSuccess', SelectOneRecord = '@Resource.SelectOneRecord'
+            , UnLockOtherthanLocked = '@Resource.UnLockOtherthanLocked', UnLockSuccess = '@Resource.UnlockUserSuccess', UserAddedMessage = '@ViewBag.UserAddedMessage'
+            , DeactivatedEditMessage = '@Resource.DeactivatedEdit', AlreadyDeactivatedUser = '@Resource.AlreadyDeactivatedUser', AlreadyActivatedUser = '@Resource.AlreadyActivatedUser'
+            , ActivatedSuccess = '@Resource.ActivatedSuccess', DeactivatedSuccess = '@Resource.DeactivatedSuccess'
+            , LKeyUserNotDelete = '@Resource.LKeyUserNotDelete', LKeyUserNotActive = '@Resource.LKeyUserNotActive'
+            , LKeyUserNotDeactivate = '@Resource.LKeyUserNotDeactivate', LKeyUserNotLock = '@Resource.LKeyUserNotLock'
+            , LKeyUserNotEdit = '@Resource.LKeyUserNotEdit';
+        $(this.document).ready(function () {
+            LoadSchoolUserList();
+            if (UserAddedMessage && UserAddedMessage.trim().length > 0) {
+                DisplaySuccess(UserAddedMessage, 'form0');
+            }
+            ChangeUrl('/SchoolUser/Index')
+        });
+    </script>
+}
+@section Buttons{
+    <a id="BtnAdd" class="btn btn-icon" rel="tooltip" onclick="javascript: AddUser();" href="javascript:void(0);" data-placement="bottom" data-original-title="@Resource.Add" title="@Resource.Add">
+        <i class="icon-prepend fa fa-plus"></i>
+    </a>
+    <a id="BtnEdit" class="btn btn-icon" rel="tooltip" onclick="javascript: EditUser();" href="javascript:void(0);" data-placement="bottom" data-original-title="@Resource.Edit" title="@Resource.Edit">
+        <i class="icon-prepend fa fa-edit"></i>
+    </a>
+    <a id="BtnDelete" class="btn btn-icon" rel="tooltip" onclick="javascript:DeleteUser();" href="javascript:void(0);" data-placement="bottom" data-original-title="@Resource.Delete" title="@Resource.Delete">
+        <i class="icon-prepend fa fa-trash-o"></i>
+    </a>
+    <a id="BtnUnlock" class="btn btn-icon" rel="tooltip" onclick="javascript: UnLockUser();" href="javascript:void(0);" data-placement="bottom" data-original-title="@Resource.Unlock" title="@Resource.Unlock">
+        <i class="icon-prepend fa fa-unlock-alt"></i>
+    </a>
+    <a id="BtnActivateUser" class="btn btn-icon" rel="tooltip" onclick="javascript: ActivateUser();" href="javascript: void(0);" data-placement="bottom" data-original-title="@Resource.Active" title="@Resource.Active">
+        <i class="icon-prepend fa fa-eye"></i>
+    </a>
+    <a id="BtnDeactivateUser" class="btn btn-icon" rel="tooltip" onclick="javascript: DeactivateUser();" href="javascript: void(0);" data-placement="bottom" data-original-title="@Resource.Deactivate" title="@Resource.Deactivate">
+    <i class="icon-prepend fa  fa-eye-slash"></i>
+</a>
+}
+

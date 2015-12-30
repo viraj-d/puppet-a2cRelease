@@ -1,0 +1,216 @@
+﻿@using A2C.Resources
+@model A2C.Model.ProductCataloguePathwayModel
+<script src="~/Scripts/js/common"></script>
+
+@{
+    <div class="panel-group smart-accordion-default" id="accordionPathway">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a aria-expanded="true" href="#collapsePathway" data-toggle="collapse" data-parent="#accordion">
+                        <i class="fa fa-lg fa-angle-down pull-right"></i> <i class="fa fa-lg fa-angle-up pull-right"></i>
+                        <label id="lblSelectedPathway">@(@Resource.Select + " " + @Resource.Pathway)</label>
+                    </a>
+                </h4>
+            </div>
+            <div class="panel-collapse collapse in" id="collapsePathway" aria-expanded="true">
+                <div class="panel-body no-padding">
+                    <div class="row">
+                        <section class="col col-3">
+                            @Html.LabelFor(c => c.SelectedSeries, new { @class = "label" })
+                            @Html.DropDownListFor(x => x.SelectedSeries, new SelectList(Model.SeriesList, "Value", "Text"), new { id = "seriesLablePathway", @class = "select2 select2-offscreen" })
+                        </section>
+                                                
+                        <section class="col col-3">
+                            @Html.Label(" ")
+                            <div>
+                                <a id="BtnPathwaySubmit" class="btn btn-icon A2CIconButton A2CIconButtonTopMargin" rel="tooltip" onclick="GetQEForPathway();" href="javascript:void(0);" data-placement="bottom" data-original-title="@Resource.Search" title="@Resource.Search">
+                                    <i class="fa fa-search"></i>
+                                </a>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="row">
+                        <section class="col col-12" style="width:100%">
+                            <div id="qePathwayGrid"></div>
+                        </section>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="pcDetailLevel2TabViewPathway" hidden="hidden">
+        @Html.Label(" ")
+        <ul id="pathwayDetailLevel2ChildTab" class="nav nav-tabs bordered">
+            <li class="">
+                <a id="qualificationDetailsTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dQualificationDetailsLevel2TabPathway">
+                    <span class="hidden-mobile hidden-tablet">@Resource.QualificationDetails</span>
+                </a>
+            </li>
+            <li class="">
+                <a id="availabilityTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dAvailabilityLevel2TabPathway">
+                    <span class="hidden-mobile hidden-tablet">@Resource.Availability </span>
+                </a>
+            </li>
+        </ul>
+        <div id="pathwayDetailLevel2ChildTabContent" class="tab-content padding-10">
+            <div id="dQualificationDetailsLevel2TabPathway" class="tab-pane fade active in">
+                <div id="pcDetailPathwayTabView" hidden="hidden">
+                    <ul id="pathwayChildTab" class="nav nav-tabs bordered">
+                        <li class="">
+                            <a id="generalTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dGeneralTabPathway">
+                                <span class="hidden-mobile hidden-tablet">@Resource.General</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a id="preferencesTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dPreferencesTabPathway">
+                                <span class="hidden-mobile hidden-tablet">@Resource.Preferences</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a id="learnerIdentifiersTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dLearnerIdentifiersTabPathway">
+                                <span class="hidden-mobile hidden-tablet">@Resource.LearnerIdentifiers</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a id="gradeRangeTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dGradeRangeTabPathway">
+                                <span class="hidden-mobile hidden-tablet">@Resource.GradeRange</span>
+                            </a>
+                        </li>
+                        @*<li class="">
+                                <a id="ageRangeTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dAgeRangeTabPathway">
+                                    <span class="hidden-mobile hidden-tablet">@Resource.AgeRange</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a id="frameworkTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dFrameworkTabPathway">
+                                    <span class="hidden-mobile hidden-tablet">@Resource.Framework</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a id="objectiveStatmentTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dObjectiveStatmentTabPathway">
+                                    <span class="hidden-mobile hidden-tablet">@Resource.ObjectiveStatement</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a id="sectorSubjectAreaTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dSectorSubjectAreaTabPathway">
+                                    <span class="hidden-mobile hidden-tablet">@Resource.SectorSubjectArea</span>
+                                </a>
+                            </li>*@
+                        <li class="">
+                            <a id="relationshipHierarchyTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dRelationshipHierarchyTabPathway">
+                                <span class="hidden-mobile hidden-tablet">@Resource.RelationshipHierarchy</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a id="relationshipsTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dRelationshipsTabPathway">
+                                <span class="hidden-mobile hidden-tablet">@Resource.Relationships</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div id="childTabContent" class="tab-content padding-10">
+                        <div id="dGeneralTabPathway" class="tab-pane fade">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Panel Heading</div>
+                                <div class="panel-body">Panel Content</div>
+                            </div>
+                        </div>
+                        <div id="dPreferencesTabPathway" class="tab-pane fade">
+                            <div id="qePreferenceGridPathway"></div>
+                        </div>
+                        <div id="dLearnerIdentifiersTabPathway" class="tab-pane fade">
+                            <div id="qeLearnerIdentifierGridPathway"></div>
+                        </div>
+                        <div id="dGradeRangeTabPathway" class="tab-pane fade">
+                            <div id="qeGradeRangeGridPathway"></div>
+                        </div>
+                        @*<div id="dAgeRangeTabPathway" class="tab-pane fade"></div>
+                            <div id="dFrameworkTabPathway" class="tab-pane fade"></div>
+                            <div id="dObjectiveStatmentTabPathway" class="tab-pane fade"></div>
+                            <div id="dSectorSubjectAreaTabPathway" class="tab-pane fade"></div>*@
+                        <div id="dRelationshipHierarchyTabPathway" class="tab-pane fade">
+                            <div id="qeRelationshipHierarchyTreePathway"></div>
+                        </div>
+                        <div id="dRelationshipsTabPathway" class="tab-pane fade active in">
+                            <div id="qeRelationshipGridPathway"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="dAvailabilityLevel2TabPathway" class="tab-pane fade">
+                <div id="qeAvailibilityGridPathway"></div>
+                @Html.Label(" ")
+                <div id="pcAvailabilityDetailPathwayTabView" >
+                    <ul id="PathwayAvailabilityChildTab" class="nav nav-tabs bordered">
+                        <li class="">
+                            <a id="keyEventAvailabilityTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dKeyEventTabPathway">
+                                <span class="hidden-mobile hidden-tablet">@Resource.KeyEventAvailability</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a id="keyEventFeeAvailabilityTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dKeyEventFeeTabPathway">
+                                <span class="hidden-mobile hidden-tablet">@Resource.KeyEventFees</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a id="gradeBoundaryTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dGradeBoundaryTabPathway">
+                                <span class="hidden-mobile hidden-tablet">@Resource.GradeBoundary</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a id="maximumMarksTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dMaximumMarksTabPathway">
+                                <span class="hidden-mobile hidden-tablet">@Resource.MaximumMarks</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a id="assessmentMaterialTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dAssessmentMaterialTabPathway">
+                                <span class="hidden-mobile hidden-tablet">@Resource.AssessmentMaterial</span>
+                            </a>
+                        </li>
+                        @*<li class="" hidden="hidden">
+                                <a id="availabilityTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dAvailabilityTabPathway">
+                                    <span class="hidden-mobile hidden-tablet">@Resource.Availability</span>
+                                </a>
+                            </li>*@
+                    </ul>
+                    <div id="childTabContentAvailability" class="tab-content padding-10">
+                        <div id="dKeyEventTabPathway" class="tab-pane fade">
+                            <div id="qeKeyEventTabPathway"></div>
+                        </div>
+                        <div id="dKeyEventFeeTabPathway" class="tab-pane fade">
+                            <div id="qeKeyEventFeeTabPathway"></div>
+                        </div>
+                        <div id="dGradeBoundaryTabPathway" class="tab-pane fade">
+                            <div id="qeGradeBoundaryTabPathway"></div>
+                        </div>
+                        <div id="dMaximumMarksTabPathway" class="tab-pane fade">
+                            <div id="qeMaximumMarksTabPathway"></div>
+                        </div>
+                        <div id="dAssessmentMaterialTabPathway" class="tab-pane fade">
+                            <div id="qeAssessmentMaterialGridPathway"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*<div id="pcDetailPathwayView" class="row" hidden="hidden">
+        <section class="col col-12">
+            <div id="pathwayTreeView"></div>
+        </section>
+    </div>*@
+}
+
+<script>
+    var MaximumUnitSelection = '@Resource.MaximumUnitSelection', MinimumUnitSelection = '@Resource.MinimumUnitSelection',
+        EqualsIndicatorFlag = '@Resource.EqualsIndicatorFlag', MandatoryInGroupFlag = '@Resource.MandatoryInGroupFlag',
+        MinimumPathwaySelection = '@Resource.MinimumPathwaySelection', MaximumPathwaySelection = '@Resource.MaximumPathwaySelection',
+        MinimumCreditValue = '@Resource.MinimumCreditValue'
+
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        PCDetailTabClickEvent("Pathway", e);
+    });
+</script> 

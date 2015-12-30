@@ -1,0 +1,256 @@
+/* Dashboard CSS changes*/
+#baseWiz {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 450px;
+}
+
+#baseWiz li {
+    margin: 3px 3px 3px 0;
+    padding: 1px;
+    float: left;
+    width: 100px;
+    height: 90px;
+    text-align: center;
+}
+
+#sourceWidgets, #destinationWidgets {
+    max-height: 580px;
+    overflow: hidden;
+    min-height: 527px;
+}
+
+#userDefinedTabsContainer {
+    /*height:228px;*/
+    overflow:hidden;
+
+}
+
+#userDefinedTabsContainer ul {
+ min-height: 218px;
+
+}
+#sourceWidgets {
+    border: 1px solid #eee;
+    overflow: hidden;
+    padding-right:0px;
+}
+
+#sourceWidgets ul#widgetCategories {
+    min-height:520px;
+}
+
+#wizbycategory li span {
+    overflow:hidden;
+}
+
+#wizbycategory {
+    /*border: 1px solid #eee;
+    min-height: 411px;*/
+    list-style-type: none;
+    margin: 0px;
+    /*padding: 5px 5px 5px 5px;*/
+    padding-left: 0px;
+    float: right;
+    width: 90%;
+    max-height: 500px;
+    overflow-x: no-display;
+    overflow-y: auto;
+}
+
+#destinationWidgets ul, #userDefinedTabsContainer ul {
+    border: 1px solid #eee;
+
+    list-style-type: none;
+    margin: 0;
+    padding: 1%;
+    float: left;
+
+}
+#destinationSection1 {
+    min-height: 221px;
+}
+#destinationSection2 , #destinationSection3 {
+    min-height: 185px;
+}
+
+
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+    background-image:none !important;
+    background-color:#e0e4ee !important;
+    border:1px solid #d3d3d3;
+    color:#666;
+}
+
+#wizbycategory li {
+    margin: 1%;
+    padding: 5px;
+    width: 190px;
+    height: 100px;
+    float: left;
+    text-overflow: ellipsis;
+    display: block;
+    overflow: hidden;
+    cursor: move;
+    border-radius: 5px;
+}
+#frmreorder #destinationWidgets li, #userDefinedTabsContainer li {
+    margin-left: 0.5% !important;
+}
+
+#destinationWidgets li, #userDefinedTabsContainer li {
+    margin-left: 1%;
+    margin-right: 1%;
+    margin-top:0.5%;
+    margin-bottom:0.5%;
+    padding: 1%;
+    /*text-overflow:ellipsis;
+    display: block;
+    overflow: hidden;*/
+    border-radius: 5px;
+}
+.tabs-left .tab-content {
+    margin-left:98px !important;
+}
+
+#destinationWidgets #destinationSection1 li, #userDefinedTabsContainer #userDefinedTabList li {
+    width: 96%;
+}
+
+#destinationWidgets #destinationSection2 li, #destinationWidgets #destinationSection3 li {
+    width: 96%;
+    margin-bottom:1% !important;
+}
+#userDefinedTabsContainer #userDefinedTabList li:hover {
+background-color:#dceffd !important;
+border: 1px solid #dceddd;
+}
+
+#destinationWidgets li a {
+    font-size: 16px;
+}
+
+.ui-state-highlighter {
+    border: 1px solid #dceddd; /*{borderColorHighlight}*/;
+    background: #dceffd;
+    color: #363636 /*{fcHighlight}*/;
+    height: 2.1em;
+    color: #363636 /*{fcHighlight}*/;
+}
+
+.max-height-400 {
+    max-height: 400px !important;
+    overflow-y: auto;
+}
+
+.wiz-grid {
+    max-height: 400px;
+}
+
+.ui-widget-header {
+    font-weight: 100 !important;
+    opacity: 0.5;
+    filter: alpha(opacity=40); /* For IE8 and earlier */
+    width: 100px;
+    height: 90px;
+    border-radius: 5px;
+    text-overflow: ellipsis;
+
+
+}
+.ui-state-placeholder {
+    color:rgba(82,174,247,1) !important;
+    text-align:right;
+    background-color:#dceffd !important;
+    padding:1%;
+
+}
+    .ui-state-placeholder span {
+        padding-right:1%;
+    }
+.ui-state-placeholder-elm {
+    text-align:left;
+    background-color:rgba(82,174,247,1) !important;
+    padding:5px 5px 5px 10px;
+    color:white;
+
+}
+
+.no-padding-top {
+    padding-top: 0px !important;
+}
+
+.no-padding-left {
+    padding-left: 0px !important;
+}
+
+.padding-top-5 {
+    padding-top: 5px !important;
+}
+
+.padding-top-55 {
+    padding-top:55px !important;
+}
+
+.padding-bottom-14 {
+    padding-bottom:14px !important;
+}
+
+.padding-left-14 {
+    padding-left:14px;
+}
+
+.jarviswidget header {
+    color: #058dc7;
+}
+
+#mainTab li {
+    border-bottom: 1px solid #edecec;
+}
+
+text-center-align {
+    text-align: center !important;
+}
+
+.jarviswidget-editbox fieldset {
+    padding-top: 10px!important;
+}
+
+.tab-content {
+    background-color: #ededed;
+}
+
+.jarviswidget, .jarviswidget > div, .jarviswidget-editbox {
+    border-color: none !important;
+    border-style: none !important;
+    border-width: 0px !important;
+}
+/*media screen*/
+.jarviswidget > header {
+    border-color: none !important;
+    border-style: none !important;
+    border-width: 0px !important;
+    background-color: #ffffff !important;
+    border-bottom:1px solid rgba(0,0,0,0.09) !important;
+}
+
+#destinationSection1 {
+    content:'Drop your widget here';
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    background-image:none !important;
+    background-color:rgba(241, 243, 247, 1) !important;
+
+}
+.padding-10
+{
+    padding-bottom: 0px !important;
+}
+
+/*article.sortable-grid {
+    min-height: 30px !important;
+}*/
+/* Dashboard CSS changes ENDS*/
+

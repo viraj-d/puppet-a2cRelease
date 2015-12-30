@@ -1,0 +1,140 @@
+﻿@using A2C.Resources
+@model A2C.Model.Pathway
+@Scripts.Render("~/Scripts/js/common")
+@{
+    <div class="panel panel-info">
+        <div class="panel-heading">@Resource.GenericDetails</div>
+        <div class="panel-body">
+            <fieldset>
+                <div class="row">
+                    <section class="col col-4">
+                        <label class="label">@Resource.QEShortTitle</label>
+                        <label class="input">
+                            @Html.TextBoxFor(s => s.QEShortTitle, new { @readonly = "readonly" })
+                        </label>
+                    </section>
+                    <section class="col col-4">
+                        <label class="label">@Resource.QualificationReferenceNumber</label>
+                        <label class="input">
+                            @Html.TextBoxFor(s => s.QualificationReferenceNumber, new { @readonly = "readonly" })
+                        </label>
+                    </section>
+                    <section class="col col-4">
+                        <label class="label">@Resource.LearningAimCode</label>
+                        <label class="input">
+                            @Html.TextBoxFor(s => s.LearningAimCode, new { @readonly = "readonly" })
+                        </label>
+                    </section>
+                </div>
+                <section>
+                    <label class="label">@Resource.QualificationElementTitle</label>
+                    <label class="input">
+                        @Html.TextBoxFor(s => s.QualificationElementTitle, new { @readonly = "readonly" })
+                    </label>
+                </section>
+                <section>
+                    <label class="label">@Resource.QEDescription</label>
+                    <label class="textarea textarea-resizable">
+                        <textarea id="QEDescription" class="limited custom-scroll" rows="3" name="QEDescription" readonly="readonly" cols="8">@Model.QEDescription</textarea>
+                    </label>
+                </section>
+                <div class="row">
+                    <section class="col col-4">
+                        <label class="label">@Resource.QEEffectiveVersionDate</label>
+                        <label class="input">
+                            @Html.TextBoxFor(s => s.QEEffectiveStartDate, new { @readonly = "readonly" })
+                        </label>
+                    </section>
+                    <section class="col col-4">
+                        <label class="label">@Resource.QEEffectiveVersionEndDate</label>
+                        <label class="input">
+                            @Html.TextBoxFor(s => s.QEEffectiveEndDate, new { @readonly = "readonly" })
+                        </label>
+                    </section>
+                    <section class="col col-4">
+                        <label class="label">@Resource.QEAdminCode</label>
+                        <label class="input">
+                            @Html.TextBoxFor(s => s.QEAdminCode, new { @readonly = "readonly" })
+                        </label>
+                    </section>
+                </div>
+                <div class="row">
+                    <section class="col col-4">
+                        <label class="label">@Resource.PrivateLearnerType</label>
+                        <label class="input">
+                            @Html.TextBoxFor(s => s.PrivateLearnerType, new { @readonly = "readonly" })
+                        </label>
+                    </section>
+                    <section class="col col-4">
+                        <label class="label">@Resource.QEModerationType</label>
+                        <label class="input">
+                            @Html.TextBoxFor(s => s.QEModerationType, new { @readonly = "readonly" })
+                        </label>
+                    </section>
+                    <section class="col col-4">
+                        <label id="lblFirstLanguageRequired" class="checkbox-inline A2CIconButtonTopMargin">
+                            <input id="chkFirstLanguageRequired" checked="@Model.IsFirstLanguageRequired" class="checkbox style-2" disabled="disabled" type="checkbox" onchange="" name="chkFirstLanguageRequired">
+                            <span style="padding-top:25px">@Resource.IsFirstLanguageRequired</span>
+                        </label>
+                    </section>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+    <div>
+        <label class="label"> </label>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">@Resource.SpecificDetails</div>
+        <div class="panel-body">
+            <div class="row">
+                <section class="col col-4">
+                    <label class="label">@Resource.MaximumUnitSelection</label>
+                    <label class="input">
+                        @Html.TextBoxFor(s => s.MaximumUnitSelection, new { @readonly = "readonly" })
+                    </label>
+                </section>
+                <section class="col col-4">
+                    <label class="label">@Resource.MinimumUnitSelection</label>
+                    <label class="input">
+                        @Html.TextBoxFor(s => s.MinimumUnitSelection, new { @readonly = "readonly" })
+                    </label>
+                </section>
+                <section class="col col-4">
+                    <label class="label">@Resource.MinimumCreditValue</label>
+                    <label class="input">
+                        @Html.TextBoxFor(s => s.MinimumCreditValue, new { @readonly = "readonly" })
+                    </label>
+                </section>
+            </div>
+            <div class="row">
+                <section class="col col-4">
+                    <label class="label">@Resource.MinimumPathwaySelection</label>
+                    <label class="input">
+                        @Html.TextBoxFor(s => s.MinimumPathwaySelection, new { @readonly = "readonly" })
+                    </label>
+                </section>
+                <section class="col col-4">
+                    <label class="label">@Resource.MaximumPathwaySelection</label>
+                    <label class="input">
+                        @Html.TextBoxFor(s => s.MaximumPathwaySelection, new { @readonly = "readonly" })
+                    </label>
+                </section>
+                <section class="col col-4">
+                    <label id="lblEqualsIndicator" class="checkbox-inline A2CIconButtonTopMargin">
+                        <input id="chkEqualsIndicator" checked="@Model.EqualsIndicator" class="checkbox style-2" disabled="disabled" type="checkbox" onchange="" name="chkEqualsIndicator">
+                        <span style="padding-top:25px">@Resource.EqualsIndicatorFlag</span>
+                    </label>
+                </section>
+            </div>
+            <div class="row">
+                <section class="col col-4">
+                    <label id="lblMandatoryInGroup" class="checkbox-inline A2CIconButtonTopMargin">
+                        <input id="chkMandatoryInGroup" checked="@Model.MandatoryInGroup" class="checkbox style-2" disabled="disabled" type="checkbox" onchange="" name="chkMandatoryInGroup">
+                        <span>@Resource.MandatoryInGroupFlag</span>
+                    </label>
+                </section>
+            </div>
+        </div>
+    </div>
+}

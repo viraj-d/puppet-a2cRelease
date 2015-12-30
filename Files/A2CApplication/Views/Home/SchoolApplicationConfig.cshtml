@@ -1,0 +1,157 @@
+﻿@using A2C.Resources
+@model A2C.Model.SchoolApplicationConfig
+
+@section scriptsTag {
+    @Scripts.Render("~/Scripts/App/Configuration.js")
+}
+
+@section scriptsBlock{
+    <script type="text/javascript">
+    var configurationSaveSuccessMessage = '@Resource.ConfigurationSaveSuccess';
+
+        $(document).ready(function () {           
+            setSelectedEmailIntegrationModeValue('@Model.EmailConfigurationChoice');
+            setNoneModeVisibility('@Model.IsFacilityInstallation');
+            setEmailIntegrationMode();
+        });
+    </script>
+}
+
+<div id="content">
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { name = "form0", id = "form0", novalidate = "novalidate", @class = "smart-form" }))
+    {
+        <fieldset>
+
+            @Html.HiddenFor(u => u.SMTPEmailProviderId)
+
+            <div class="panel-group smart-accordion-default" id="accordionscheme">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <a aria-expanded="true" href="#collapsescheme" data-toggle="collapse" data-parent="#accordion">
+                                <i class="fa fa-lg fa-angle-down pull-right"></i> <i class="fa fa-lg fa-angle-up pull-right"></i>
+                                <label id="lblSelectedScheme">@(@Resource.EmailIntegration)</label>
+                            </a>
+                        </h3>
+                    </div>
+                    <div class="panel-collapse collapse in" id="collapsescheme" aria-expanded="true">
+                        <div class="panel-body no-padding">
+                                                        
+                            <div class="row" id="divEmailIntegrationModeNone">
+                                <section class="col col-6">
+                                    <label class="radio radio-inline">
+                                        <input id="rdbEmailIntegrationModeNone" checked="@Model.IsEmailIntegrationModeNone" value="None" class="radiobox style-2" type="radio" onclick="javascript: setEmailIntegrationMode();" name="rdbEmailIntegrationMode">
+                                        <span>@Resource.None</span>
+                                    </label>
+                                </section>
+                                <section class="col col-6"></section>
+                            </div>
+                           
+                            <div class="row">
+                                <section class="col col-6">
+                                    <label class="radio radio-inline">
+                                        <input id="rdbEmailIntegrationModeAmazon" checked="@Model.IsEmailIntegrationModeAmazon" value="Amazon" class="radiobox style-2" type="radio" onclick="javascript: setEmailIntegrationMode();" name="rdbEmailIntegrationMode">
+                                        <span>@Resource.AmazonCloudServices</span>
+                                    </label>
+                                </section>
+                                <section class="col col-6"></section>
+                            </div>
+
+                            <div class="row">
+                                <section class="col col-6">                                    
+                                    @Html.LabelFor(u => u.AmazonCloudEmail, new { @class = "label Compulsorylabel" })
+                                    <label class="input">
+                                        @Html.TextBoxFor(u => u.AmazonCloudEmail, new { maxlength = "255" })
+                                        <b class="tooltip tooltip-bottom-right">@Resource.EmailAddressTooltip</b>
+                                        @Html.ValidationMessageFor(u => u.AmazonCloudEmail)
+                                    </label>
+                                </section>
+                                <section class="col col-6"></section>
+                            </div>
+
+                            <div class="row">
+                                <section class="col col-6">
+                                    <label class="radio radio-inline">
+                                        <input id="rdbEmailIntegrationModeSMTP" checked="@Model.IsEmailIntegrationModeSMTP" value="SMTP" class="radiobox style-2" type="radio" onclick="javascript: setEmailIntegrationMode();" name="rdbEmailIntegrationMode">
+                                        <span>@Resource.SMTP</span>
+                                    </label>
+                                </section>
+                                <section class="col col-6"></section>
+                            </div>
+                            <fieldset id="SMTPInputs">
+                                <div class="row">
+                                    <section class="col col-6">
+                                        @Html.LabelFor(u => u.SMTPEmail, new { @class = "label Compulsorylabel" })
+                                        <label class="input">
+                                            @Html.TextBoxFor(u => u.SMTPEmail, new { maxlength = "255" })
+                                            <b class="tooltip tooltip-bottom-right">@Resource.EmailAddressTooltip</b>
+                                            @Html.ValidationMessageFor(u => u.SMTPEmail)
+                                        </label>
+                                    </section>
+                                    <section class="col col-6"></section>
+                                </div>
+
+                                <div class="row">
+                                    <section class="col col-6">
+                                        @Html.LabelFor(u => u.Host, new { @class = "label Compulsorylabel" })
+                                        <label class="input">
+                                            @Html.TextBoxFor(u => u.Host, new { maxlength = "255" })
+                                            <b class="tooltip tooltip-bottom-right">@Resource.HostTooltip</b>
+                                            @Html.ValidationMessageFor(u => u.Host)
+                                        </label>
+                                    </section>
+                                    <section class="col col-6">
+                                        @Html.LabelFor(u => u.Port, new { @class = "label Compulsorylabel" })
+                                        <label class="input">
+                                            @Html.TextBoxFor(u => u.Port, new { maxlength = "4", @type = "number" })
+                                            <b class="tooltip tooltip-bottom-right">@Resource.PortTooltip</b>
+                                            @Html.ValidationMessageFor(u => u.Port)
+                                        </label>
+                                    </section>
+                                </div>
+
+                                <div class="row">
+                                    <section class="col col-6">
+                                        @Html.LabelFor(u => u.UserId, new { @class = "label Compulsorylabel" })
+                                        <label class="input">
+                                            @Html.TextBoxFor(u => u.UserId, new { maxlength = "255" })
+                                            <b class="tooltip tooltip-bottom-right">@Resource.UserIDTooltip</b>
+                                            @Html.ValidationMessageFor(u => u.UserId)
+                                        </label>
+                                    </section>
+                                    <section class="col col-6">
+                                        @Html.LabelFor(u => u.Password, new { @class = "label" })
+                                        <label class="input">
+                                            @Html.PasswordFor(u => u.Password, new { value = Model.Password, maxlength = "255" })
+                                            <b class="tooltip tooltip-bottom-right">@Resource.SchoolUserPasswordTooltip</b>
+                                            @Html.ValidationMessageFor(u => u.Password)
+                                        </label>
+                                    </section>
+                                </div>
+
+                                <div class="row">
+                                    <section class="col col-6">
+                                        @Html.LabelFor(u => u.AuthenticationRequired, new { @class = "label" })
+                                        <label class="checkbox-inline">
+                                            <input id="chkAuthenticationRequired" checked="@Model.AuthenticationRequired" class="checkbox style-2" type="checkbox" onchange="" name="chkAuthenticationRequired">
+                                            <span>&nbsp;</span>
+                                        </label>
+
+                                    </section>
+                                    <section class="col col-6"></section>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </fieldset>
+    }
+</div>
+
+@section Buttons{
+    <a id="BtnSave" class="btn btn-icon" rel="tooltip" onclick="javascript: saveSchoolUserConfiguration();" href="javascript:void(0);" data-placement="bottom" data-original-title="Save" title="@Resource.Save">
+        <i class="icon-prepend fa fa-floppy-o"></i>
+    </a>
+}

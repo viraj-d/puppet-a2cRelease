@@ -1,0 +1,46 @@
+﻿@using A2C.Resources
+@using (Html.BeginForm(null, null, FormMethod.Post, new { name = "frmEdiNotification", id = "frmEdiNotification", novalidate = "novalidate", @class = "ignoresuccessstyle smart-form" }))
+{
+    <fieldset>
+        <section>
+            <div id="ediNotoficationGrid"></div>
+        </section>
+    </fieldset>
+}
+@Scripts.Render("~/Scripts/App/js/Widget/EdiNotification")
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        var CentreTitle = '@Resource.TransactionLogCentre';
+        var AwardingOrganizationTitle = '@Resource.TransactionLogAO';
+        var DateTitle = '@Resource.TransactionLogDate';
+        var TransactionLogFileNameTitle = '@Resource.TransactionLogFileName';
+        var TransactionLogTransactionDateTitle = '@Resource.TransactionLogTransactionDate';
+        var FeedbackPopupTitleRT = '@Resource.DetailOrFeedback';
+
+        var ediNotoficationGrid;
+        
+        ediNotoficationGrid = $("#ediNotoficationGrid").A2CGrid({
+            gridKey: 'ediNotoficationGrid',
+            url: '/Widget/GetEdiNotifications',
+            pageable: true,
+            sortable: true,
+            filterable: true,
+            clearefilter: true,
+            scrollable: true,
+            selectable: "single",
+            autoResize: true,
+            maxRowCount: 10,
+            columns: [
+                { field: "CentreNumber", title: CentreTitle, tooltip: CentreTitle, type: "string", width: "10%" },
+                { field: "AwardingOrganisation", title: AwardingOrganizationTitle, tooltip: AwardingOrganizationTitle, type: "string", width: "15%" },
+                { field: "TransactionDate", title: DateTitle, tooltip: TransactionLogTransactionDateTitle, type: "date", width: "15%", format: javaScriptDateTimeFormat },
+                { field: "FileName", title: TransactionLogFileNameTitle, tooltip: TransactionLogFileNameTitle, template: "<a href=javascript:GetEDIFileDetials('#= data.FileName #','#=data.TransactionName #',#=data.A2CTransactionResponseEnvelopeEdiId #,#=data.A2CTransactionRequestId #)>${FileName}</a>", width: "15%" },
+                { field: "FeedbackDetails", title: FeedbackPopupTitleRT, tooltip: FeedbackPopupTitleRT, type: "string", width: "45%", sortable: false, filterable: false }
+            ]
+        });
+
+        ediNotoficationGrid.Render();
+    });
+</script>

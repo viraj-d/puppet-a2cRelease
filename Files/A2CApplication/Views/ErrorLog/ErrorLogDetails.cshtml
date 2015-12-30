@@ -1,0 +1,20 @@
+﻿@model A2C.Model.ErrorLog
+
+@{
+    ViewBag.Title = "Details";
+    Layout = null;
+}
+
+<div id="content" style="padding-top:10px !important">
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { name = "form0", id = "form0", novalidate = "novalidate", @class = "smart-form" }))
+    {
+        <fieldset>
+            <section>
+                <label class="textarea textarea-resizable">
+                    @Model.Description
+                </label>
+            </section>
+
+        </fieldset>
+    }
+</div>

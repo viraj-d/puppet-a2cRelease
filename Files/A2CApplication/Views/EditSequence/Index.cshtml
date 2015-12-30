@@ -1,0 +1,70 @@
+﻿@using A2C.Resources
+@model A2C.Model.EditSequenceModel
+@{
+    ViewBag.Title = Resource.EditSequenceNumberHeader;
+}
+
+<div id="content">
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { name = "form0", id = "form0", novalidate = "novalidate", @class = "smart-form" }))
+{
+    <fieldset>
+        <div class="row">
+            <section class="col col-4">
+                @Html.LabelFor(x => x.SelectedCentreId, new { @class = "label Compulsorylabel" })
+                @Html.DropDownListFor(x => x.SelectedCentreId, new SelectList(Model.CentreList, "Value", "Text"), new { @class = "select2 select2-offscreen" })
+                @Html.ValidationMessageFor(u => u.SelectedCentreId)
+            </section>
+            <section class="col col-4">
+                @Html.LabelFor(x => x.SelectedAwardingOrganisationId, new { @class = "label Compulsorylabel" })
+                @Html.DropDownListFor(x => x.SelectedAwardingOrganisationId, new SelectList(Model.AwardingOrganisationList, "Value", "Text"), new { @class = "select2 select2-offscreen" })
+                @Html.ValidationMessageFor(u => u.SelectedAwardingOrganisationId)
+            </section>
+        </div>
+        <div class="row">
+            <section class="col col-2">
+                @Html.LabelFor(x => x.CurrentSequenceNumber, new { @class = "label" })
+                <label class='input'>
+                    @Html.TextBoxFor(x => x.CurrentSequenceNumber, new Dictionary<string, object> { { "maxlength", "10" }, { "disabled", "disabled" } })
+                </label>
+            </section>
+        </div>
+        <div class="row">
+            <section class="col col-2">
+                @Html.LabelFor(x => x.ResetSequenceNumber, new { @class = "label Compulsorylabel" })
+                <label class='input'>
+                    @Html.TextBoxFor(x => x.ResetSequenceNumber, new Dictionary<string, object> { { "maxlength", "10" } })                    
+                    <b class="tooltip tooltip-bottom-right">@Resource.EnterSequenceNumber</b>
+                    @Html.ValidationMessageFor(u => u.ResetSequenceNumber)
+                </label>
+            </section>
+            <section class="col col-10">
+                @Html.Label(" ")
+                <div>
+                    <a id="btnSaveApplicationURL" class="btn btn-icon A2CIconButton A2CIconButtonTopMargin" rel="tooltip" onclick="javascript: SaveSequenceNumber();" href="javascript:void(0);" data-placement="bottom" data-original-title="@Resource.Save" title="@Resource.Save">
+                        <i class="fa fa-floppy-o"></i>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </fieldset>
+}
+</div>
+@section styleBlock {
+    @Styles.Render("~/Content/SmartAdmin/KendoUI/kendoMaster")
+
+    <style>
+    </style>
+}
+
+@section scriptsTag {
+    @Scripts.Render("~/Scripts/Kendo", "~/Scripts/App/EditSequence")
+}
+
+@section scriptsBlock{
+    <script type="text/javascript">
+        var submitA2CRequestSelectAwardingOrganisation = '@Resource.Select';
+        var configurationSaveSuccessMessage = '@Resource.ConfigurationSaveSuccess';
+    </script>
+}
+
+ 

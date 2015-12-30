@@ -1,0 +1,218 @@
+﻿@using A2C.Resources
+@model A2C.Model.ProductCatalogueAwardModel
+@Scripts.Render("~/Scripts/js/common")
+@{
+    <div class="panel-group smart-accordion-default" id="accordionAwards">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a aria-expanded="true" href="#collapseAwards" data-toggle="collapse" data-parent="#accordion">
+                        <i class="fa fa-lg fa-angle-down pull-right"></i> <i class="fa fa-lg fa-angle-up pull-right"></i>
+                        <label id="lblSelectedAward">@(@Resource.Select + " " + @Resource.Award)</label>
+                    </a>
+                </h4>
+            </div>
+            <div class="panel-collapse collapse in" id="collapseAwards" aria-expanded="true">
+                <div class="panel-body no-padding">
+                    <div class="row">
+                        <section class="col col-3">
+                            @Html.LabelFor(c => c.SelectedSeries, new { @class = "label" })
+                            @Html.DropDownListFor(x => x.SelectedSeries, new SelectList(Model.SeriesList, "Value", "Text"), new { id = "seriesLableAward", @class = "select2 select2-offscreen" })
+                        </section>
+                        <section class="col col-3">
+                            @Html.LabelFor(c => c.SelectedAwardType, new { @class = "label" })
+                            @Html.DropDownListFor(x => x.SelectedAwardType, new SelectList(Model.AwardTypeList, "Value", "Text"), new { id = "seriesLableAwardType", @class = "select2 select2-offscreen" })
+                        </section>
+                        <section class="col col-6">
+                            @Html.Label(" ")
+                            <div>
+                                <a id="BtnAwardSubmit" class="btn btn-icon A2CIconButton A2CIconButtonTopMargin" rel="tooltip" onclick="GetAwards();" href="javascript:void(0);" data-placement="bottom" data-original-title="@Resource.Search" title="@Resource.Search">
+                                    <i class="fa fa-search"></i>
+                                </a>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="row">
+                        <section class="col col-12" style="width:100%">
+                            <div id="awardGrid"></div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="pcDetailLevel2TabViewAward" hidden="hidden">
+        @Html.Label(" ")
+        <ul id="awardDetailLevel2ChildTab" class="nav nav-tabs bordered">
+            <li class="">
+                <a id="qualificationDetailsTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dQualificationDetailsLevel2TabAward">
+                    <span class="hidden-mobile hidden-tablet">@Resource.QualificationDetails</span>
+                </a>
+            </li>
+            <li class="">
+                <a id="availabilityTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dAvailabilityLevel2TabAward">
+                    <span class="hidden-mobile hidden-tablet">@Resource.Availability </span>
+                </a>
+            </li>
+        </ul>
+        <div id="awardDetailLevel2ChildTabContent" class="tab-content padding-10">
+            <div id="dQualificationDetailsLevel2TabAward" class="tab-pane fade active in">
+                <div id="pcDetailAwardTabView" hidden="hidden">
+                    <ul id="awardChildTab" class="nav nav-tabs bordered">
+                        <li class="">
+                            <a id="generalTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dGeneralTabAward">
+                                <span class="hidden-mobile hidden-tablet">@Resource.General</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a id="preferencesTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dPreferencesTabAward">
+                                <span class="hidden-mobile hidden-tablet">@Resource.Preferences</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a id="learnerIdentifiersTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dLearnerIdentifiersTabAward">
+                                <span class="hidden-mobile hidden-tablet">@Resource.LearnerIdentifiers</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a id="gradeRangeTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dGradeRangeTabAward">
+                                <span class="hidden-mobile hidden-tablet">@Resource.GradeRange</span>
+                            </a>
+                        </li>
+                        @*<li class="">
+                                <a id="ageRangeTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dAgeRangeTabAward">
+                                    <span class="hidden-mobile hidden-tablet">@Resource.AgeRange</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a id="frameworkTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dFrameworkTabAward">
+                                    <span class="hidden-mobile hidden-tablet">@Resource.Framework</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a id="objectiveStatmentTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dObjectiveStatmentTabAward">
+                                    <span class="hidden-mobile hidden-tablet">@Resource.ObjectiveStatement</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a id="sectorSubjectAreaTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dSectorSubjectAreaTabAward">
+                                    <span class="hidden-mobile hidden-tablet">@Resource.SectorSubjectArea</span>
+                                </a>
+                            </li>*@
+                        <li class="">
+                            <a id="relationshipHierarchyTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dRelationshipHierarchyTabAward">
+                                <span class="hidden-mobile hidden-tablet">@Resource.RelationshipHierarchy</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a id="relationshipsTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dRelationshipsTabAward">
+                                <span class="hidden-mobile hidden-tablet">@Resource.Relationships</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div id="childTabContent" class="tab-content padding-10">
+                        <div id="dGeneralTabAward" class="tab-pane fade">
+
+                        </div>
+                        <div id="dPreferencesTabAward" class="tab-pane fade">
+                            <div id="qePreferenceGridAward"></div>
+                        </div>
+                        <div id="dLearnerIdentifiersTabAward" class="tab-pane fade">
+                            <div id="qeLearnerIdentifierGridAward"></div>
+                        </div>
+                        <div id="dGradeRangeTabAward" class="tab-pane fade">
+                            <div id="qeGradeRangeGridAward"></div>
+                        </div>
+                        @*<div id="dAgeRangeTabAward" class="tab-pane fade"></div>
+                            <div id="dFrameworkTabAward" class="tab-pane fade"></div>
+                            <div id="dObjectiveStatmentTabAward" class="tab-pane fade"></div>
+                            <div id="dSectorSubjectAreaTabAward" class="tab-pane fade"></div>*@
+                        <div id="dRelationshipHierarchyTabAward" class="tab-pane fade">
+                            <div id="qeRelationshipHierarchyTreeAward"></div>
+                        </div>
+
+                        <div id="dRelationshipsTabAward" class="tab-pane fade active in">
+                            <div id="qeRelationshipGridAward"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="dAvailabilityLevel2TabAward" class="tab-pane fade">
+                <div id="qeAvailibilityGridAward"></div>
+                @Html.Label(" ")
+                <div id="pcAvailabilityDetailAwardTabView" hidden="hidden">
+                    <ul id="awardAvailabilityChildTab" class="nav nav-tabs bordered">
+                        <li class="">
+                            <a id="keyEventAvailabilityTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dKeyEventTabAward">
+                                <span class="hidden-mobile hidden-tablet">@Resource.KeyEventAvailability</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a id="keyEventFeeAvailabilityTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dKeyEventFeeTabAward">
+                                <span class="hidden-mobile hidden-tablet">@Resource.KeyEventFees</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a id="gradeBoundaryTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dGradeBoundaryTabAward">
+                                <span class="hidden-mobile hidden-tablet">@Resource.GradeBoundary</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a id="maximumMarksTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dMaximumMarksTabAward">
+                                <span class="hidden-mobile hidden-tablet">@Resource.MaximumMarks</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a id="assessmentMaterialTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dAssessmentMaterialTabAward">
+                                <span class="hidden-mobile hidden-tablet">@Resource.AssessmentMaterial</span>
+                            </a>
+                        </li>
+                        @*<li class="" hidden="hidden">
+                    <a id="availabilityTab" aria-expanded="true" rel="True" data-toggle="tab" href="#dAvailabilityTabAward">
+                        <span class="hidden-mobile hidden-tablet">@Resource.Availability</span>
+                    </a>
+                </li>*@
+                    </ul>
+                    <div id="childTabContentAvailability" class="tab-content padding-10">
+                        <div id="dKeyEventTabAward" class="tab-pane fade">
+                            <div id="qeKeyEventTabAward"></div>
+                        </div>
+                        <div id="dKeyEventFeeTabAward" class="tab-pane fade">
+                            <div id="qeKeyEventFeeTabAward"></div>
+                        </div>
+                        <div id="dGradeBoundaryTabAward" class="tab-pane fade">
+                            <div id="qeGradeBoundaryGridAward"></div>
+                        </div>
+                        <div id="dMaximumMarksTabAward" class="tab-pane fade">
+                            <div id="qeMaximumMarksTabAward"></div>
+                        </div>
+                        <div id="dAssessmentMaterialTabAward" class="tab-pane fade">
+                            <div id="qeAssessmentMaterialGridAward"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script>
+    var AccreditationEndReviewDateRT = '@Resource.AccreditationEndReviewDate', AccreditationStartDateRT = '@Resource.AccreditationStartDate',
+               AOAccredVersionNumberRT = '@Resource.AOAccredVersionNumber', AssessmentLanguageTypeRT = '@Resource.AssessmentLanguageType',
+               AwardLevelTypeRT = '@Resource.AwardLevelType', AwardTypeRT = '@Resource.AwardType',
+               IsCertificateOfUnitCreditIssuedRT = '@Resource.IsCertificateOfUnitCreditIssued', CertificationEndDateRT = '@Resource.CertificationEndDate',
+               CertificationStartDateRT = '@Resource.CertificationStartDate', IsContributingUnitsListedRT = '@Resource.IsContributingUnitsListed',
+               CourseLengthTypeRT = '@Resource.CourseLengthType', IsEndorsedTitleRequiredRT = '@Resource.IsEndorsedTitleRequired',
+               GuidedLearningHoursMaxRT = '@Resource.GuidedLearningHoursMax', GuidedLearningHoursMinRT = '@Resource.GuidedLearningHoursMin',
+               OperationalEndDateRT = '@Resource.OperationalEndDate', OperationalStartDateRT = '@Resource.OperationalStartDate',
+               QEDeliveryModelTypeRT = '@Resource.QEDeliveryModelType', IsQEEvidenceRequirementProvidedRT = '@Resource.IsQEEvidenceRequirementProvided',
+               QEEvidenceRequirementTypeRT = '@Resource.QEEvidenceRequirementType', RegistrationExpiryMonthRT = '@Resource.RegistrationExpiryMonth',
+               ResitRuleTextRT = '@Resource.ResitRuleText', IsStatementOfCreditIssuedRT = '@Resource.IsStatementOfCreditIssued',
+               StudyGuideAvailableTypeRT = '@Resource.StudyGuideAvailableType', StudyGuideDetailsRT = '@Resource.StudyGuideDetails',
+               StudyGuideReferenceRT = '@Resource.StudyGuideReference', StudyGuideReferenceTypeRT = '@Resource.StudyGuideReferenceType',
+               QEClassificationRT = '@Resource.QEClassification', PartyIdAccreditorRT = '@Resource.PartyIdAccreditor',
+               PartyIdSectorLeadRT = '@Resource.PartyIdSectorLead', PartyRoleTypeAssessorRT = '@Resource.PartyRoleTypeAssessor'
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        PCDetailTabClickEvent("Award", e);
+    });
+</script>

@@ -1,0 +1,110 @@
+﻿@using A2C.Resources
+@model A2C.Model.SchoolUser
+<div id="content">
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { name = "form0", id = "form0", @class = "smart-form" }))
+    {
+        <fieldset>
+            <div class="row">
+                <section class="col col-6">
+                    @Html.LabelFor(u => u.SelectedRoles, new { @class = "label Compulsorylabel" })
+                    @Html.ListBoxFor(u => u.SelectedRoles, Model.RoleList, new { @class = "select2 select2-offscreen", multiple = "multiple" })
+                    @Html.ValidationMessageFor(u => u.SelectedRoles)
+                </section>
+                <section class="col col-6">
+                    @Html.LabelFor(u => u.UserName, new { @class = "label Compulsorylabel" })
+                    <label class="input">
+                        @Html.TextBoxFor(u => u.UserName, new { maxlength = "50" })
+                        <b class="tooltip tooltip-bottom-right">@Resource.UserNameTooltip</b>
+                        @Html.ValidationMessageFor(u => u.UserName)
+                    </label>
+                </section>
+            </div>
+            @if (ViewBag.ActionFlag || !ViewBag.isSMTPConfigured)
+            { 
+            <div class="row">
+                <section class="col col-6">
+                    @Html.LabelFor(u => u.Password, new { @class = "label Compulsorylabel" })
+                    <label class="input">
+                        @Html.PasswordFor(u => u.Password, new { value = Model.Password, maxlength = "99" })
+                        <b class="tooltip tooltip-bottom-right">@Resource.SchoolUserPasswordTooltip</b>
+                        @Html.ValidationMessageFor(u => u.Password)
+                    </label>
+                </section>
+                <section class="col col-6">
+                    @Html.LabelFor(u => u.ConfirmPassword, new { @class = "label Compulsorylabel" })
+                    <label class="input">
+                        @Html.PasswordFor(u => u.ConfirmPassword, new { value = Model.ConfirmPassword, maxlength = "99" })
+                        <b class="tooltip tooltip-bottom-right">@Resource.SchoolUserConfirmPasswordTooltip</b>
+                        @Html.ValidationMessageFor(u => u.ConfirmPassword)
+                    </label>
+                </section>
+            </div>
+            }
+            <div class="row">
+                <section class="col col-6">
+                    @Html.LabelFor(u => u.Forename, new { @class = "label Compulsorylabel" })
+                    <label class="input">
+                        @Html.TextBoxFor(u => u.Forename, new { maxlength = "255" })
+                        <b class="tooltip tooltip-bottom-right">@Resource.UserFirstnameTooltip</b>
+                        @Html.ValidationMessageFor(u => u.Forename)
+                    </label>
+                </section>
+                <section class="col col-6">
+                    @Html.LabelFor(u => u.Surname, new { @class = "label Compulsorylabel" })
+                    <label class="input">
+                        @Html.TextBoxFor(u => u.Surname, new { maxlength = "255" })
+                        <b class="tooltip tooltip-bottom-right">@Resource.UserLastNameTooltip</b>
+                        @Html.ValidationMessageFor(u => u.Surname)
+                    </label>
+                </section>
+            </div>
+            <div class="row">
+                <section class="col col-6">
+                    @Html.LabelFor(u => u.Email, new { @class = "label Compulsorylabel" })
+                    <label class="input">
+                        @Html.TextBoxFor(u => u.Email, new { maxlength = "256" })
+                        <b class="tooltip tooltip-bottom-right">@Resource.UserEmailTooltip</b>
+                        @Html.ValidationMessageFor(u => u.Email)
+                    </label>
+                </section>
+            </div>
+
+        </fieldset>
+    }
+</div>
+@section styleBlock{
+    <style>
+        .select2-choices {
+            max-height: 60px;
+            overflow-y: auto;
+        }
+    </style>
+}
+@section scriptsTag {
+    @Scripts.Render("~/Scripts/App/User")
+}
+
+@section scriptsBlock{
+    <script type="text/javascript">
+        var editUserId = '';
+        var userProfile;
+        var isSMTPConfigured = '@ViewBag.IsSMTPConfigured';
+        $(document).ready(function () {
+            userProfile= '@ViewBag.UserProfile';
+            var errorMsg = '@Html.Raw(ViewBag.ErrorMsg)';
+            editUserId = '@Html.Raw(ViewBag.UserId)';
+            $('#SelectedRoles').select2('focus');
+            $('#SelectedRoles').on('focus', function () { $('#SelectedRoles').select2('focus'); });
+            EditShowError(errorMsg);
+        });
+    </script>
+}
+@section Buttons{
+    <a id="BtnSave" class="btn btn-icon" rel="tooltip" onclick="javascript: @ViewBag.JavaScriptFunctioName;" href="javascript:void(0);" data-placement="bottom" data-original-title="Save" title="@Resource.Save">
+        <i class="icon-prepend fa fa-floppy-o"></i>
+    </a>
+    <a id="BtnCancel" class="btn btn-icon" rel="tooltip" onclick="javascript: SchoolCancel();" href="javascript:void(0);" data-placement="bottom" data-original-title="Cancel" title="@Resource.Cancel">
+        <i class="icon-prepend fa fa-times"></i>
+    </a>
+}
+

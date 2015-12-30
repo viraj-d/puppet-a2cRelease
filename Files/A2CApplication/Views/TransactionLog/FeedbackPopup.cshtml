@@ -1,0 +1,43 @@
+﻿@model A2C.Model.PopupModel
+@using A2C.Resources
+
+@{
+    ViewBag.Title = "Details";
+    Layout = null;
+}
+
+<div id="content" style="padding-top:10px !important">
+    <fieldset>
+        <section>
+            <div id="feedbackDetailsGrid" style="width:100%; height:300px;"></div>
+            <div id="feedbackDetailsInRawXML" >
+                    @Html.TextArea("FeedbackInfo", System.Xml.Linq.XDocument.Parse(@Model.FeedbackContent.XmlFeedback).ToString(), new { @class = "textarea textarea-fix", @readonly = "readonly"})
+            </div>
+        </section>
+    </fieldset>
+</div>
+
+<script>
+    var IsMessageLevelFeedbackMessage = '@Model.FeedbackContent.IsMessageLevelFeedbackMessage';
+    var CodeRT = '@Resource.Code';
+    var SeverityRT = '@Resource.Severity';
+    var ErrorLogDescriptionRT = '@Resource.ErrorLogDescription';
+    var FeedbackPopupTitleRT = '@Resource.FeedbackPopupTitle';
+
+    $(document).ready(function () {
+        if ('@Model.FeedbackContent.IsMessageLevelFeedbackMessage' == "True") {
+            $('#feedbackDetailsInRawXML').hide();
+            $('#feedbackDetailsGrid').show();
+            GetFeedback($('#FeedbackInfo').text());
+        }
+        else {
+            $('#feedbackDetailsGrid').hide();
+            var w = $('.modal-body').width();
+            var h = $('.modal-body').height();
+            $('#FeedbackInfo').width((w - 40));
+            $('#FeedbackInfo').height(300);
+            $('#feedbackDetailsInRawXML').show();
+        }
+    });
+
+</script>

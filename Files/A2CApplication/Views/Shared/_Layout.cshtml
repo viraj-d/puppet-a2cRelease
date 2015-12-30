@@ -1,0 +1,54 @@
+﻿@using A2C.Resources
+<!DOCTYPE html>
+@{
+    var BaseControllerContext = (A2C.Component.BaseController)ViewContext.Controller;
+    var currentUserId = (A2C.Session.SessionCache.UserId != null) ? A2C.Session.SessionCache.UserId.ToString() : string.Empty;
+    var isSuperUser = (A2C.Session.SessionCache.RoleId == (int)A2C.Global.A2CRole.SuperUser) ? true : false;
+}
+<html>
+<head>
+    <link rel="icon" href="@Url.Content("~/Content/img/favicon.ico")" />
+    <meta charset="utf-8" />
+    <title>A2C Core Application</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="A2C Application">
+    <meta name="author" content="Advanced Learning">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="msapplication-config" content="none" />
+    <meta name="robots" content="noindex, nofollow, noarchive" />
+    @Styles.Render("~/Content/SmartAdmin/css/master")
+    @RenderSection("styleTag", required: false)
+    @RenderSection("styleBlock", required: false)
+</head>
+<body id="mainBody" class="smart-style-3 fixed-header fixed-ribbon fixed-navigation minified">
+    <header id="header"></header>
+    <aside id="left-panel"></aside>
+
+    <div id="main" role="main">
+        <div id="ribbon">
+            <div class="pull-left scrTitle">
+                @ViewBag.Title
+            </div>
+            <div class="pull-right btn-group">
+                @RenderSection("Buttons", required: false)
+            </div>
+            <div class="pull-right btn-group">
+                @RenderSection("ButtonsA", required: false)
+            </div>
+        </div>
+        @RenderBody()
+    </div>
+    <div id="commonScripts">
+        @Scripts.Render("~/Scripts/JQuery/js/master", "~/Scripts/js/common")
+        <script type="text/javascript">
+    var rowHeightConst = 25, javaScriptDateFormat = 'dd/MM/yyyy', javaScriptDateTimeFormat = 'dd/MM/yyyy HH:mm:ss', schoolLogoUrl = '/Content/img/logo.png',
+        maximizelebal = '@Resource.FullScreen', minimizelebal = '@Resource.ExitFullScreen', restoreLabel = '@Resource.Restore',
+        applicationTitle = '@Resource.ApplicationTitle', closeTitle = '@Resource.Close', firstLevelMenu = '@BaseControllerContext.FirstLevelNavigation',
+        currentUserId = '@currentUserId', sessionTimedOutTitle = '@Resource.SessionTimedOutTitle', sessionTimeOutMessage = '@Resource.SessionTimeOutMessage'
+        , unselectSchool = '@Resource.UnselectSchool', isSuperUser = '@isSuperUser';
+        </script>
+    </div>
+    @RenderSection("scriptsTag", required: false)
+    @RenderSection("scriptsBlock", required: false)
+</body>
+</html>

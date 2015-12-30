@@ -1,0 +1,43 @@
+﻿@using A2C.Resources
+@{
+    ViewBag.Title = Resource.Transactions;
+}
+
+<h2>GetQEAvailibility</h2>
+
+<div id="content">
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { name = "form0", id = "form0", 
+        novalidate = "novalidate", @class = "smart-form" }))
+    {
+        <fieldset>          
+            <div class="row">
+                <section class="col col-12">
+                    <div id="grid"></div>
+                </section>
+            </div>
+        </fieldset>
+    }
+</div>
+
+@section styleBlock {
+    @Styles.Render("~/Content/SmartAdmin/KendoUI/kendoMaster")
+}
+
+@section scriptsTag {
+    @Scripts.Render("~/Scripts/Kendo", "~/Scripts/App/QEAvailability.js")
+    <script type="text/javascript">
+        var QEAvalibilityQeaEffectiveStartDateTime = '@Resource.QEAvalibilityQeaEffectiveStartDateTime';
+        var QEAvalibilityQeaEffectiveEndDateTime = '@Resource.QEAvalibilityQeaEffectiveEndDateTime';
+        var QEAvailibilitySeriesLabel = '@Resource.QEAvailibilitySeriesLabel';
+        var QEAvalibilitySlaOnDemandResultClndrDays = '@Resource.QEAvalibilitySlaOnDemandResultClndrDays';
+        var QEAvailibilityOnDemandEntryCalendarDays = '@Resource.QEAvailibilityOnDemandEntryCalendarDays';
+
+        var QEAvalibilityQeaEffectiveStartDateTimeTitle = '@Resource.QEAvalibilityQeaEffectiveStartDateTimeTitle';
+        var QEAvalibilityQeaEffectiveEndDateTimeTitle = '@Resource.QEAvalibilityQeaEffectiveEndDateTimeTitle';
+        var QEAvailibilitySeriesLabelTitle = '@Resource.QEAvailibilitySeriesLabelTitle';
+        var QEAvalibilitySlaOnDemandResultClndrDaysTitle = '@Resource.QEAvalibilitySlaOnDemandResultClndrDaysTitle';
+        var QEAvailibilityOnDemandEntryCalendarDaysTitle = '@Resource.QEAvailibilityOnDemandEntryCalendarDaysTitle';
+    </script>
+}
+
+

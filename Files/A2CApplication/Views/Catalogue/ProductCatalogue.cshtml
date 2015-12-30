@@ -1,0 +1,2551 @@
+﻿@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Product Catalogue</h2>
+
+<div id="content">
+
+    <form class="smart-form">
+       
+            <section class="col col-5">
+                <div class="col-sm-6">
+                    @Html.Label("Awarding Organisation / Board", new { @class = "Compulsorylabel" })
+                  @*<label class="Compulsorylabel">
+                        Awarding Organisation / Board
+                    </label>*@
+                </div>
+                <div class="col-sm-6">
+                    <label class='select'>                         
+                        @*@Html.DropDownList("AwardOrganisationBoard", "Select Award Organisation / Board")*@
+                        @*<select class="input-sm">
+                            <option>NFV</option>
+                            <option>AQA</option>
+                        </select>*@
+                    </label>
+                </div>
+            </section>
+            <section class="col col-5">
+                <div class="col-sm-6">
+                    @Html.Label("Center", new { @class = "Compulsorylabel" })
+                    @*<label class="Compulsorylabel">
+                        Center
+                    </label>*@
+                </div>
+                <div class="col-sm-6">
+                    <label class='select'>
+                        @*<select class="input-sm">
+            <option>1111</option>
+            <option>1222</option>
+        </select>*@
+                        @*@Html.DropDownList("Centers", "Select center")*@
+                    </label>
+                </div>
+            </section>
+            <section class="col col-2">
+                <button class="btn btn-primary btn-sm">Search</button>
+            </section>
+        
+    </form>
+
+    <section class="col-sm-12" id="ProductCatalogTabs">
+        <ul class="nav nav-tabs bordered" id="myTab1">
+            <li class="active">
+                <a data-toggle="tab" href="#s1">Schemes</a>
+            </li>
+            <li>
+                <a data-toggle="tab" href="#s2"> Award</a>
+            </li>
+            <li>
+                <a data-toggle="tab" href="#s3"> Learning Unit</a>
+            </li>
+            <li>
+                <a data-toggle="tab" href="#s4">Assessables</a>
+            </li>
+            <li>
+                <a data-toggle="tab" href="#s5">Pathway</a>
+            </li>
+        </ul>
+        <div class="tab-content padding-10" id="myTabContent1">
+            <div id="s1" class="tab-pane fade  active in">
+                <div class="row smart-form">
+                    <section class="col col-sm-4">
+                        @Html.Label("Qualification type")                       
+
+                        <label class="select">
+                            <select class="input-sm">
+                                <option>Non Functional version</option>
+                                <option>Vocationally Related Qualification</option>
+                            </select>
+                        </label>
+                    </section>
+                    <section class="col col-sm-4">
+                        @Html.Label("Schemes")                            
+                        <label class="select">
+                            <select class="select2" multiple>
+                                <option>Non Functional version</option>
+                                <option>Vocationally Related Qualification</option>
+                            </select>
+                        </label>
+                    </section>
+                    <section class="col col-sm-3">
+                        @Html.Label("Select Additional Columns") 
+                        <label class="select">
+                            <select class="select2" multiple>
+                                <option>Non Functional version</option>
+                                <option>Vocationally Related Qualification</option>
+                            </select>
+                        </label>
+                    </section>
+                    <section class="col col-sm-1 pull-right">
+                        <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <button class="btn btn-primary btn-sm">Submit</button>
+                    </section>
+                </div>
+                <div class="row">
+                    <section class="col col-sm-12">
+                        <div id="gridScheme"></div>                        
+                    </section>
+                </div>
+                <div class="row marginTop20" id="detailTable">
+                    <section class="col col-sm-12">
+                        <ul class="nav nav-tabs bordered" id="myTab2">
+                            <li class="active">
+                                <a data-toggle="tab" href="#sub1">Relationships</a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" href="#sub2">Preferences</a>
+                            </li>                           
+                            <li>
+                                <a data-toggle="tab" href="#sub3">Availability</a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" href="#sub4">Event Fees</a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" href="#sub5">QE Grade</a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" href="#sub6">Grade Boundary</a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" href="#sub7">Sector Subject Area</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content padding-10 " id="myTabContent2">
+                            <div id="sub1" class="tab-pane fade  active in">
+                                <h3>Relationships</h3>
+                                <div class="row">                                    
+                                    <div class="col col-sm-12">
+                                        <div id="subGridDemo"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="sub2" class="tab-pane fade">
+                                <h3>Preferences</h3>
+                                <div class="row smart-form">
+                                    <div class="col col-sm-3">
+
+                                        @Html.Label("Entry Named Order", new { @class = "Compulsorylabel" })
+                                        <label class="input">
+                                            @Html.TextBox("txtEntryNamedOrder", "Entry Named Order", new { @class = "input-sm" })
+                                        </label>
+                                    </div>
+                                    <div class="col col-sm-3">
+
+                                        @Html.Label("Cancel Entry Named Order", new { @class = "Compulsorylabel" })
+                                        <label class="select">
+                                            @*@Html.DropDownList("AwardOrganisationBoard", "Select Award Organisation / Board")*@
+                                        </label>
+                                    </div>
+                                    <div class="col col-sm-3">
+
+                                        @Html.Label("Candidate Number for Booking", new { @class = "Compulsorylabel" })
+                                        <label class="input">
+                                            @Html.TextBox("txtCandidateNumber", "Candidate Number", new { @class = "input-sm" })
+                                        </label>
+                                    </div>
+                                    <div class="col col-sm-3">
+
+                                        @Html.Label("Late Award cashin allowed", new { @class = "Compulsorylabel" })
+                                       
+                                            @Html.CheckBox("chkLateAward")
+                                       
+                                    </div>
+                                </div>
+                            </div>                            
+                            <div id="sub3" class="tab-pane fade">
+                                <h3>Availability</h3>
+                                <div class="row">
+                                    <div class="col col-sm-12">
+                                        <div id="gridSchemeAvailability">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="sub4" class="tab-pane fade">
+                                <h3>Late Award Cash In Submission Period</h3>
+                                <div class="row">
+                                    <div class="col col-sm-12 margin-bottom-15">
+                                        <div id="gridSchemeLateCash"></div>
+                                    </div>
+                                    </div>
+                                <h3>Named Entry Submission Period</h3>
+                                <div class="row">
+                                    <div class="col col-sm-12">
+                                        <div id="gridSchemeNamedEntrySubmissionPeriod">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="sub5" class="tab-pane fade">
+                                <h3>QE Grade</h3>
+                                <div class="row">
+                                    <div id="grid"></div>
+
+                                    <script type="text/x-kendo-template" id="template">
+                                        <div class="tabstrip">
+                                            <ul>
+                                                <li class="k-state-active">
+                                                    Performance Points
+                                                </li>
+                                               
+                                            </ul>
+                                            <div>
+                                                <div class="orders"></div>
+                                            </div>
+                                           
+                                        </div>
+
+                                    </script>
+                                </div>
+                            </div>
+                            <div id="sub6" class="tab-pane fade">
+                                <h3>Grade Boundary</h3>
+                                <div class="row smart-form margin-bottom-15">
+                                    <div class="col-sm-4">
+                                        <div class="col-sm-6">
+                                            <label>Outcome Value Type</label>
+                                        </div>
+                                        <div class="col col-sm-6">
+                                            <label class="input"><input type="text" value="Grade" id="txtOutcomeValueType" /></label>
+                                        </div>
+                                    </div>
+                                    <div class="col col-sm-4" >
+                                        <div class="col-sm-6">
+                                            <label>Outcome Value Type</label>
+                                        </div>
+                                        <div class="col col-sm-6">
+                                            <label class="input"><input type="text" value="Uniform Marks Scale" id="txtOutcomeValueType2" /></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="col-sm-6">
+                                            <label>Maximum Mark</label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="input"><input type="text" value="200" id="txtMaximumMark" /></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-sm-12">
+                                        <div id="gridSchemeGradeBoundry">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="sub7" class="tab-pane fade">
+                                <h3>Sector Subject Area</h3>
+                                <div class="row">
+                                    <div class="col col-sm-12">
+                                        <div id="gridSchemeSectorSubjectArea">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                       </div>
+                    </section>
+                </div>
+            </div>
+            <div id="s2" class="tab-pane fade">
+                <div class="row smart-form">
+                    <section class="col col-sm-4">
+                        @Html.Label("Awards")   
+
+                        <label class="select">
+                            <select class="select2" multiple>
+                                <option>Non Functional version</option>
+                                <option>Vocationally Related Qualification</option>
+                            </select>
+                        </label>
+                    </section>
+                    <section class="col col-sm-3">
+                        @Html.Label("Select Additional Columns")
+                        <label class="select">
+                            <select class="select2" multiple>
+                                <option>Non Functional version</option>
+                                <option>Vocationally Related Qualification</option>
+                            </select>
+                        </label>
+                    </section>
+                    <section class="col col-sm-1">
+                        <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <button class="btn btn-primary btn-sm">Submit</button>
+                    </section>
+                </div>
+                <div class="row margin-bottom-15">
+                    <section class="col col-sm-12" >
+                        <div id="gridAward"></div>                        
+                    </section>
+                </div>
+                <div class="row" id="detailTable1">
+                    <section class="col col-sm-12">
+                        <ul class="nav nav-tabs bordered" id="myTab2">
+                            <li class="active">
+                                <a data-toggle="tab" href="#Awardsub1">Relationships</a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" href="#Awardsub2">Preferences</a>
+                            </li>
+
+                            <li>
+                                <a data-toggle="tab" href="#Awardsub3">Learner Identifiers</a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" href="#Awardsub4">Availability</a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" href="#Awardsub5">Objective Statement</a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" href="#Awardsub6">Age Range</a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" href="#Awardsub7">Framework</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content padding-10 " id="myTabContent3">
+                            <div id="Awardsub1" class="tab-pane fade  active in">
+                                <div class="row">
+                                    <div class="col col-sm-12">
+                                        <div class="tree smart-form">
+                                            <ul role="tree">
+                                                <li class="parent_li" role="treeitem">
+                                                    <span title="Collapse this branch"><i class="fa fa-lg fa-folder-open"></i> Scheme 1605</span>
+                                                    <ul role="group">
+                                                        <li class="parent_li" role="treeitem">
+                                                            <span title="Collapse this branch"><i class="fa fa-lg fa-minus-circle"></i> Award 1611</span>
+                                                            <ul role="group">
+                                                                <li class="parent_li" role="treeitem">
+                                                                    <span title="Collapse this branch">
+                                                                        <i class="fa fa-lg fa-minus-circle"></i>
+                                                                        Learning Unit VQ07C
+
+                                                                    </span>
+                                                                    <ul role="group">
+                                                                        <li>
+                                                                            <span>                                                                             
+                                                                                    <i></i>   Assessable VQ07C
+                                                                                
+                                                                            </span>
+                                                                        </li>
+                                                                    </ul>
+                                                                </li>
+                                                                <li class="parent_li" role="treeitem">
+                                                                    <span title="Collapse this branch">
+                                                                        <i class="fa fa-lg fa-minus-circle"></i> Learning Unit VQ07W                                                                       
+                                                                    </span>
+                                                                    <ul role="group">
+                                                                        <li>
+                                                                            <span>Assessable VQ07C</span>
+                                                                        </li>
+                                                                    </ul>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="parent_li" role="treeitem">
+                                                            <span title="Collapse this branch"><i class="fa fa-lg fa-minus-circle"></i> Pathway 1611/1A</span>
+                                                            <ul role="group">
+                                                                <li class="parent_li" role="treeitem" >
+                                                                    <span title="Collapse this branch"><i class="fa fa-lg fa-minus-circle"></i> Learning Unit VQ08</span>
+                                                                    <ul role="group">
+                                                                        <li>
+                                                                            <span><i class="icon-leaf"></i> Assessable VQ08</span>
+                                                                        </li>
+                                                                    </ul>
+                                                                </li>
+                                                                <li class="parent_li" role="treeitem">
+                                                                    <span title="Collapse this branch"><i class="fa fa-lg fa-minus-circle"></i> Learning Unit VQ09</span>
+                                                                    <ul role="group">
+                                                                        <li style="">
+                                                                            <span><i class="icon-leaf"></i> Assessable VQ09</span>
+                                                                        </li>
+                                                                    </ul>
+                                                                </li>
+                                                                <li class="parent_li" role="treeitem" >
+                                                                    <span title="Collapse this branch"><i class="fa fa-lg fa-minus-circle"></i> Learning Unit VQ10</span>
+                                                                    <ul role="group">
+                                                                        <li style="">
+                                                                            <span><i class="icon-leaf"></i> Assessable VQ10</span>
+                                                                        </li>
+                                                                    </ul>
+                                                                </li>
+                                                                <li style="display: list-item;">
+                                                                    <span><i class="icon-leaf"></i>Learning Unit VQ11</span>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="parent_li" role="treeitem">
+                                                    <span title="Collapse this branch"><i class="fa fa-lg fa-folder-open"></i> Parent2</span>
+                                                    <ul role="group">
+                                                        <li>
+                                                            <span><i class="icon-leaf"></i> Child</span>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="Awardsub2" class="tab-pane fade">
+                                <h3>Preferences</h3>
+                                <div class="row">
+                                    <div class="col col-sm-12">
+                                        <table class="grid2">
+                                            <colgroup>
+                                                <col style="width:110px" />
+                                                <col />
+                                                <col style="width:110px" />
+                                                <col style="width:120px" />
+                                                <col style="width:130px" />
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th data-field="QE">QE Code</th>
+                                                    <th data-field="title">Title</th>
+                                                    <th data-field="type">Type</th>
+                                                    <th data-field="Relationship">Relationship Type</th>
+                                                    <th data-field="rule">Rule Type</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="Awardsub3" class="tab-pane fade">
+                                <h3>Learner Identifiers</h3>
+                                <div class="row">
+                                    <div class="col col-sm-12">
+                                        <table class="grid2">
+                                            <colgroup>
+                                                <col style="width:110px" />
+                                                <col />
+                                                <col style="width:110px" />
+                                                <col style="width:120px" />
+                                                <col style="width:130px" />
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th data-field="QE">QE Code</th>
+                                                    <th data-field="title">Title</th>
+                                                    <th data-field="type">Type</th>
+                                                    <th data-field="Relationship">Relationship Type</th>
+                                                    <th data-field="rule">Rule Type</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="Awardsub4" class="tab-pane fade">
+                                <h3>Availability</h3>
+                                <div class="row">
+                                    <div class="col col-sm-12">
+                                        <table class="grid2">
+                                            <colgroup>
+                                                <col style="width:110px" />
+                                                <col />
+                                                <col style="width:110px" />
+                                                <col style="width:120px" />
+                                                <col style="width:130px" />
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th data-field="QE">QE Code</th>
+                                                    <th data-field="title">Title</th>
+                                                    <th data-field="type">Type</th>
+                                                    <th data-field="Relationship">Relationship Type</th>
+                                                    <th data-field="rule">Rule Type</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="Awardsub5" class="tab-pane fade">
+                                <h3>Objective Statement</h3>
+                                <div class="row">
+                                    <div class="col col-sm-12">
+                                        <table class="grid2">
+                                            <colgroup>
+                                                <col style="width:110px" />
+                                                <col />
+                                                <col style="width:110px" />
+                                                <col style="width:120px" />
+                                                <col style="width:130px" />
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th data-field="QE">QE Code</th>
+                                                    <th data-field="title">Title</th>
+                                                    <th data-field="type">Type</th>
+                                                    <th data-field="Relationship">Relationship Type</th>
+                                                    <th data-field="rule">Rule Type</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="Awardsub6" class="tab-pane fade">
+                                <h3>Age Range</h3>
+                                <div class="row">
+                                    <div class="col col-sm-12">
+                                        <table class="grid2">
+                                            <colgroup>
+                                                <col style="width:110px" />
+                                                <col />
+                                                <col style="width:110px" />
+                                                <col style="width:120px" />
+                                                <col style="width:130px" />
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th data-field="QE">QE Code</th>
+                                                    <th data-field="title">Title</th>
+                                                    <th data-field="type">Type</th>
+                                                    <th data-field="Relationship">Relationship Type</th>
+                                                    <th data-field="rule">Rule Type</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="Awardsub7" class="tab-pane fade">
+                                <h3>Framework</h3>
+                                <div class="row">
+                                    <div class="col col-sm-12">
+                                        <table class="grid2">
+                                            <colgroup>
+                                                <col style="width:110px" />
+                                                <col />
+                                                <col style="width:110px" />
+                                                <col style="width:120px" />
+                                                <col style="width:130px" />
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th data-field="QE">QE Code</th>
+                                                    <th data-field="title">Title</th>
+                                                    <th data-field="type">Type</th>
+                                                    <th data-field="Relationship">Relationship Type</th>
+                                                    <th data-field="rule">Rule Type</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div id="s3" class="tab-pane fade">
+                <div class="row smart-form">
+                    <section class="col col-sm-4">
+                        @Html.Label("Learning Units")
+                        <label class="select">
+                            <select class="input-sm select2" multiple>
+                                <option>Non Functional version</option>
+                                <option>VQ07</option>
+                                <option>VQ07C</option>
+                                <option>VQ07W</option>
+                                <option>VQ08</option>
+                            </select>
+                        </label>
+                    </section>
+                    <section class="col col-sm-3">
+                        @Html.Label("Select Additional Columns")
+                        <label class="select">
+                            <select class="select2" multiple>
+                                <option>Non Functional version</option>
+                                <option>QE_Description</option>
+                                <option>QE_Short_Title</option>
+                                <option>QE_Effective_version_date</option>
+                            </select>
+                        </label>
+                    </section>
+                    <section class="col col-sm-1">
+                        <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <button class="btn btn-primary btn-sm">Submit</button>
+                    </section>
+                </div>
+                <div class="row">
+                    <section class="col col-sm-12">
+                        <div id="gridLearningUnit"></div>
+                    </section>
+                </div>
+                <div class="row marginTop20" id="detailTable2">
+                    <section class="col col-sm-12">
+                        <ul class="nav nav-tabs bordered" id="myTab2">
+                            <li class="active"><a data-toggle="tab" href="#LearningUnitsub1">Relationships</a></li>
+                            <li><a data-toggle="tab" href="#LearningUnitsub2">Preferences</a></li>
+                            <li><a data-toggle="tab" href="#LearningUnitsub3">Availability</a></li>
+                            <li><a data-toggle="tab" href="#LearningUnitsub4">Event Fees</a></li>
+                            <li><a data-toggle="tab" href="#LearningUnitsub5">QE Grade</a></li>
+                            <li><a data-toggle="tab" href="#LearningUnitsub6">Grade Boundary</a></li>
+                        </ul>
+                        <div class="tab-content padding-10 " id="myTabContent2">
+                            <div id="LearningUnitsub1" class="tab-pane fade  active in">
+                                <div class="row">
+                                    <div class="col col-sm-12">
+                                        <div class="tree smart-form">
+                                            <ul role="tree">
+                                                <li class="parent_li" role="treeitem">
+                                                    <span title="Collapse this branch"><i class="fa fa-lg fa-folder-open"></i> Scheme 1605</span>
+                                                    <ul role="group">
+                                                        <li class="parent_li" role="treeitem">
+                                                            <span title="Collapse this branch"><i class="fa fa-lg fa-minus-circle"></i> Award 1611</span>
+                                                            <ul role="group">
+                                                                <li class="parent_li" role="treeitem">
+                                                                    <span title="Collapse this branch">
+                                                                        <i class="fa fa-lg fa-minus-circle"></i>
+                                                                        Learning Unit VQ07C
+
+                                                                    </span>
+                                                                    <ul role="group">
+                                                                        <li>
+                                                                            <span>
+                                                                                <i></i>   Assessable VQ07C
+
+                                                                            </span>
+                                                                        </li>
+                                                                    </ul>
+                                                                </li>
+                                                                <li class="parent_li" role="treeitem">
+                                                                    <span title="Collapse this branch">
+                                                                        <i class="fa fa-lg fa-minus-circle"></i> Learning Unit VQ07W
+                                                                    </span>
+                                                                    <ul role="group">
+                                                                        <li>
+                                                                            <span>Assessable VQ07C</span>
+                                                                        </li>
+                                                                    </ul>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="parent_li" role="treeitem">
+                                                            <span title="Collapse this branch"><i class="fa fa-lg fa-minus-circle"></i> Pathway 1611/1A</span>
+                                                            <ul role="group">
+                                                                <li class="parent_li" role="treeitem">
+                                                                    <span title="Collapse this branch"><i class="fa fa-lg fa-minus-circle"></i> Learning Unit VQ08</span>
+                                                                    <ul role="group">
+                                                                        <li>
+                                                                            <span><i class="icon-leaf"></i> Assessable VQ08</span>
+                                                                        </li>
+                                                                    </ul>
+                                                                </li>
+                                                                <li class="parent_li" role="treeitem">
+                                                                    <span title="Collapse this branch"><i class="fa fa-lg fa-minus-circle"></i> Learning Unit VQ09</span>
+                                                                    <ul role="group">
+                                                                        <li style="">
+                                                                            <span><i class="icon-leaf"></i> Assessable VQ09</span>
+                                                                        </li>
+                                                                    </ul>
+                                                                </li>
+                                                                <li class="parent_li" role="treeitem">
+                                                                    <span title="Collapse this branch"><i class="fa fa-lg fa-minus-circle"></i> Learning Unit VQ10</span>
+                                                                    <ul role="group">
+                                                                        <li style="">
+                                                                            <span><i class="icon-leaf"></i> Assessable VQ10</span>
+                                                                        </li>
+                                                                    </ul>
+                                                                </li>
+                                                                <li style="display: list-item;">
+                                                                    <span><i class="icon-leaf"></i>Learning Unit VQ11</span>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="parent_li" role="treeitem">
+                                                    <span title="Collapse this branch"><i class="fa fa-lg fa-folder-open"></i> Parent2</span>
+                                                    <ul role="group">
+                                                        <li>
+                                                            <span><i class="icon-leaf"></i> Child</span>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="LearningUnitsub2" class="tab-pane fade">
+                                <h3>Preferences</h3>
+                                <div class="row">
+                                    <div class="col col-sm-12">
+                                        <table class="grid2">
+                                            <colgroup>
+                                                <col style="width:110px" />
+                                                <col />
+                                                <col style="width:110px" />
+                                                <col style="width:120px" />
+                                                <col style="width:130px" />
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th data-field="QE">QE Code</th>
+                                                    <th data-field="title">Title</th>
+                                                    <th data-field="type">Type</th>
+                                                    <th data-field="Relationship">Relationship Type</th>
+                                                    <th data-field="rule">Rule Type</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="LearningUnitsub3" class="tab-pane fade">
+                                <h3>Availability</h3>
+                                <div class="row">
+                                    <div class="col col-sm-12">
+                                        <table class="grid2">
+                                            <colgroup>
+                                                <col style="width:110px" />
+                                                <col />
+                                                <col style="width:110px" />
+                                                <col style="width:120px" />
+                                                <col style="width:130px" />
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th data-field="QE">QE Code</th>
+                                                    <th data-field="title">Title</th>
+                                                    <th data-field="type">Type</th>
+                                                    <th data-field="Relationship">Relationship Type</th>
+                                                    <th data-field="rule">Rule Type</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="LearningUnitsub4" class="tab-pane fade">
+                                <h3>Event Fees</h3>
+                                <div class="row">
+                                    <div class="col col-sm-12">
+                                        <table class="grid2">
+                                            <colgroup>
+                                                <col style="width:110px" />
+                                                <col />
+                                                <col style="width:110px" />
+                                                <col style="width:120px" />
+                                                <col style="width:130px" />
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th data-field="QE">QE Code</th>
+                                                    <th data-field="title">Title</th>
+                                                    <th data-field="type">Type</th>
+                                                    <th data-field="Relationship">Relationship Type</th>
+                                                    <th data-field="rule">Rule Type</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="LearningUnitsub5" class="tab-pane fade">
+                                <h3>QE Grade</h3>
+                                <div class="row">
+                                    <div class="col col-sm-12">
+                                        <table class="grid2">
+                                            <colgroup>
+                                                <col style="width:110px" />
+                                                <col />
+                                                <col style="width:110px" />
+                                                <col style="width:120px" />
+                                                <col style="width:130px" />
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th data-field="QE">QE Code</th>
+                                                    <th data-field="title">Title</th>
+                                                    <th data-field="type">Type</th>
+                                                    <th data-field="Relationship">Relationship Type</th>
+                                                    <th data-field="rule">Rule Type</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="LearningUnitsub6" class="tab-pane fade">
+                                <h3>Grade Boundary</h3>
+                                <div class="row">
+                                    <div class="col col-sm-12">
+                                        <table class="grid2">
+                                            <colgroup>
+                                                <col style="width:110px" />
+                                                <col />
+                                                <col style="width:110px" />
+                                                <col style="width:120px" />
+                                                <col style="width:130px" />
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th data-field="QE">QE Code</th>
+                                                    <th data-field="title">Title</th>
+                                                    <th data-field="type">Type</th>
+                                                    <th data-field="Relationship">Relationship Type</th>
+                                                    <th data-field="rule">Rule Type</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div id="s4" class="tab-pane fade">
+                <div class="row smart-form">
+                    <section class="col col-sm-4">
+                        @Html.Label("Series Label")
+                        <label class="select">
+                            <select class="input-sm ">
+                                <option>Non Functional version</option>
+                                <option>June-2015</option>
+                                <option>May-2015</option>
+                                <option>April-2015</option>
+                                <option>March</option>
+                            </select>
+                        </label>
+                    </section>
+                    <section class="col col-sm-4">
+                        @Html.Label("Assessables")
+                        <label class="select">
+                            <select class="select2" multiple>
+                                <option>Non Functional version</option>
+                                <option>VQ07</option>
+                                <option>VQ07C</option>
+                                <option>VQ07W</option>
+                                <option>VQ08</option>
+                            </select>
+                        </label>
+                    </section>
+                    <section class="col col-sm-3">
+                        @Html.Label("Select Additional Columns")                       
+                        <label class="select">
+                            <select class="select2" multiple>
+                                <option>Non Functional version</option>
+                                <option>QE_Description</option>
+                                <option>QE_Short_Title</option>
+                                <option>QE_Effective_version_date</option>
+                            </select>
+                        </label>
+                    </section>
+                    <section class="col col-sm-1">
+                        <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <button class="btn btn-primary btn-sm">Submit</button>
+                    </section>
+                </div>
+                <div class="row">
+                    <section class="col col-sm-12">
+                        <div id="gridAssessable"></div>
+                    </section>
+                </div>
+                <div class="row marginTop20" id="detailTable2">
+                    <section class="col col-sm-12">
+                        <ul class="nav nav-tabs bordered" id="myTab2">
+                            <li class="active"><a data-toggle="tab" href="#LearningUnitsub1">Relationships</a></li>
+                            <li><a data-toggle="tab" href="#Assessablesub2">Preferences</a></li>
+                            <li><a data-toggle="tab" href="#Assessablesub3">Availability</a></li>
+                            <li><a data-toggle="tab" href="#Assessablesub4">Event Fees</a></li>
+                            <li><a data-toggle="tab" href="#Assessablesub5">QE Grade</a></li>
+                            <li><a data-toggle="tab" href="#Assessablesub6">Grade Boundary</a></li>
+                        </ul>
+                        <div class="tab-content padding-10 " id="myTabContent2">
+                            <div id="Assessablesub1" class="tab-pane fade  active in">
+                                <div class="row">
+                                    <div class="col col-sm-12">
+                                        <div class="tree smart-form">
+                                            <ul role="tree">
+                                                <li class="parent_li" role="treeitem">
+                                                    <span title="Collapse this branch"><i class="fa fa-lg fa-folder-open"></i> Scheme 1605</span>
+                                                    <ul role="group">
+                                                        <li class="parent_li" role="treeitem">
+                                                            <span title="Collapse this branch"><i class="fa fa-lg fa-minus-circle"></i> Award 1611</span>
+                                                            <ul role="group">
+                                                                <li class="parent_li" role="treeitem">
+                                                                    <span title="Collapse this branch">
+                                                                        <i class="fa fa-lg fa-minus-circle"></i>
+                                                                        Learning Unit VQ07C
+
+                                                                    </span>
+                                                                    <ul role="group">
+                                                                        <li>
+                                                                            <span>
+                                                                                <i></i>   Assessable VQ07C
+
+                                                                            </span>
+                                                                        </li>
+                                                                    </ul>
+                                                                </li>
+                                                                <li class="parent_li" role="treeitem">
+                                                                    <span title="Collapse this branch">
+                                                                        <i class="fa fa-lg fa-minus-circle"></i> Learning Unit VQ07W
+                                                                    </span>
+                                                                    <ul role="group">
+                                                                        <li>
+                                                                            <span>Assessable VQ07C</span>
+                                                                        </li>
+                                                                    </ul>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="parent_li" role="treeitem">
+                                                            <span title="Collapse this branch"><i class="fa fa-lg fa-minus-circle"></i> Pathway 1611/1A</span>
+                                                            <ul role="group">
+                                                                <li class="parent_li" role="treeitem">
+                                                                    <span title="Collapse this branch"><i class="fa fa-lg fa-minus-circle"></i> Learning Unit VQ08</span>
+                                                                    <ul role="group">
+                                                                        <li>
+                                                                            <span><i class="icon-leaf"></i> Assessable VQ08</span>
+                                                                        </li>
+                                                                    </ul>
+                                                                </li>
+                                                                <li class="parent_li" role="treeitem">
+                                                                    <span title="Collapse this branch"><i class="fa fa-lg fa-minus-circle"></i> Learning Unit VQ09</span>
+                                                                    <ul role="group">
+                                                                        <li style="">
+                                                                            <span><i class="icon-leaf"></i> Assessable VQ09</span>
+                                                                        </li>
+                                                                    </ul>
+                                                                </li>
+                                                                <li class="parent_li" role="treeitem">
+                                                                    <span title="Collapse this branch"><i class="fa fa-lg fa-minus-circle"></i> Learning Unit VQ10</span>
+                                                                    <ul role="group">
+                                                                        <li style="">
+                                                                            <span><i class="icon-leaf"></i> Assessable VQ10</span>
+                                                                        </li>
+                                                                    </ul>
+                                                                </li>
+                                                                <li style="display: list-item;">
+                                                                    <span><i class="icon-leaf"></i>Learning Unit VQ11</span>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="parent_li" role="treeitem">
+                                                    <span title="Collapse this branch"><i class="fa fa-lg fa-folder-open"></i> Parent2</span>
+                                                    <ul role="group">
+                                                        <li>
+                                                            <span><i class="icon-leaf"></i> Child</span>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="Assessablesub2" class="tab-pane fade">
+                                <h3>Preferences</h3>
+                                <div class="row">
+                                    <div class="col col-sm-12">
+                                        <table class="grid2">
+                                            <colgroup>
+                                                <col style="width:110px" />
+                                                <col />
+                                                <col style="width:110px" />
+                                                <col style="width:120px" />
+                                                <col style="width:130px" />
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th data-field="QE">QE Code</th>
+                                                    <th data-field="title">Title</th>
+                                                    <th data-field="type">Type</th>
+                                                    <th data-field="Relationship">Relationship Type</th>
+                                                    <th data-field="rule">Rule Type</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="Assessablesub3" class="tab-pane fade">
+                                <h3>Availability</h3>
+                                <div class="row">
+                                    <div class="col col-sm-12">
+                                        <table class="grid2">
+                                            <colgroup>
+                                                <col style="width:110px" />
+                                                <col />
+                                                <col style="width:110px" />
+                                                <col style="width:120px" />
+                                                <col style="width:130px" />
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th data-field="QE">QE Code</th>
+                                                    <th data-field="title">Title</th>
+                                                    <th data-field="type">Type</th>
+                                                    <th data-field="Relationship">Relationship Type</th>
+                                                    <th data-field="rule">Rule Type</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="Assessablesub4" class="tab-pane fade">
+                                <h3>Event Fees</h3>
+                                <div class="row">
+                                    <div class="col col-sm-12">
+                                        <table class="grid2">
+                                            <colgroup>
+                                                <col style="width:110px" />
+                                                <col />
+                                                <col style="width:110px" />
+                                                <col style="width:120px" />
+                                                <col style="width:130px" />
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th data-field="QE">QE Code</th>
+                                                    <th data-field="title">Title</th>
+                                                    <th data-field="type">Type</th>
+                                                    <th data-field="Relationship">Relationship Type</th>
+                                                    <th data-field="rule">Rule Type</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="Assessablesub5" class="tab-pane fade">
+                                <h3>QE Grade</h3>
+                                <div class="row">                                    
+                                    <div class="col col-sm-12">
+                                        <table class="grid2">
+                                            <colgroup>
+                                                <col style="width:110px" />
+                                                <col />
+                                                <col style="width:110px" />
+                                                <col style="width:120px" />
+                                                <col style="width:130px" />
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th data-field="QE">QE Code</th>
+                                                    <th data-field="title">Title</th>
+                                                    <th data-field="type">Type</th>
+                                                    <th data-field="Relationship">Relationship Type</th>
+                                                    <th data-field="rule">Rule Type</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="Assessablesub6" class="tab-pane fade">
+                                <h3>Grade Boundary</h3>
+                                <div class="row">
+                                    <div class="col col-sm-12">
+                                        <table class="grid2">
+                                            <colgroup>
+                                                <col style="width:110px" />
+                                                <col />
+                                                <col style="width:110px" />
+                                                <col style="width:120px" />
+                                                <col style="width:130px" />
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th data-field="QE">QE Code</th>
+                                                    <th data-field="title">Title</th>
+                                                    <th data-field="type">Type</th>
+                                                    <th data-field="Relationship">Relationship Type</th>
+                                                    <th data-field="rule">Rule Type</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>v 1610</td>
+                                                    <td>AQA Level 3 Certificate in Counselling</td>
+                                                    <td>Scheme</td>
+                                                    <td>Allowed</td>
+                                                    <td>Anytime</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div id="s5" class="tab-pane fade">
+                <div class="row smart-form">
+                    <section class="col col-sm-4" >
+                        @Html.Label("Qualification Type")                       
+                        <label class="select">
+                            <select class="input-sm ">
+                                <option>GCE and AS Level</option>
+                                <option>AS Level</option>
+                                <option>GCE Level</option>                                
+                            </select>
+                        </label>
+                    </section>
+                    <section class="col col-sm-4">
+                        @Html.Label("Select Level")                         
+                        <label class="select">
+                            <select class="select2" multiple>
+                                <option>Non Functional version</option>
+                                <option>Scheme</option>
+                                <option>Award</option>
+                                <option>Learning Unit</option>
+                                <option>Assessable</option>
+                            </select>
+                        </label>
+                    </section>
+                    <section class="col col-sm-3" >
+                        @Html.Label("Select Additional Columns")                         
+                        <label class="select">
+                            <select class="select2" multiple>
+                                <option>Non Functional version</option>
+                                <option>8620</option>
+                                <option>8695</option>
+                                <option>2450</option>
+                                <option>1605</option>
+                            </select>
+                        </label>
+                    </section>
+                    <section class="col col-sm-1">
+                        <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <button class="btn btn-primary btn-sm">Submit</button>
+                    </section>
+                </div>
+               
+                    <div id="example" >
+
+                        <div class="box marginBottom">
+
+
+                            <div class="box-col">
+                                <h4>Add Node</h4>
+
+                                <input id="appendNodeText" value="Node" class="k-textbox" />
+                                <button class="k-button" id="appendNodeToSelected">Append node</button>
+
+                            </div>
+                        </div>
+
+                        <div class="demo-section">
+                            <div id="treeview"></div>
+                        </div>
+
+                    </div>
+           
+        </div>
+        </div>
+    </section>
+
+
+
+
+</div>
+@section styleTag{
+    <link rel="stylesheet" href="/Content/SmartAdmin/KendoUI/kendo.common.min.css">
+    <link rel="stylesheet" href="/Content/SmartAdmin/KendoUI/kendo.bootstrap.min.css">
+    <link rel="stylesheet" href="/Content/SmartAdmin/KendoUI/kendooverride.css">
+}
+
+
+@section scriptsTag{
+    <script src="~/Scripts/SmartAdmin/KendoUI/kendo.all.min.js"></script>
+}
+
+@section scriptsBlock {
+
+     
+
+
+
+    <script type="text/javascript">
+
+        var SchemeQEGrade = [{ ID: 1, Grade: "P", Description: "Pass", OutcomeType: "Result", EffectiveDate: "2015-11-01", EndDate: "31-12-2015", SequenceOrder: "1", PerformancePoints: [{ PFPoints: "Level 1", set1: "20", set2: "0" }, { PFPoints: "Level 2", set1: "12", 300.5: "3" }] },
+                                   { ID: 2, Grade: "F", Description: "Fail", OutcomeType: "Result", EffectiveDate: "2015-11-01", EndDate: "31-12-2015", SequenceOrder: "2", PerformancePoints: [{ PFPoints: "Level 1", set1: "20", set2: "0" }, { PFPoints: "Level 2", set1: "12", set2: "3" }] },
+                                   { ID: 3, Grade: "P", Description: "Pass", OutcomeType: "Result", EffectiveDate: "2015-11-01", EndDate: "31-12-2015", SequenceOrder: "3", PerformancePoints: [{ PFPoints: "Level 1", set1: "20", set2: "0" }, { PFPoints: "Level 2", set1: "12", set2: "3" }] }
+
+        ]
+
+
+        $(document).ready(function () {
+            //schemeGrid begin 
+            var schemes = [{ ID: 1, SchemeQEID: "11089", Title: "AQA Level 2 Certificate in", Description: "AQA Level 2 Certificate in A2C", LearingAimCode: "59924301", DateOfBirthRequiredFlag: true },
+                         { ID: 2, SchemeQEID: "11090", Title: "AQA Level 2 Certificate in", Description: "AQA Level 2 Certificate in A2C", LearingAimCode: "59924301", DateOfBirthRequiredFlag: true },
+                         { ID: 3, SchemeQEID: "11091", Title: "AQA Level 2 Certificate in", Description: "AQA Level 2 Certificate in A2C", LearingAimCode: "59924301", DateOfBirthRequiredFlag: true },
+                         { ID: 4, SchemeQEID: "11093", Title: "AQA Level 2 Certificate in", Description: "AQA Level 2 Certificate in A2C", LearingAimCode: "59924301", DateOfBirthRequiredFlag: true },
+                         { ID: 5, SchemeQEID: "11095", Title: "AQA Level 2 Certificate in", Description: "AQA Level 2 Certificate in A2C", LearingAimCode: "59924301", DateOfBirthRequiredFlag: true },
+                         { ID: 6, SchemeQEID: "11098", Title: "AQA Level 2 Certificate in", Description: "AQA Level 2 Certificate in A2C", LearingAimCode: "59924301", DateOfBirthRequiredFlag: true },
+                         { ID: 7, SchemeQEID: "11102", Title: "AQA Level 2 Certificate in", Description: "AQA Level 2 Certificate in A2C", LearingAimCode: "59924301", DateOfBirthRequiredFlag: true },
+                         { ID: 8, SchemeQEID: "11105", Title: "AQA Level 2 Certificate in", Description: "AQA Level 2 Certificate in A2C", LearingAimCode: "59924301", DateOfBirthRequiredFlag: true },
+                         { ID: 9, SchemeQEID: "11125", Title: "AQA Level 2 Certificate in", Description: "AQA Level 2 Certificate in A2C", LearingAimCode: "59924301", DateOfBirthRequiredFlag: true },
+                         { ID: 10, SchemeQEID: "11139", Title: "AQA Level 2 Certificate in", Description: "AQA Level 2 Certificate in A2C", LearingAimCode: "59924301", DateOfBirthRequiredFlag: true }]
+
+            $("#gridScheme").kendoGrid({
+                dataSource: {
+                    data: schemes,
+                    schema: {
+                        model: {
+                            fields: {
+                                SchemeQEID: { type: "number" },
+                                Title: { type: "string" },
+                                Description: { type: "string" },
+                                LearingAimCode: { type: "number" },
+                                DateOfBirthRequiredFlag: { type: "booleon" }
+                            }
+                        }
+                    },
+                    pageSize: 20
+                },
+                columnMenu: true,
+                height: 300,
+                scrollable: true,
+                sortable: true,
+                filterable: true,
+                selectable: "multiple",
+                pageable: {
+                    input: false,
+                    numeric: true
+                },
+                columns: [
+                    { field: "SchemeQEID", title: "Scheme-QE ID", width:"130px" },
+                    { field: "Title", title: "Title", format: "{0:c}", width: "130px" },
+                    { field: "Description", title: "Description", width: "130px" },
+                    { field: "LearingAimCode", title: "Learing Aim Code", width: "130px" },
+                    { field: "DateOfBirthRequiredFlag", title: "Date Of Birth Required Flag", width: "130px" }
+                ]
+            });
+            //SchemeGrid end
+
+            //AwardGrid Begin
+
+            //Data Award
+            var awards = [{ ID: 1, Award: "1089", Title: "AQA Level 2 Certificate in Counselling", ResitRuleText: "Unit results remain available to count towards certifiaction and candidate may resit a unit any number of times", LearingAimCode: "59924301", DateOfBirthRequiredFlag: true },
+                         { ID: 2, Award: "1090", Title: "AQA Level 2 Certificate in Counselling", ResitRuleText: "Unit results remain available to count towards certifiaction and candidate may resit a unit any number of times", LearingAimCode: "59924301", DateOfBirthRequiredFlag: true },
+                         { ID: 3, Award: "1091", Title: "AQA Level 2 Certificate in Counselling", ResitRuleText: "Unit results remain available to count towards certifiaction and candidate may resit a unit any number of times", LearingAimCode: "59924301", DateOfBirthRequiredFlag: true },
+                         { ID: 4, Award: "1093", Title: "AQA Level 2 Certificate in Counselling", ResitRuleText: "Unit results remain available to count towards certifiaction and candidate may resit a unit any number of times", LearingAimCode: "59924301", DateOfBirthRequiredFlag: true },
+                         { ID: 5, Award: "1095", Title: "AQA Level 2 Certificate in Counselling", ResitRuleText: "Unit results remain available to count towards certifiaction and candidate may resit a unit any number of times", LearingAimCode: "59924301", DateOfBirthRequiredFlag: true },
+                         { ID: 6, Award: "1098", Title: "AQA Level 2 Certificate in Counselling", ResitRuleText: "Unit results remain available to count towards certifiaction and candidate may resit a unit any number of times", LearingAimCode: "59924301", DateOfBirthRequiredFlag: true },
+                         { ID: 7, Award: "1102", Title: "AQA Level 2 Certificate in Counselling", ResitRuleText: "Unit results remain available to count towards certifiaction and candidate may resit a unit any number of times", LearingAimCode: "59924301", DateOfBirthRequiredFlag: true },
+                         { ID: 8, Award: "1105", Title: "AQA Level 2 Certificate in Counselling", ResitRuleText: "Unit results remain available to count towards certifiaction and candidate may resit a unit any number of times", LearingAimCode: "59924301", DateOfBirthRequiredFlag: true },
+                         { ID: 9, Award: "1125", Title: "AQA Level 2 Certificate in Counselling", ResitRuleText: "Unit results remain available to count towards certifiaction and candidate may resit a unit any number of times", LearingAimCode: "59924301", DateOfBirthRequiredFlag: true },
+                         { ID: 10, Award: "1139", Title: "AQA Level 2 Certificate in Counselling", ResitRuleText: "Unit results remain available to count towards certifiaction and candidate may resit a unit any number of times", LearingAimCode: "59924301", DateOfBirthRequiredFlag: true }]
+
+            $("#gridAward").kendoGrid({
+                dataSource: {
+                    data: awards,
+                    schema: {
+                        model: {
+                            fields: {
+                                Award: { type: "number" },
+                                Title: { type: "string" },
+                                ResitRuleText: { type: "string" }
+                               // LearingAimCode: { type: "number" },
+                                //DateOfBirthRequiredFlag: { type: "booleon" }
+                            }
+                        }
+                    },
+                    pageSize: 20
+                },
+                height: 300,
+                scrollable: true,
+                sortable: true,
+                filterable: true,
+                selectable: "multiple",
+                pageable: {
+                    input: false,
+                    numeric: true
+                },
+                columns: [
+                    { field: "Award", title: "Award", width: "130px" },
+                    { field: "Title", title: "Title", width: "250px" },
+                    { field: "ResitRuleText", title: "Resit Rule Text" },
+                   // { field: "LearingAimCode", title: "Learing Aim Code", width: "130px" },
+                    //{ field: "DateOfBirthRequiredFlag", title: "Date Of Birth Required Flag", width: "130px" }
+                ]
+            });
+
+
+            //AwardGrid End
+
+            //Learning Unit grid begin
+            //Data Learning Unit
+            var LearningUnit = [{ ID: 1, Award: "1089", Title: "AQA Level 2 Certificate in", LearningUnitLevelType: "AS", MaximumResistsAllowed: "5" },
+                                { ID: 2, Award: "1090", Title: "AQA Level 2 Certificate in", LearningUnitLevelType: "AS", MaximumResistsAllowed: "5" },
+                                { ID: 3, Award: "1091", Title: "AQA Level 2 Certificate in", LearningUnitLevelType: "AS", MaximumResistsAllowed: "5" },
+                                { ID: 4, Award: "1093", Title: "AQA Level 2 Certificate in", LearningUnitLevelType: "AS", MaximumResistsAllowed: "5" },
+                                { ID: 5, Award: "1095", Title: "AQA Level 2 Certificate in", LearningUnitLevelType: "AS", MaximumResistsAllowed: "5" },
+                                { ID: 6, Award: "1098", Title: "AQA Level 2 Certificate in", LearningUnitLevelType: "AS", MaximumResistsAllowed: "5" },
+                                { ID: 7, Award: "1102", Title: "AQA Level 2 Certificate in", LearningUnitLevelType: "AS", MaximumResistsAllowed: "5" },
+                                { ID: 8, Award: "1105", Title: "AQA Level 2 Certificate in", LearningUnitLevelType: "AS", MaximumResistsAllowed: "5" },
+                                { ID: 9, Award: "1125", Title: "AQA Level 2 Certificate in", LearningUnitLevelType: "AS", MaximumResistsAllowed: "5" },
+                                { ID: 10, Award: "1139", Title: "AQA Level 2 Certificate in", LearningUnitLevelType: "AS", MaximumResistsAllowed: "5" }]
+
+            $("#gridLearningUnit").kendoGrid({
+                dataSource: {
+                    data: LearningUnit,
+                    schema: {
+                        model: {
+                            fields: {
+                                Award: { type: "number" },
+                                Title: { type: "string" },
+                                LearningUnitLevelType: { type: "string" },
+                                MaximumResistsAllowed: { type: "number" }
+                                
+                            }
+                        }
+                    },
+                    pageSize: 20
+                },
+                height: 300,
+                scrollable: true,
+                sortable: true,
+                filterable: true,
+                selectable: "multiple",
+                pageable: {
+                    input: false,
+                    numeric: true
+                },
+                columns: [
+                    { field: "Award", title: "Award", width: "130px" },
+                    { field: "Title", title: "Title"},
+                    { field: "LearningUnitLevelType", title: "Learning Unit Level Type" },
+                    { field: "MaximumResistsAllowed", title: "Maximum Resists Allowed" },
+                   // { field: "LearingAimCode", title: "Learing Aim Code", width: "130px" },
+                    //{ field: "DateOfBirthRequiredFlag", title: "Date Of Birth Required Flag", width: "130px" }
+                ]
+            });
+
+            //Learning Unit Grid End
+
+            //Assessable Grid begin
+
+            //Data Assessable
+
+            var Assessable = [{ ID: 1, Assessable: "VQ07C", Title: "AQA Level 2 Certificate in", QEModerationType: "Mixed", QEEffectiveVersionDate: "25/04/2015" },
+                                { ID: 2, Assessable: "VQ08A", Title: "AQA Level 2 Certificate in", QEModerationType: " ", QEEffectiveVersionDate: "25/04/2015" },
+                                { ID: 3, Assessable: "VQ09D", Title: "AQA Level 2 Certificate in", QEModerationType: "Double", QEEffectiveVersionDate: "25/04/2015" },
+                                { ID: 4, Assessable: "VQ02A", Title: "AQA Level 2 Certificate in", QEModerationType: "Mixed", QEEffectiveVersionDate: "25/04/2015" },
+                                { ID: 5, Assessable: "VQ03B", Title: "AQA Level 2 Certificate in", QEModerationType: "Double", QEEffectiveVersionDate: "25/04/2015" },
+                                { ID: 6, Assessable: "VQ04D", Title: "AQA Level 2 Certificate in", QEModerationType: "Mixed", QEEffectiveVersionDate: "25/04/2015" },
+                                { ID: 7, Assessable: "VQ05S", Title: "AQA Level 2 Certificate in", QEModerationType: "", QEEffectiveVersionDate: "25/04/2015" },
+                                { ID: 8, Assessable: "VQ09G", Title: "AQA Level 2 Certificate in", QEModerationType: "Double", QEEffectiveVersionDate: "25/04/2015" },
+                                { ID: 9, Assessable: "VQ06K", Title: "AQA Level 2 Certificate in", QEModerationType: " ", QEEffectiveVersionDate: "25/04/2015" },
+                                { ID: 10, Assessable: "VQ08L", Title: "AQA Level 2 Certificate in", QEModerationType: "Single", QEEffectiveVersionDate: "25/04/2015" }]
+
+
+            $("#gridAssessable").kendoGrid({
+                dataSource: {
+                    data: Assessable,
+                    schema: {
+                        model: {
+                            fields: {
+                                Assessable: { type: "String" },
+                                Title: { type: "string" },
+                                QEModerationType: { type: "string" },
+                                QEEffectiveVersionDate:{type:"string"}                               
+
+                            }
+                        }
+                    },
+                    pageSize: 20
+                },
+                height: 300,
+                scrollable: true,
+                sortable: true,
+                filterable: true,
+                selectable: "multiple",
+                pageable: {
+                    input: false,
+                    numeric: true
+                },
+                columns: [
+                    { field: "Assessable", title: "Award", width: "130px" },
+                    { field: "Title", title: "Title" },
+                    { field: "QEModerationType", title: "Learning Unit Level Type" },
+                    { field: "QEEffectiveVersionDate", title: "Maximum Resists Allowed" },
+                   // { field: "LearingAimCode", title: "Learing Aim Code", width: "130px" },
+                    //{ field: "DateOfBirthRequiredFlag", title: "Date Of Birth Required Flag", width: "130px" }
+                ]
+            });
+
+
+            //Assessable Grid End
+           
+
+            //Scheme Availability Grid Begin
+           
+            var schemeAvailability = [{ ID: 1, KeyEventName: "Certificate despatch period", StartDate: "2015-10-01T00:00:01+01:00", EndDate: "2015-11-01T00:00:01+01:00", AdditionalText: "Lorem Ipsum", TimePeriodType: " " },
+                                    { ID: 2, KeyEventName: "Certificate despatch period", StartDate: "2015-10-01T00:00:01+01:00", EndDate: "2015-11-01T00:00:01+01:00", AdditionalText: "Lorem Ipsum", TimePeriodType: " " },
+                                    { ID: 3, KeyEventName: "Certificate despatch period", StartDate: "2015-10-01T00:00:01+01:00", EndDate: "2015-11-01T00:00:01+01:00", AdditionalText: "Lorem Ipsum", TimePeriodType: " " },
+                                    { ID: 4, KeyEventName: "Certificate despatch period", StartDate: "2015-10-01T00:00:01+01:00", EndDate: "2015-11-01T00:00:01+01:00", AdditionalText: "Lorem Ipsum", TimePeriodType: " " },
+                                    { ID: 5, KeyEventName: "Certificate despatch period", StartDate: "2015-10-01T00:00:01+01:00", EndDate: "2015-11-01T00:00:01+01:00", AdditionalText: "Lorem Ipsum", TimePeriodType: " " },
+                                    { ID: 6, KeyEventName: "Certificate despatch period", StartDate: "2015-10-01T00:00:01+01:00", EndDate: "2015-11-01T00:00:01+01:00", AdditionalText: "Lorem Ipsum", TimePeriodType: " " },
+                                    { ID: 7, KeyEventName: "Certificate despatch period", StartDate: "2015-10-01T00:00:01+01:00", EndDate: "2015-11-01T00:00:01+01:00", AdditionalText: "Lorem Ipsum", TimePeriodType: " " },
+                                    { ID: 8, KeyEventName: "Certificate despatch period", StartDate: "2015-10-01T00:00:01+01:00", EndDate: "2015-11-01T00:00:01+01:00", AdditionalText: "Lorem Ipsum", TimePeriodType: " " }
+            ]
+
+            
+            $("#gridSchemeAvailability").kendoGrid({
+                
+                dataSource: {
+                    data: schemeAvailability,
+                    schema: {
+                        model: {
+                            fields: {
+                                KeyEventName: { type: "string" },
+                                StartDate: { type: "string" },
+                                EndDate: { type: "string" },
+                                AdditionalText: { type: "string" },                               
+                                TimePeriodType:{type:"string"},
+                            }
+                        }
+                    },
+                    pageSize: 20
+                },
+                height: 300,
+                scrollable: true,
+                sortable: true,
+                filterable: true,
+                selectable: "multiple",
+                pageable: {
+                    input: false,
+                    numeric: true
+                },
+                columns: [
+                    { field: "KeyEventName", title: "Key Event Name" },
+                    { field: "StartDate", title: "Start Date" },
+                    { field: "EndDate", title: "End Date" },
+                    { field: "AdditionalText", title: "Additional Text" },
+                    { field: "TimePeriodType", title: "Time Period Type" }
+                   
+                ]
+            });
+
+
+
+            //Scheme Availability Grid End       
+
+            //EventFees Late Award cash Grid Begin
+
+            var SchemeLateCash = [{ ID: 1,   FeeCategory: "Post-result Award", StartDateTime: "2015-10-01T00:00:01+01:00", Title:"Late award", EndDateTime: "2015-11-01T00:00:01+01:00",Amount:"130", AdditionalText: "Lorem Ipsum" },
+                                    { ID: 2, FeeCategory: "Post-result Award", StartDateTime: "2015-10-01T00:00:01+01:00", Title:"Late award", EndDateTime: "2015-11-01T00:00:01+01:00",Amount:"130", AdditionalText: "Lorem Ipsum" },
+                                    { ID: 3, FeeCategory: "Post-result Award", StartDateTime: "2015-10-01T00:00:01+01:00", Title:"Late award", EndDateTime: "2015-11-01T00:00:01+01:00",Amount:"130", AdditionalText: "Lorem Ipsum" }
+                                    
+            ]
+
+            
+            $("#gridSchemeLateCash").kendoGrid({
+
+                dataSource: {
+                    data: SchemeLateCash,
+                    schema: {
+                        model: {
+                            fields: {
+                                FeeCategory: { type: "string" },
+                                StartDateTime: { type: "string" },
+                                Title: { type: "string" },
+                                EndDateTime: { type: "string" },
+                                Amount: { type: "number" },
+                                AdditionalText: {type:"string"},
+                            }
+                        }
+                    },
+                    pageSize: 20
+                },
+               // height: 300,
+                scrollable: true,
+                sortable: true,
+                filterable: true,
+                selectable: "multiple",
+                pageable: {
+                    input: false,
+                    numeric: true
+                },
+                columns: [
+                    { field: "FeeCategory", title: "Key Event Name" },
+                    { field: "StartDateTime", title: "Start Date Time" },
+                    { field: "Title", title: "Title" },
+                    { field: "EndDateTime", title: "End Date Time" },
+                    { field: "Amount", title: "Amount" },
+                    { field: "AdditionalText", title: "Additional Text" }
+
+                ]
+            });
+
+
+
+            //EventFees Late Award cash Grid End  
+
+            //QE Grade Grid Begin
+           
+
+
+
+            var element = $("#grid").kendoGrid({
+                dataSource: {
+                    data: SchemeQEGrade,
+                    schema: {
+                        model: {
+                            fields: {
+                                Grade: { type: "string" },
+                                Description: { type: "string" },
+                                OutcomeType: { type: "string" },
+                                EffectiveDate: { type: "string" },
+                                EndDate: { type: "string" },
+                                SequenceOrder: { type: "string" },
+                            }
+                        }
+                    },
+                    pageSize: 20,
+                    serverPaging: true,
+                    serverSorting: true
+                },
+                height: 550,
+                sortable: true,
+                pageable: false,
+                detailTemplate: kendo.template($("#template").html()),
+                detailInit: detailInit2,
+                dataBound: function () {
+                    this.expandRow(this.tbody.find("tr.k-master-row").first());
+                },
+                columns: [
+                    {
+                        field: "Grade",
+                        title: "Grade",
+                        width: "120px"
+                    },
+                    {
+                        field: "Description",
+                        title: "Description",
+                        width: "120px"
+                    },
+                    {
+                        field: "OutcomeType",
+                        title:"Outcome type",
+                        width: "120px"
+                    },
+                    {
+                        field: "EffectiveDate",
+                        title:"Effective Date",
+                        width: "120px"
+                    },
+                    {
+                        field: "EndDate",
+                        title:"End Date"
+                    },
+                    {
+                        field:"SequenceOrder",
+                        title: "Sequence Order"
+                    }
+                ]
+            });
+
+            //QE Grade Grid End
+
+            //Scheme Grade Boundary Grid Begin
+            gridSchemeGradeBoundry
+
+            var SchemeGradeBoundry = [{ ID: 1, Grade: "A", LowerLimit: "180"},
+                                      { ID: 2, Grade: "B", LowerLimit: "160"},
+                                      { ID: 3, Grade: "C", LowerLimit: "140"},
+                                      { ID: 2, Grade: "D", LowerLimit: "120"},
+                                      { ID: 2, Grade: "E", LowerLimit: "110"},
+                                      { ID: 2, Grade: "F", LowerLimit: "100"}
+
+            ]
+
+
+            $("#gridSchemeGradeBoundry").kendoGrid({
+
+                dataSource: {
+                    data: SchemeGradeBoundry,
+                    schema: {
+                        model: {
+                            fields: {
+                                Grade: { type: "string" },
+                                LowerLimit: { type: "string" }
+                            }
+                        }
+                    },
+                    pageSize: 20
+                },
+                // height: 300,
+                scrollable: true,
+                sortable: true,
+                filterable: true,
+                selectable: "multiple",
+                pageable: {
+                    input: false,
+                    numeric: true
+                },
+                columns: [
+                    { field: "Grade", title: "Grade" },
+                    { field: "LowerLimit", title: "Lower Limit" }
+
+                ]
+            });
+
+
+            //Scheme Grade Boundary Grid End
+
+            //EventFees Name Entry Submission Period Grid Begin
+
+            var SchemeNamedEntrySubmissionPeriod = [{ ID: 1, FeeCategory: "Entry", StartDateTime: "2015-10-01T00:00:01+01:00", Title: "Late entry", EndDateTime: "2015-11-01T00:00:01+01:00", Amount: "0", AdditionalText: "There is no charge for claiming the subject award." },
+                                                    { ID: 2, FeeCategory: "Entry", StartDateTime: "2015-10-01T00:00:01+01:00", Title: "On time Entry", EndDateTime: "2015-11-01T00:00:01+01:00", Amount: "0", AdditionalText: "There is no charge for claiming the subject award." },
+                                                    { ID: 3, FeeCategory: "Entry", StartDateTime: "2015-10-01T00:00:01+01:00", Title: "Very Late entry", EndDateTime: "2015-11-01T00:00:01+01:00", Amount: "0", AdditionalText: "There is no charge for claiming the subject award." }
+
+            ]
+
+
+            $("#gridSchemeNamedEntrySubmissionPeriod").kendoGrid({
+
+                dataSource: {
+                    data: SchemeNamedEntrySubmissionPeriod,
+                    schema: {
+                        model: {
+                            fields: {
+                                FeeCategory: { type: "string" },
+                                StartDateTime: { type: "string" },
+                                Title: { type: "string" },
+                                EndDateTime: { type: "string" },
+                                Amount: { type: "number" },
+                                AdditionalText: { type: "string" },
+                            }
+                        }
+                    },
+                    pageSize: 20
+                },
+               // height: 300,
+                scrollable: true,
+                sortable: true,
+                filterable: true,
+                selectable: "multiple",
+                pageable: {
+                    input: false,
+                    numeric: true
+                },
+                columns: [
+                    { field: "FeeCategory", title: "Key Event Name" },
+                    { field: "StartDateTime", title: "Start Date Time" },
+                    { field: "Title", title: "Title" },
+                    { field: "EndDateTime", title: "End Date Time" },
+                    { field: "Amount", title: "Amount" },
+                    { field: "AdditionalText", title: "Additional Text" }
+
+                ]
+            });
+
+
+
+            //EventFees Name Entry Submission Period Grid End
+
+            gridSchemeSectorSubjectArea
+            //Scheme Sector Subject Area Grid Begin
+            var SchemeSectorSubjectArea = [{ ID: 1, SectorSubjectArea: "1.3", SSADescription: "Health and Social Care", SSALevelType: "Tier 2" },
+                                           { ID: 2, SectorSubjectArea: "1.4", SSADescription: "Health and Social Care", SSALevelType: "Tier 2" },
+                                           { ID: 3, SectorSubjectArea: "1.5", SSADescription: "Health and Social Care", SSALevelType: "Tier 2" }
+
+            ]           
+
+            $("#gridSchemeSectorSubjectArea").kendoGrid({
+
+                dataSource: {
+                    data: SchemeSectorSubjectArea,
+                    schema: {
+                        model: {
+                            fields: {
+                                SectorSubjectArea: { type: "string" },
+                                SSADescription: { type: "string" },
+                                SSALevelType: { type: "string" }
+                            }
+                        }
+                    },
+                    pageSize: 20
+                },
+                // height: 300,
+                scrollable: true,
+                sortable: true,
+                filterable: true,
+                selectable: "multiple",
+                pageable: {
+                    input: false,
+                    numeric: true
+                },
+                columns: [
+                    { field: "SectorSubjectArea", title: "Sector Subject Area" },
+                    { field: "SSADescription", title: "SSA Description" },
+                    { field: "SSALevelType", title: "SSA Level Type" }
+                   
+
+                ]
+            });
+
+
+
+            //Scheme Sector Subject Area Grid End
+            $(".gridK").kendoGrid({
+               // height: 200,
+                sortable: false
+            });
+            $(".grid2").kendoGrid({
+               // height: 200,
+                sortable: true
+            });
+           
+            $('.viewDetail').change(function () {
+
+                if ($(this).is(":checked")) {
+                    $('#detailTable').show();
+                    //$(".grid2").kendoGrid({
+                    //    height: 200,
+                    //    sortable: true
+                    //});
+                    //$('#grid2').removeClass('grid2');
+                } else {
+                    $('#detailTable').hide();
+
+                }
+            });
+          
+
+           
+            
+            //$(".fa-lg").click(function () {
+            //    $(this).parent('span').next('ul').toggleClass('hide');
+            //    $(this).toggleClass('fa-minus-circle fa-plus-circle');
+            //});
+       
+            var treeview = $("#treeview").kendoTreeView({
+                dataSource: {
+                    data: [
+                        {
+                            text: "Item 1", expanded: false, items: [
+                              { text: "Item 1.1", expanded: false, items: [{text:"Item 1.1.1"}]},
+                              { text: "Item 1.2", expanded: false, items: [{ text: "Item 1.2.1" }] },
+                              {
+                                  text: "Item 1.3", expanded: false, items: [
+                                    {
+                                        text: "Item1.3.1", expanded: false, items: [
+                                          {
+                                              text: "Items 1.3.1.1", expanded: "true", items: [
+                                                { text: "Items 1.3.1.1.1" }]
+                                          }]
+                                    }]
+                              }
+                            ]
+                        },
+                        {
+                            text: "Item 2", items: [
+                              { text: "Item 2.1" },
+                              { text: "Item 2.2" },
+                              {
+                                  text: "Item 2.3", expanded: false, items: [
+                                    { text: "Item 2.3.1" },
+                                    { text: "Item 2.3.2" },
+                                    {
+                                        text: "Item 2.3.3", expanded: false, items: [
+                                            { text: "Item 2.3.3.1" },
+                                            { text: "Item 2.3.3.2" },
+                                            { text: "Item 2.3.3.3" },
+                                            {
+                                                text: "Item 2.3.3.4", expanded: false, items: [
+                                                    { text: "Item 2.3.3.4.1" },
+                                                    { text: "Item 2.3.3.4.2" },
+                                                    { text: "Item 2.3.3.4.3" },
+
+                                                ]
+                                            },
+                                        ]
+                                    }
+                                  ]
+                              }
+                            ]
+                        },
+                        { text: "Item 3" }
+                    ]
+                },
+                loadOnDemand: false
+            }).data("kendoTreeView"),
+
+                handleTextBox = function (callback) {
+                    return function (e) {
+                        if (e.type != "keypress" || kendo.keys.ENTER == e.keyCode) {
+                            callback(e);
+                        }
+                    };
+                };
+
+
+           
+
+           
+
+          
+            var append = handleTextBox(function (e) {
+                var selectedNode = treeview.select();
+
+                // passing a falsy value as the second append() parameter
+                // will append the new node to the root group
+                if (selectedNode.length == 0) {
+                    selectedNode = null;
+                }
+
+                treeview.append({
+                    text: $("#appendNodeText").val()
+                }, selectedNode);
+            });
+
+            $("#appendNodeToSelected").click(append);
+            $("#appendNodeText").keypress(append);
+
+            // datasource actions
+
+            var ascending = false;
+            $('#treeview li').addClass("parent_li");           
+            $('.k-in').mouseover(function () {
+                $(this).parent('div').next('ul').addClass('parent-selected');//find('.k-in').css('background', '#e4a44c !important;');
+            });
+            $('.k-in').mouseout(function () {
+                $(this).parent('div').next('ul').removeClass('parent-selected');//find('.k-in').removeAttr('style');
+            });
+
+
+            //Subgrid table start
+
+            var element = $("#subGridDemo").kendoGrid({
+                dataSource: {
+                    type: "odata",
+                    transport: {
+                        read: "http://demos.telerik.com/kendo-ui/service/Northwind.svc/Employees"
+                    },
+                    pageSize: 6,
+                    serverPaging: true,
+                    serverSorting: true
+                },
+                height: 600,
+                sortable: true,
+                filterable: true,
+                pageable: true,
+                detailInit: detailInit,
+                dataBound: function () {
+                    this.expandRow(this.tbody.find("tr.k-master-row").first());
+                },
+                columns: [
+                    {
+                        field: "FirstName",
+                        title: "First Name",
+                        width: "110px"
+                    },
+                    {
+                        field: "LastName",
+                        title: "Last Name",
+                        width: "110px"
+                    },
+                    {
+                        field: "Country",
+                        width: "110px"
+                    },
+                    {
+                        field: "City",
+                        width: "110px"
+                    },
+                    {
+                        field: "Title"
+                    }
+                ]
+            });
+
+
+       });
+       function detailInit(e) {
+           $("<div/>").appendTo(e.detailCell).kendoGrid({
+               dataSource: {
+                   type: "odata",
+                   transport: {
+                       read: "http://demos.telerik.com/kendo-ui/service/Northwind.svc/Orders"
+                   },
+                   serverPaging: true,
+                   serverSorting: true,
+                   serverFiltering: true,
+                   pageSize: 10,
+                   filter: { field: "EmployeeID", operator: "eq", value: e.data.EmployeeID }
+               },
+               scrollable: false,
+               sortable: true,
+               filterable: true,
+               pageable: true,
+               columns: [
+                   { field: "OrderID", width: "110px" },
+                   { field: "ShipCountry", title: "Ship Country", width: "110px" },
+                   { field: "ShipAddress", title: "Ship Address" },
+                   { field: "ShipName", title: "Ship Name", width: "300px" }
+               ]
+           });
+       }
+
+
+       function detailInit2(e) {
+            PerformancePoints= [{ PFPoints: "Level 1", set1: "20", set2: "0" }, { PFPoints: "Level 2", set1: "12", set2: "3" }] 
+
+          
+           var detailRow = e.detailRow;
+
+           detailRow.find(".tabstrip").kendoTabStrip({
+               animation: {
+                   open: { effects: "fadeIn" }
+               }
+           });
+
+           detailRow.find(".orders").kendoGrid({
+               dataSource: {
+                   data:PerformancePoints,
+                   schema: {
+                       model: {
+                           fields: {                               
+                                   PFPoints: { type: "string" },
+                                   set1: { type: "string" },
+                                   set2: { type: "string" },
+                           }
+                       }
+                   },
+                   
+                   pageSize: 7,
+                   filter: { field: "EmployeeID", operator: "eq", value: e.data.EmployeeID }
+               },
+               scrollable: false,
+               sortable: true,
+               pageable: true,
+               columns: [
+                   { field: "PFPoints", title: "Performance Points" },
+                   { field: "set1", title: "67.5", width: "110px" },
+                   { field: "set2", title: "300.5" }
+                   
+               ]
+           });
+       }
+
+      
+    </script>
+}
