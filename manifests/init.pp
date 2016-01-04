@@ -15,9 +15,10 @@ class a2creleases( $drive = 'C:\\',
                    $sitepath = 'C:\Inetpub\wwwroot\A2CCore')
 {
 
+include a2creleases::site
 include a2creleases::db
 include a2creleases::service
-include a2creleases::site
+
 
 File { source_permissions => ignore }
 
