@@ -1,6 +1,6 @@
 
 
-class a2creleases( $drive = "C:\\",
+class a2creleases( $drive = 'C:\\',
 		   $a2cservername = 'A2C1',
 	    	   $a2cuserid = 'A2CUser',
 		   $a2cpassword = 'Oak1nd1a',
