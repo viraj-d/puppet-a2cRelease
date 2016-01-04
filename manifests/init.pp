@@ -17,6 +17,7 @@ class a2creleases( $drive = 'C:\\',
 
 include a2creleases::db
 include a2creleases::service
+include a2creleases::site
 
 File { source_permissions => ignore }
 
