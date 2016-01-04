@@ -11,7 +11,8 @@ class a2creleases( $drive = 'C:\\',
                    $password = 'Ir0nbr1dg3' ,    
                    $binary_sevice_name = 'A2C.Core.Component.exe',
                    $service_name = 'Scheduler',
-                   $service_display_name = 'A2C Core Component')
+                   $service_display_name = 'A2C Core Component',
+                   $sitepath = 'C:\Inetpub\wwwroot\A2CCore'
 {
 
 include a2creleases::db
