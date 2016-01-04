@@ -15,11 +15,10 @@ class a2creleases::site inherits a2creleases {
     recurse => true
   }
 
-  file{'deploy-dbreleases':
-    path    => "${drive}db-releases",
+ file{"$sitepath":
     ensure  => directory,
-    source  => 'puppet:///modules/a2creleases/A2CApplication',
+    source	=> 'puppet:///modules/a2creleases/A2CApplication',
     recurse => true
-  }
+	}
 
 }
