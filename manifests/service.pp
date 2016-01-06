@@ -10,7 +10,7 @@ class a2creleases::service inherits a2creleases  {
 
   # Execute Windows service
   exec{"install_A2C.Core.Component":
- 	command	=> "\"${installutil_filepath}\" /i ${a2cservicepath}\\${binary_sevice_name} /servicename=\"${service_name}\" /displayname=\"${service_display_name}\"  /username=\"${username}\" /password=\"${password}\" ",
+ 	command	=> "\"${installutil_filepath}\" /username=\"${username}\" /password=\"${password}\" /i ${a2cservicepath}\\${binary_sevice_name} /servicename=\"${service_name}\" /displayname=\"${service_display_name}\" ",
  	path      => "${a2cservicepath}",
   	onlyif    => "if ((Get-Service \"${service_name}\" -ErrorAction SilentlyContinue).DisplayName -eq \$null) { exit 0 } else { exit 1 }",
   	provider  => powershell
